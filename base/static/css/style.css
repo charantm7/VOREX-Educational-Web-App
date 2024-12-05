@@ -1,0 +1,112 @@
+body,
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #ffffff;
+}
+
+nav {
+  display: flex;
+  background-color: #f2f2f2;
+  padding: 10px 30px;
+  align-items: center;
+  gap: 10px;
+  color: rgb(255, 255, 255);
+}
+
+.hamburger {
+  display: flex;
+  cursor: pointer;
+  gap: 5px;
+  flex-direction: column;
+}
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: rgb(95, 94, 94);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.hamburger:hover span {
+  background-color: rgb(50, 50, 50);
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 170px;
+  border-radius: 8px;
+  padding: 10px 0;
+  margin-right: 1340px;
+  margin-top: 7px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 100;
+}
+.nav-main-links li a {
+  list-style: none;
+  color: rgb(75, 74, 74);
+  margin-right: 80%;
+  text-decoration: none;
+}
+
+.nav-links.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-links li {
+  text-align: center;
+  padding: 10px 0;
+}
+.nav-links li a {
+  text-decoration: none;
+  color: rgb(75, 74, 74);
+  font-size: 1em;
+  transition: color 0.3s ease;
+}
+.nav-links li a:hover {
+  color: rgb(50, 50, 50);
+}
+.nav-search input {
+  border-radius: 8px;
+}
+.nav-search button {
+  border-radius: 8px;
+}
+
+.room-container {
+  width: 20%;
+  height: 80%;
+  margin: auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-left: 1220px;
+}
+
+.room-img {
+  border-radius: 50%;
+  margin-top: 70px;
+}
+
+.main-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 1px;
+}
