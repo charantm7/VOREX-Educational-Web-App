@@ -21,8 +21,9 @@
       href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap"
       rel="stylesheet"
     />
-
+    {% block title %}
     <title>Home</title>
+    {% endblock %}
   </head>
   <body>
     <div class="loading-page"></div>
@@ -36,20 +37,24 @@
           </div>
 
           <ul class="nav-links" id="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <div id="nav-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/rooms">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </div>
           </ul>
           <ul class="nav-main-links">
             <li>
+              {% block nav %}
               <a href="#Home">HOME</a>
+              {% endblock %}
             </li>
           </ul>
         </div>
         <div class="nav-center">
           <div class="search-input-container">
-            <i class="fas fa-search"></i>
+            <a href="#"><i class="fas fa-search"></i></a>
             <input type="text" placeholder="Search..." />
           </div>
         </div>
@@ -86,16 +91,36 @@
         </div>
       </nav>
     </header>
-    <div class="room-container">
-      <h4>Your room</h4>
-      <img
-        src="https://res.cloudinary.com/dljndgwcl/image/upload/v1733392568/2019_07_29_77135_1564383613._large_uvrm1e.jpg"
-        alt="img"
-        width="50px"
-        height="50px"
-        class="room-img"
-      />
-    </div>
-    <script src="../static/js/script.js"></script>
+    <main>
+      <div class="room-container">
+        <h4>Your room</h4>
+        <img
+          src="https://res.cloudinary.com/dljndgwcl/image/upload/v1733392568/2019_07_29_77135_1564383613._large_uvrm1e.jpg"
+          alt="img"
+          width="50px"
+          height="50px"
+          class="room-img"
+        />
+      </div>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("nav-links");
+
+        hamburger.addEventListener("click", (e) => {
+          navLinks.classList.toggle("active");
+          e.stopPropagation();
+        });
+
+        document.body.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+
+        navLinks.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+      });
+    </script>
   </body>
 </html>
