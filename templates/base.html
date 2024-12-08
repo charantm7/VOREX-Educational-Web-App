@@ -23,7 +23,7 @@
     />
     {% block title %}
     <title>Home</title>
-    {% endblock %}
+    {% endblock %} {% block link %} {% endblock %}
   </head>
   <body>
     <div class="loading-page"></div>
@@ -91,18 +91,7 @@
         </div>
       </nav>
     </header>
-    <main>
-      <div class="room-container">
-        <h4>Your room</h4>
-        <img
-          src="https://res.cloudinary.com/dljndgwcl/image/upload/v1733392568/2019_07_29_77135_1564383613._large_uvrm1e.jpg"
-          alt="img"
-          width="50px"
-          height="50px"
-          class="room-img"
-        />
-      </div>
-    </main>
+    {% block content %}{% endblock %}
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const hamburger = document.getElementById("hamburger");

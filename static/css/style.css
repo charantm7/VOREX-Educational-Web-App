@@ -67,7 +67,7 @@ nav {
 .nav-links {
   display: flex;
   flex-direction: column;
-  background-color: rgba(242, 242, 242, 0);
+  background-color: #1e1e1e;
   position: absolute;
   top: 60px;
   left: 30px;
@@ -197,30 +197,4 @@ nav {
   background-color: rgb(255, 255, 255);
   color: black;
   transition: 0.4s ease;
-}
-
-.room-container {
-  width: 20%;
-  height: 80%;
-  margin: auto;
-  padding: 20px;
-  background-color: #f2f2f2;
-  box-shadow: 0 4px 4px rgba(64, 64, 64, 0.1);
-  border-radius: 8px;
-  margin-top: 70px;
-  margin-left: 1190px;
-  transition: 0.5s;
-}
-.room-container:hover {
-  transform: scale(1.0498765);
-  box-shadow: 0 0 10px #363636;
-}
-.room-img {
-  border-radius: 50%;
-  margin-top: 70px;
-  transition: 0.5s;
-}
-.room-img:hover {
-  transform: scale(1.0498765);
-  box-shadow: 0 0 10px rgb(89, 89, 89);
 }

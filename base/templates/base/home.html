@@ -1,5 +1,13 @@
-{% extends 'base.html' %} {% block title %}
+{% extends 'base.html' %} {% load static %} {% block title %}
 <title>Home</title>
+{% endblock %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/body.css'%}" />
 {% endblock %} {%block nav %}
 <a href="/">HOME</a>
+{% endblock %} {% block content %}
+<div class="rooms">
+  <div class="your-rooms-container">
+    <h3>Your Room</h3>
+  </div>
+</div>
 {% endblock %}
