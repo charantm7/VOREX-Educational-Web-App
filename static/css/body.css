@@ -1,12 +1,26 @@
-.your-rooms-container {
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid gray;
-  width: 200px;
-  height: auto;
-  margin-top: 10px;
-  margin-left: 10px;
+.rooms {
+  display: flex;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
 }
-.your-rooms-container h3 {
+
+.your-rooms-container {
+  background: #17181a;
+  border: none;
+  width: 250px;
+  height: 100vh;
+  margin-top: 13px;
+  margin-left: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.your-rooms-container p {
   color: white;
-  margin-left: 20px;
+  background-color: #17181a;
+  margin-left: 10px;
+  padding: 10px 5px;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 450;
 }
