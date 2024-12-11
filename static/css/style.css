@@ -1,15 +1,24 @@
-body,
+* {
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 ul,
 li {
   list-style: none;
   margin: 0;
   padding: 0;
+  background: #000;
 }
 body {
-  background-color: #1e1e1e;
   font-family: "VT323", monospace;
   font-weight: 400;
   font-style: normal;
+  background: #000;
+}
+header {
+  background: #000;
 }
 .silkscreen-regular {
   font-family: "Silkscreen", sans-serif;
@@ -39,7 +48,7 @@ body {
 
 nav {
   display: flex;
-  background-color: rgb(158, 154, 154, 0);
+  background-color: rgba(0, 0, 0, 0);
   padding: 12px 30px;
   align-items: center;
   justify-content: space-between;
@@ -67,13 +76,13 @@ nav {
 .nav-links {
   display: flex;
   flex-direction: column;
-  background-color: #1e1e1e;
+  background-color: #000000;
   position: absolute;
   top: 60px;
   left: 30px;
   width: 120px;
   border-radius: 8px;
-  padding: 10px 0;
+  padding: 10px 10px;
   margin-top: 7px;
   margin-left: 0;
   opacity: 0;
