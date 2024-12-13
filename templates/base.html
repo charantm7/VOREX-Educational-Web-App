@@ -30,20 +30,22 @@
     <header>
       <nav>
         <div class="nav-left">
-          <div class="hamburger" id="hamburger">
+          <div onclick="openNav()" class="hamburger" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
           </div>
+          <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+              >&times;</a
+            >
+            <a href="/"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#"><i class="fa fa-info-circle"></i> About</a>
+            <a href="#"><i class="fa fa-fw fa-wrench"></i> Services</a>
+            <a href="#"><i class="fa fa-users"></i> Clients</a>
+            <a href="#"><i class="fa fa-phone"></i> Contact</a>
+          </div>
 
-          <ul class="nav-links" id="nav-links">
-            <div id="nav-links">
-              <li><a href="/">Home</a></li>
-              <li><a href="/rooms">Room</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </div>
-          </ul>
           <ul class="nav-main-links">
             <li>
               {% block nav %}
@@ -93,23 +95,18 @@
     </header>
     {% block content %}{% endblock %}
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const hamburger = document.getElementById("hamburger");
-        const navLinks = document.getElementById("nav-links");
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.body.style.backgroundColor = "rgba(255,255,255,0.4)";
+      }
 
-        hamburger.addEventListener("click", (e) => {
-          navLinks.classList.toggle("active");
-          e.stopPropagation();
-        });
-
-        document.body.addEventListener("click", () => {
-          navLinks.classList.remove("active");
-        });
-
-        navLinks.addEventListener("click", (e) => {
-          e.stopPropagation();
-        });
-      });
+      /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.body.style.backgroundColor = "black";
+      }
     </script>
   </body>
 </html>

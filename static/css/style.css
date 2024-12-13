@@ -47,8 +47,9 @@ header {
 
 nav {
   display: flex;
-  background-color: rgb(81, 80, 80);
-  padding: 12px 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 20px;
+  padding: 12px 20px;
   align-items: center;
   justify-content: space-between;
   color: rgb(255, 255, 255);
@@ -72,25 +73,6 @@ nav {
   background-color: rgb(199, 199, 199);
 }
 
-.nav-links {
-  display: flex;
-  flex-direction: column;
-  background-color: #777676;
-
-  position: absolute;
-  top: 60px;
-  left: 30px;
-  width: 120px;
-  border-radius: 8px;
-  padding: 10px 10px;
-  margin-top: 7px;
-  margin-left: 0;
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-  z-index: 100;
-}
 .nav-main-links li a {
   list-style: none;
   color: rgb(255, 255, 255);
@@ -101,29 +83,84 @@ nav {
   font-size: 20px;
 }
 
-.nav-links.active {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
 }
 
-.nav-links li {
-  text-align: left;
-  padding: 10px 0;
-}
-.nav-links li a {
+.sidenav a {
+  padding: 8px 8px 8px 32px;
   text-decoration: none;
-  color: rgb(255, 255, 255);
-  font-size: 1em;
-  transition: color 0.3s ease;
-  margin-right: 25px;
-  font-weight: 400;
-  font-family: "VT323", monospace;
-  font-size: 20px;
-  text-align: left;
+  margin-left: 10px;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  background-color: #111;
 }
-.nav-links li a:hover {
-  color: rgb(199, 199, 199);
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.fa-home {
+  background-color: #111;
+  font-size: 1.3rem;
+  align-items: center;
+  margin-left: 2px;
+}
+.fa-info-circle {
+  background-color: #111;
+  font-size: 1.3rem;
+  align-items: center;
+  margin-left: 2px;
+}
+.fa-wrench {
+  background-color: #111;
+  font-size: 1.3rem;
+  align-items: center;
+  margin-left: 2px;
+}
+.fa-users {
+  background-color: #111;
+  font-size: 1.3rem;
+  align-items: center;
+  margin-left: 2px;
+}
+.fa-phone {
+  background-color: #111;
+  font-size: 1.3rem;
+  align-items: center;
+  margin-left: 2px;
+}
+#main {
+  transition: margin-left 0.5s;
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
 .search-input-container {
   flex: 1;
