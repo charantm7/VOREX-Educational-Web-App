@@ -83,34 +83,37 @@ nav {
   font-size: 20px;
 }
 
+/* The sidebar */
 .sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
+  height: 100%; /* Full height */
+  width: 0; /* Start with 0 width (hidden) */
+  position: fixed; /* Fixed sidebar */
+  z-index: 1; /* Stay on top */
   top: 0;
   left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 60px;
-  transition: 0.5s;
+  background-color: #111; /* Black background */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Space for links from the top */
+  transition: 0.5s; /* Smooth transition */
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 8px 8px;
   text-decoration: none;
-  margin-left: 10px;
   font-size: 25px;
   color: #818181;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   transition: 0.3s;
-  background-color: #111;
 }
 
+/* Hover effects for links */
 .sidenav a:hover {
   color: #f1f1f1;
 }
 
+/* Close button for the sidebar */
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -118,42 +121,25 @@ nav {
   font-size: 36px;
   margin-left: 50px;
 }
-.fa-home {
-  background-color: #111;
-  font-size: 1.3rem;
-  align-items: center;
-  margin-left: 2px;
-}
-.fa-info-circle {
-  background-color: #111;
-  font-size: 1.3rem;
-  align-items: center;
-  margin-left: 2px;
-}
-.fa-wrench {
-  background-color: #111;
-  font-size: 1.3rem;
-  align-items: center;
-  margin-left: 2px;
-}
-.fa-users {
-  background-color: #111;
-  font-size: 1.3rem;
-  align-items: center;
-  margin-left: 2px;
-}
+
+/* Icon styles */
+.fa-home,
+.fa-info-circle,
+.fa-wrench,
+.fa-users,
 .fa-phone {
-  background-color: #111;
   font-size: 1.3rem;
-  align-items: center;
   margin-left: 2px;
-}
-#main {
-  transition: margin-left 0.5s;
-  margin-left: 160px; /* Same as the width of the sidenav */
-  padding: 0px 10px;
+  position: relative;
 }
 
+/* Main content */
+#main {
+  transition: margin-left 0.5s;
+  padding: 16px;
+}
+
+/* Adjustments for smaller screens */
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
@@ -162,6 +148,7 @@ nav {
     font-size: 18px;
   }
 }
+
 .search-input-container {
   flex: 1;
   display: flex;
