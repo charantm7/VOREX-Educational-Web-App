@@ -8,7 +8,7 @@ body {
   font-family: "VT323", monospace;
   font-weight: 400;
   font-style: normal;
-  background: #000;
+  background: #151b23;
   margin-left: 65px;
   color: #fff;
 }
@@ -37,12 +37,11 @@ header {
 .nav-right {
   display: flex;
   align-items: center;
-  margin-top: 4px;
 }
 
 nav {
   display: flex;
-  background-color: #000000;
+  background-color: #0d1117;
   padding: 12px 20px;
   align-items: center;
   justify-content: space-between;
@@ -53,7 +52,7 @@ nav {
 
 .nav-main-links li a {
   list-style: none;
-  color: rgb(255, 255, 255);
+  color: #ececec;
   margin-left: -10px;
   margin-top: 10px;
   text-decoration: none;
@@ -67,7 +66,7 @@ nav {
   left: 0;
   height: 100%;
   width: 65px;
-  background-color: #13151a;
+  background-color: #0d1117;
   padding: 10px 0;
   transition: all 0.3s ease;
   overflow: hidden;
@@ -86,13 +85,13 @@ nav {
 
 .logo i {
   font-size: 23px;
-  color: #fff;
+  color: #ececec;
   cursor: pointer;
 }
 
 .logo_name {
   font-size: 22px;
-  color: #fff;
+  color: #ececec;
   font-weight: 400;
   margin-left: 25px;
   gap: 2px;
@@ -118,7 +117,7 @@ nav {
 .nav_list a {
   display: flex;
   align-items: center;
-  color: #818181;
+  color: #d7d7d7;
   font-size: 20px;
   text-decoration: none;
   padding: 10px 10px;
@@ -177,7 +176,7 @@ nav {
   flex: 1;
   display: flex;
   align-items: center;
-  border: 1px solid #ffffff;
+  border: 1px solid #ececec;
   border-radius: 5px;
   width: 25%;
   height: 35px;
@@ -187,7 +186,7 @@ nav {
 
 .search-input-container i {
   margin-right: 15px;
-  color: rgb(255, 255, 255);
+  color: #ececec;
   font-size: 1rem;
   margin-left: 15px;
   cursor: pointer;
@@ -202,7 +201,7 @@ nav {
   margin-right: 5px;
   color: white;
   font-size: 1.2rem;
-  background-color: #000000;
+  background-color: #0d1117;
 }
 
 .search-input-container input::placeholder {
@@ -226,8 +225,8 @@ nav {
 }
 .login-btn button {
   background-color: #1e1e1e;
-  color: white;
-  border-color: rgba(242, 242, 242, 0);
+  color: #ececec;
+  border-color: #ececec;
   border: 1px solid white;
   width: 60px;
   height: 35px;
@@ -241,8 +240,8 @@ nav {
 }
 .signup-btn button {
   background-color: #1e1e1e;
-  color: white;
-  border-color: rgba(242, 242, 242, 0);
+  color: #ececec;
+  border-color: #ececec;
   border: 1px solid white;
   width: 65px;
   height: 35px;
