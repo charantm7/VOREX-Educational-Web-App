@@ -1,21 +1,16 @@
-* {
-  background: hsl(0, 0%, 0%);
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 ul,
 li {
   list-style: none;
   margin: 0;
   padding: 0;
-  background: #000;
 }
 body {
   font-family: "VT323", monospace;
   font-weight: 400;
   font-style: normal;
   background: #000;
+  margin-left: 65px;
+  color: #fff;
 }
 header {
   background: #000;
@@ -47,105 +42,134 @@ header {
 
 nav {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 20px;
+  background-color: #000000;
   padding: 12px 20px;
   align-items: center;
   justify-content: space-between;
   color: rgb(255, 255, 255);
-}
 
-.hamburger {
-  display: flex;
-  cursor: pointer;
-  gap: 5px;
-  flex-direction: column;
-}
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-.hamburger:hover span {
-  background-color: rgb(199, 199, 199);
+  border-bottom: 1px #fff;
 }
 
 .nav-main-links li a {
   list-style: none;
   color: rgb(255, 255, 255);
-  margin-left: 35%;
+  margin-left: -10px;
   margin-top: 10px;
   text-decoration: none;
   font-family: "Silkscreen", sans-serif;
   font-size: 20px;
 }
 
-/* The sidebar */
-.sidenav {
-  height: 100%; /* Full height */
-  width: 0; /* Start with 0 width (hidden) */
-  position: fixed; /* Fixed sidebar */
-  z-index: 1; /* Stay on top */
+.sidebar {
+  position: fixed;
   top: 0;
   left: 0;
-  background-color: #111; /* Black background */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Space for links from the top */
-  transition: 0.5s; /* Smooth transition */
+  height: 100%;
+  width: 65px;
+  background-color: #13151a;
+  padding: 10px 0;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-.sidenav a {
-  padding: 8px 8px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+.sidebar.active {
+  width: 240px;
+}
+
+.logo_content {
   display: flex;
   align-items: center;
-  gap: 10px;
-  transition: 0.3s;
+  justify-content: flex-start;
+  padding: 12px 20px;
 }
 
-/* Hover effects for links */
-.sidenav a:hover {
-  color: #f1f1f1;
+.logo i {
+  font-size: 23px;
+  color: #fff;
+  cursor: pointer;
 }
 
-/* Close button for the sidebar */
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+.logo_name {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 400;
+  margin-left: 25px;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-family: "Silkscreen", sans-serif;
 }
 
-/* Icon styles */
-.fa-home,
-.fa-info-circle,
-.fa-wrench,
-.fa-users,
-.fa-phone {
-  font-size: 1.3rem;
-  margin-left: 2px;
+.sidebar.active .logo_name {
+  opacity: 1;
+}
+
+.nav_list {
+  margin-top: 20px;
+  list-style: none;
   position: relative;
 }
 
-/* Main content */
-#main {
-  transition: margin-left 0.5s;
-  padding: 16px;
+.nav_list li {
+  position: relative;
 }
 
-/* Adjustments for smaller screens */
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
+.nav_list a {
+  display: flex;
+  align-items: center;
+  color: #818181;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.nav_list a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.nav_list i {
+  font-size: 18px;
+  margin-right: 15px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.link_name {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.active .link_name {
+  opacity: 1;
+}
+
+.main_content {
+  margin-left: 60px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  width: 100%;
+}
+
+.sidebar.active ~ .main_content {
+  margin-left: 240px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0;
   }
-  .sidenav a {
-    font-size: 18px;
+  .sidebar.active {
+    width: 200px;
+  }
+  .main_content {
+    margin-left: 0;
+  }
+  .sidebar.active ~ .main_content {
+    margin-left: 200px;
   }
 }
 
@@ -230,4 +254,9 @@ nav {
   background-color: rgb(255, 255, 255);
   color: black;
   transition: 0.4s ease;
+}
+hr {
+  border: none;
+  border-top: 2px solid white; /* Solid white border on top */
+  margin: 0px auto;
 }

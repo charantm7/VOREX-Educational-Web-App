@@ -15,6 +15,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,21 +34,59 @@
     <header>
       <nav>
         <div class="nav-left">
-          <div onclick="openNav()" class="hamburger" id="main">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+          <div class="sidebar" id="sidebar">
+            <div class="logo_content">
+              <div class="logo">
+                <i class="fas fa-bars" id="menuBtn"
+                  ><span class="logo_name">VOREX</span></i
+                >
+              </div>
+            </div>
+            <ul class="nav_list">
+              <li>
+                <a href="/">
+                  <i class="fas fa-home"></i>
+                  <span class="link_name">Home</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-info-circle"></i>
+                  <span class="link_name">About</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-wrench"></i>
+                  <span class="link_name">Services</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-chart-line"></i>
+                  <span class="link_name">Analytics</span>
+                </a>
+              </li>
 
-          <div class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-              >&times;</a
-            >
-            <a href="#"><i class="fa fa-home"></i> Home</a>
-            <a href="#"><i class="fa fa-info-circle"></i> About</a>
-            <a href="#"><i class="fa fa-wrench"></i> Services</a>
-            <a href="#"><i class="fa fa-users"></i> Clients</a>
-            <a href="#"><i class="fa fa-phone"></i> Contact</a>
+              <li>
+                <a href="#">
+                  <i class="fas fa-lightbulb"></i>
+                  <span class="link_name">Ideas</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-clock"></i>
+                  <span class="link_name">History</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-cog"></i>
+                  <span class="link_name">Settings</span>
+                </a>
+              </li>
+            </ul>
           </div>
 
           <ul class="nav-main-links">
@@ -93,23 +135,17 @@
           </div>
         </div>
       </nav>
+      <hr />
     </header>
     {% block content %}{% endblock %}
     <script>
-      /* Open the sidebar */
-      function openNav() {
-        document.querySelector(".sidenav").style.width =
-          "250px"; /* Adjust width */
-        document.querySelector("#main").style.marginLeft =
-          "250px"; /* Push content */
-      }
+      const sidebar = document.getElementById("sidebar");
+      const menuBtn = document.getElementById("menuBtn");
 
-      /* Close the sidebar */
-      function closeNav() {
-        document.querySelector(".sidenav").style.width = "0"; /* Reset width */
-        document.querySelector("#main").style.marginLeft =
-          "0"; /* Reset content */
-      }
+      // Toggle Sidebar
+      menuBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+      });
     </script>
   </body>
 </html>

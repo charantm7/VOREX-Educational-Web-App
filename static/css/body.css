@@ -5,19 +5,18 @@
 }
 
 .your-rooms-container {
-  background: #17181a;
+  background: #13151a;
   border: none;
   width: 250px;
   height: 100vh;
-  margin-left: 0;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  margin-left: auto;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .your-rooms-container p {
   color: white;
   background-color: #17181a;
-  margin-left: 10px;
   padding: 10px 5px;
   font-size: 17px;
   font-family: "Poppins", sans-serif;
