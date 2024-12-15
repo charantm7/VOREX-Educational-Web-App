@@ -5,7 +5,7 @@
 }
 
 .your-rooms-container {
-  background: #13151a;
+  background: #0d1117;
   border: none;
   width: 250px;
   height: 100vh;
@@ -16,7 +16,7 @@
 
 .your-rooms-container p {
   color: white;
-  background-color: #17181a;
+  background-color: #0d1117;
   padding: 10px 5px;
   font-size: 17px;
   font-family: "Poppins", sans-serif;

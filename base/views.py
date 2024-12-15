@@ -7,3 +7,6 @@ def home(request):
 
 def rooms(request):
     return render(request, 'base/room.html')
+
+def login(request):
+    return render(request, 'base/authentication/loginpage.html')
