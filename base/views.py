@@ -9,4 +9,7 @@ def rooms(request):
     return render(request, 'base/room.html')
 
 def login(request):
-    return render(request, 'base/authentication/loginpage.html')
+    return render(request, 'base/authentication/login.html')
+
+def signup(request):
+    return render(request, 'base/authentication/signup.html')
