@@ -32,7 +32,7 @@ header {
 }
 .nav-center {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 .nav-right {
   display: flex;
@@ -175,6 +175,7 @@ nav {
 .search-input-container {
   flex: 1;
   display: flex;
+  position: fixed;
   align-items: center;
   border: 1px solid #ececec;
   border-radius: 5px;
