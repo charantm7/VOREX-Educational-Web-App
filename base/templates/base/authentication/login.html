@@ -1,7 +1,30 @@
-{% extends "base.html" %} {% block title %}
+{% extends "base.html" %}{% load static %} {% block title %}
 <title>Login</title>
 {% endblock %} {% block nav %}
 <a href="/login">LOGIN</a>
+{% endblock %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/login.css'%}" />
 {% endblock %} {% block content %}
-<h3>this is login page</h3>
+<div class="login-container">
+  <h3>Login Page</h3>
+  <label for="email">Email</label>
+  <input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="Enter your email address"
+  />
+  <label for="Passowrd">Passowrd</label>
+  <input
+    type="password"
+    id="password"
+    name="password"
+    placeholder="Enter your password"
+  />
+  <a href="#"><button>LOGIN</button></a>
+  <p>Don't have an Account! <a href="/signup">SIGN UP</a></p>
+  <div class="forget-password">
+    <a href="#">Forget Password!</a>
+  </div>
+</div>
 {% endblock %}

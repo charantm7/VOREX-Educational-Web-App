@@ -1,7 +1,34 @@
-{% extends "base.html" %} {% block title %}
-<title>Signup</title>
+{% extends "base.html" %}{% load static %} {% block title %}
+<title>Sign Up</title>
 {% endblock %} {% block nav %}
 <a href="/signup">SIGN UP</a>
+{% endblock %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/signup.css'%}" />
 {% endblock %} {% block content %}
-<h3>This is sign up page</h3>
+<div class="signup-container">
+  <h3>SIGN UP</h3>
+  <label for="email">Email</label>
+  <input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="Enter your email address"
+  />
+  <label for="Passowrd1">New Password</label>
+  <input
+    type="password"
+    id="password"
+    name="password"
+    placeholder="Enter your new password"
+  />
+  <label for="password2">Confirm Password</label>
+  <input
+    type="password"
+    id="password2"
+    name="password2"
+    placeholder="Confirm your password"
+  />
+  <a href="#"><button>SIGN UP</button></a>
+  <p>Already have an Account! <a href="/login">LOGIN</a></p>
+</div>
 {% endblock %}
