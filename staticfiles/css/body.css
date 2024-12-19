@@ -1,0 +1,24 @@
+.rooms {
+  display: flex;
+  height: 100%;
+  background-color: #161b22;
+}
+
+.your-rooms-container {
+  background: #0d1117;
+  border: none;
+  width: 250px;
+  height: 100vh;
+  margin-left: auto;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.your-rooms-container p {
+  color: white;
+  background-color: #0d1117;
+  padding: 10px 5px;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 450;
+}

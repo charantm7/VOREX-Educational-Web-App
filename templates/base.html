@@ -138,14 +138,6 @@
       <hr />
     </header>
     {% block content %}{% endblock %}
-    <script>
-      const sidebar = document.getElementById("sidebar");
-      const menuBtn = document.getElementById("menuBtn");
-
-      // Toggle Sidebar
-      menuBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("active");
-      });
-    </script>
+    <script src="{% static 'js/script.js' %}"></script>
   </body>
 </html>
