@@ -5,7 +5,7 @@
   --tightdark: #0d1117;
   --white: #fff;
   --black: #000;
-  --lightBulue: #17a;
+  --lightBlue: #17a;
 }
 
 .wrapper {
@@ -30,6 +30,12 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  pointer-events: none;
+  transition: 0.7s ease;
+}
+
+.wrapper.active .form-box {
+  pointer-events: auto;
 }
 
 .wrapper .form-box.login {
@@ -37,12 +43,17 @@
   padding: 0 60px 0 40px;
 }
 
+.wrapper .form-box.register {
+  right: 0;
+  padding: 0 40px 0 60px;
+}
+
 .form-box h2 {
   margin-bottom: 10px;
-  position: relative;
   font-size: 32px;
   color: var(--white);
   text-align: center;
+  position: relative;
 }
 
 .form-box h2::after {
@@ -79,7 +90,7 @@
 
 .input-box input:focus,
 .input-box input:valid {
-  border-bottom-color: var(--lightBulue);
+  border-bottom-color: var(--lightBlue);
 }
 
 .input-box label {
@@ -96,7 +107,7 @@
 .input-box input:focus ~ label,
 .input-box input:valid ~ label {
   top: -5px;
-  color: var(--lightBulue);
+  color: var(--lightBlue);
 }
 
 .input-box i {
@@ -110,7 +121,7 @@
 
 .input-box input:focus ~ i,
 .input-box input:valid ~ i {
-  color: var(--lightBulue);
+  color: var(--lightBlue);
 }
 
 .body-btn button {
@@ -142,7 +153,6 @@ form .linkTxt {
 
 .wrapper .form-box.login .animation {
   transform: translateX(0);
-  transition: 0.7s ease;
   opacity: 1;
   filter: blur(0);
   transition-delay: calc(0.1s * var(--j));
@@ -152,6 +162,20 @@ form .linkTxt {
   transform: translateX(-120%);
   opacity: 0;
   filter: blur(10px);
+  transition-delay: calc(0.1s * var(--i));
+}
+
+.wrapper .form-box.register .animation {
+  transform: translateX(120%);
+  opacity: 0;
+  filter: blur(10px);
+  transition-delay: calc(0.1s * var(--j));
+}
+
+.wrapper.active .form-box.register .animation {
+  transform: translateX(0);
+  opacity: 1;
+  filter: blur(0);
   transition-delay: calc(0.1s * var(--i));
 }
 
@@ -171,115 +195,39 @@ form .linkTxt {
   padding: 0 40px 60px 150px;
 }
 
-.wrapper .info-text h2 {
-  font-size: 36px;
-  color: var(--white);
-  line-height: 1.3;
-  text-transform: uppercase;
-}
-
-.wrapper .info-text p {
-  font-size: 16px;
-  color: var(--white);
-}
-
-.wrapper .info-text.login .animation {
-  transform: translateX(0);
-  opacity: 1;
-  filter: blur(0);
-  transition: 0.7s ease;
-  transition-delay: calc(0.1s * var(--j));
-}
-.wrapper.active .info-text.login .animation {
-  transform: translateX(120px);
-  opacity: 0;
-  filter: blur(10px);
-  transition: 0.7s ease;
-  transition-delay: calc(0.1s * var(--i));
-}
-
-.wrapper .rotate-bg {
-  position: absolute;
-  top: -4px;
-  right: 0;
-  width: 850px;
-  height: 600px;
-  background: var(--tightdark);
-  transform: rotate(10deg) skewY(40deg);
-  transform-origin: bottom right;
-  transition: 1.5s ease;
-  transition-delay: 1.6s;
-}
-
-.wrapper.active .rotate-bg {
-  transform: rotate(0) skewY(0);
-  transition-delay: 0.1s;
-}
-
-.wrapper .form-box.register {
-  padding: 0 40px 0 60px;
-  right: 0;
-}
-
-.wrapper.active .form-box.register {
-  pointer-events: auto;
-}
-
-.wrapper .form-box.register .animation {
-  transform: translateX(120%);
-  opacity: 0;
-  filter: blur(10px);
-  transition: 0.7s ease;
-  transition-delay: calc(0.1s * var(--j));
-}
-
-.wrapper.active .form-box.register .animation {
-  transform: translateX(0);
-  opacity: 1;
-  filter: blur(0);
-  transition-delay: calc(0.1s * var(--i));
-}
-
 .wrapper .info-text.register {
   left: 0;
   text-align: left;
   padding: 0 150px 60px 40px;
-  pointer-events: none;
 }
 
-.wrapper.active .info-text.register {
-  pointer-events: auto;
+.wrapper .rotate-bg,
+.wrapper .rotate-bg2 {
+  position: absolute;
+  width: 850px;
+  height: 600px;
+  background: var(--tightdark);
+  transform-origin: bottom right;
+  transition: 1.5s ease;
 }
 
-.wrapper .info-text.register .animation {
-  transform: translateX(-120%);
-  opacity: 0;
-  filter: blur(10px);
-  transition: 0.7s ease;
-  transition-delay: calc(0.1s * var(--j));
+.wrapper .rotate-bg {
+  top: -4px;
+  right: 0;
+  transform: rotate(10deg) skewY(40deg);
 }
 
-.wrapper.active .info-text.register .animation {
-  transform: translateX(0);
-  opacity: 1;
-  filter: blur(0);
-  transition-delay: calc(0.1s * var(--i));
+.wrapper.active .rotate-bg {
+  transform: rotate(0) skewY(0);
 }
 
 .wrapper .rotate-bg2 {
-  position: absolute;
   top: 100%;
   left: 250px;
-  width: 850px;
-  height: 700px;
   background: var(--dark);
   transform: rotate(0) skewY(0);
-  transform-origin: bottom left;
-  transition: 1.5s ease;
-  transition-delay: 0.5s;
 }
 
 .wrapper.active .rotate-bg2 {
   transform: rotate(-11deg) skewY(-40deg);
-  transition-delay: 1.2s;
 }

@@ -8,8 +8,12 @@ def home(request):
 def rooms(request):
     return render(request, 'base/room.html')
 
-def login(request):
-    return render(request, 'base/authentication/login.html')
+def auth_page(request):
+    return render(request, 'base/authentication/auth.html')
 
-def signup(request):
-    return render(request, 'base/authentication/signup.html')
+def user_login(request):
+    pass
+
+def user_signup(request):
+    pass
+
