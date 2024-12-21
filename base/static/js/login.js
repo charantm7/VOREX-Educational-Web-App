@@ -9,14 +9,3 @@ registerLink.onclick = () => {
 loginLink.onclick = () => {
   wrapper.classList.remove("active");
 };
-
-document.addEventListener("DOMContentLoaded", () => {
-  const queryParams = new URLSearchParams(window.location.search);
-  const action = queryParams.get("action");
-
-  if (action === "signup") {
-    wrapper.classList.add("active");
-  } else {
-    wrapper.classList.remove("active");
-  }
-});
