@@ -6,20 +6,24 @@
   --white: #fff;
   --black: #000;
   --lightBlue: #17a;
+  --errorRed: #e74c3c;
+  --successGreen: #2ecc71;
 }
 
 .wrapper {
   display: flex;
   justify-content: center;
-  margin: auto auto;
-  margin-top: 130px;
+  align-items: center;
+  margin: auto;
+  margin-top: 100px;
   position: relative;
   width: 750px;
-  height: 450px;
+  height: 500px;
   background: var(--dark);
   overflow: hidden;
   font-family: "Poppins", sans-serif;
   border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .wrapper .form-box {
@@ -124,6 +128,16 @@
   color: var(--lightBlue);
 }
 
+.input-box .error {
+  font-size: 12px;
+  color: var(--errorRed);
+  margin-top: 5px;
+}
+
+.input-box.success input {
+  border-bottom-color: var(--successGreen);
+}
+
 .body-btn button {
   width: 100%;
   height: 45px;
@@ -136,6 +150,13 @@
   font-size: 16px;
   font-weight: 600;
   margin-top: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.body-btn button:hover {
+  background-color: var(--lightBlue);
+  color: var(--white);
+  transform: scale(1.05);
 }
 
 form .linkTxt {
@@ -146,11 +167,17 @@ form .linkTxt {
 }
 
 .linkTxt p a {
-  color: rgb(41, 214, 237);
+  color: var(--lightBlue);
   text-decoration: none;
   font-weight: 600;
+  transition: color 0.3s;
 }
 
+.linkTxt p a:hover {
+  color: var(--white);
+}
+
+/* Animations for login */
 .wrapper .form-box.login .animation {
   transform: translateX(0);
   opacity: 1;
@@ -165,6 +192,7 @@ form .linkTxt {
   transition-delay: calc(0.1s * var(--i));
 }
 
+/* Animations for signup */
 .wrapper .form-box.register .animation {
   transform: translateX(120%);
   opacity: 0;
@@ -179,6 +207,7 @@ form .linkTxt {
   transition-delay: calc(0.1s * var(--i));
 }
 
+/* Info text sections */
 .wrapper .info-text {
   position: absolute;
   top: 0;
@@ -201,6 +230,7 @@ form .linkTxt {
   padding: 0 150px 60px 40px;
 }
 
+/* Rotate background animations */
 .wrapper .rotate-bg,
 .wrapper .rotate-bg2 {
   position: absolute;
@@ -230,4 +260,28 @@ form .linkTxt {
 
 .wrapper.active .rotate-bg2 {
   transform: rotate(-11deg) skewY(-40deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wrapper {
+    width: 95%;
+    height: auto;
+    margin-top: 50px;
+    flex-direction: column;
+  }
+
+  .form-box {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .info-text {
+    display: none;
+  }
+
+  .rotate-bg,
+  .rotate-bg2 {
+    display: none;
+  }
 }
