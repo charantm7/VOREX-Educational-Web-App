@@ -1,7 +1,7 @@
 {% extends "base.html" %}{% load static %} {% block title %}
 <title>Login</title>
 {% endblock %} {% block nav %}
-<a href="/login">LOGIN</a>
+<a href="{% url 'auth_page'%}">AUTHENTICATION</a>
 {% endblock %} {% block link %}
 <link rel="stylesheet" href="{% static 'css/auth.css' %}" />
 <link
@@ -28,23 +28,32 @@
         <i class="bx bxs-lock-alt"></i>
       </div>
       <div class="body-btn">
-        <button type="submit" class="btn animation" style="--i: 3; --j: 24">
+        <button type="submit" class="animation" style="--i: 3; --j: 24">
           Login
         </button>
       </div>
-      <div class="linkTxt animation" style="--i: 5; --j: 25">
+      <div class="forget-pass animation" style="--i: 4; --j: 25">
         <p>
-          Don't have an account?
+          <a href="">Forget Password?</a>
+        </p>
+      </div>
+      <div class="linkTxt animation" style="--i: 5; --j: 26">
+        <p>
+          New to vorex?
           <a href="#" class="register-link">Sign Up</a>
         </p>
       </div>
     </form>
   </div>
-
+  <div class="third-party-auth login animation" style="--i: 0; --j: 23">
+    <h4>g</h4>
+  </div>
   <div class="info-text login">
-    <h2 class="animation" style="--i: 0; --j: 20">Welcome Back!</h2>
-    <p class="animation" style="--i: 1; --j: 21">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti,rem?
+    <h2 class="animation" style="--i: 1; --j: 20">
+      Welcome Back, {{username}}
+    </h2>
+    <p class="animation" style="--i: 2; --j: 21">
+      Let's Pick Up Where you left OFF!
     </p>
   </div>
 
@@ -70,7 +79,7 @@
         <i class="bx bxs-lock-alt"></i>
       </div>
       <div class="body-btn">
-        <button type="submit" class="btn animation" style="--i: 21; --j: 4">
+        <button type="submit" class="animation" style="--i: 21; --j: 4">
           Sign Up
         </button>
       </div>
@@ -82,9 +91,9 @@
   </div>
 
   <div class="info-text register">
-    <h2 class="animation" style="--i: 17; --j: 0">Welcome Back!</h2>
+    <h2 class="animation" style="--i: 17; --j: 0">Welcome Abroad!</h2>
     <p class="animation" style="--i: 18; --j: 1">
-      Login to VOREX for amazing features
+      Let's get you signed up and ready to go!
     </p>
   </div>
 </div>
