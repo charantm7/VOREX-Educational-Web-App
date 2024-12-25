@@ -151,6 +151,32 @@ form .forget-pass {
   text-align: start;
   margin: 30px 0 10px;
 }
+.third-party-auth.login {
+  position: absolute;
+  margin-left: 66%;
+  margin-top: 20px;
+  z-index: 15;
+}
+.third-party-auth.login a {
+  text-decoration: none;
+  color: var(--white);
+  padding: 20px;
+  font-size: 2rem;
+  pointer-events: auto;
+}
+.third-party-auth.register {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 20px;
+  z-index: 15;
+}
+.third-party-auth.register a {
+  text-decoration: none;
+  color: var(--white);
+  padding: 20px;
+  font-size: 2rem;
+  pointer-events: auto;
+}
 
 .forget-pass p a {
   color: var(--links);
@@ -175,18 +201,24 @@ form .forget-pass {
 
 .wrapper .info-text {
   position: absolute;
-  top: 0;
+  top: 100px;
   width: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
+.wrapper.active .form-box.login {
+  pointer-events: auto;
+}
 .wrapper .info-text.login {
   right: 0;
   text-align: right;
-  padding: 0 40px 60px 150px;
+  pointer-events: auto;
+  padding: 0 40px 250px 150px;
+}
+.wrapper.active .info-text.login {
+  pointer-events: none;
 }
 
 .wrapper .info-text h2 {
@@ -201,19 +233,6 @@ form .forget-pass {
   color: var(--white);
 }
 
-.wrapper .third-party-auth {
-  border: 1px solid var(--white);
-  background-color: rgba(255, 255, 255, 0);
-  border-radius: 8px;
-  text-align: center;
-  margin-bottom: 90px;
-  margin-right: 50%;
-  padding: 10px 0px;
-}
-.third-party-auth h4 {
-  padding: 10px 0 0 0;
-}
-
 .wrapper .info-text.login .animation {
   transform: translateX(0);
   opacity: 1;
@@ -222,6 +241,20 @@ form .forget-pass {
   transition-delay: calc(0.1s * var(--j));
 }
 .wrapper.active .info-text.login .animation {
+  transform: translateX(120px);
+  opacity: 0;
+  filter: blur(10px);
+  transition: 0.7s ease;
+  transition-delay: calc(0.1s * var(--i));
+}
+.wrapper .third-party-auth.login .animation {
+  transform: translateX(0);
+  opacity: 1;
+  filter: blur(0);
+  transition: 0.7s ease;
+  transition-delay: calc(0.1s * var(--j));
+}
+.wrapper.active .third-party-auth.login .animation {
   transform: translateX(120px);
   opacity: 0;
   filter: blur(10px);
@@ -275,7 +308,7 @@ form .forget-pass {
   left: 0;
   text-align: left;
   pointer-events: none;
-  padding: 0 150px 60px 40px;
+  padding: 0 150px 250px 40px;
 }
 
 .wrapper.active .info-text.register {
@@ -291,6 +324,20 @@ form .forget-pass {
 }
 
 .wrapper.active .info-text.register .animation {
+  transform: translateX(0);
+  opacity: 1;
+  filter: blur(0);
+  transition-delay: calc(0.1s * var(--i));
+}
+.wrapper .third-party-auth.register .animation {
+  transform: translateX(-120%);
+  opacity: 0;
+  filter: blur(10px);
+  transition: 0.7s ease;
+  transition-delay: calc(0.1s * var(--j));
+}
+
+.wrapper.active .third-party-auth.register .animation {
   transform: translateX(0);
   opacity: 1;
   filter: blur(0);

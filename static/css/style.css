@@ -9,7 +9,7 @@ body {
   font-weight: 400;
   font-style: normal;
   background: var(--bodydark);
-  margin-left: 65px;
+  margin-left: 58px;
   color: #fff;
   position: relative;
 }
@@ -46,7 +46,7 @@ body {
 nav {
   display: flex;
   background-color: var(--navdark);
-  padding: 12px 20px;
+  padding: 15px 20px;
   align-items: center;
   justify-content: space-between;
   color: rgb(255, 255, 255);
@@ -60,7 +60,7 @@ nav {
   margin-top: 10px;
   text-decoration: none;
   font-family: "Silkscreen", sans-serif;
-  font-size: 20px;
+  font-size: 1.3rem;
 }
 
 .sidebar {
@@ -68,26 +68,26 @@ nav {
   top: 0;
   left: 0;
   height: 100%;
-  width: 65px;
-  background-color: #0d1117;
-  padding: 10px 0;
+  width: 58px;
+  background-color: var(--navdark);
   transition: all 0.3s ease;
   overflow: hidden;
+  align-items: center;
 }
 
 .sidebar.active {
-  width: 200px;
+  width: 170px;
 }
 
 .logo_content {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 12px 20px;
+  padding: 20px 20px;
 }
 
 .logo i {
-  font-size: 23px;
+  font-size: 1.3rem;
   color: #ececec;
   cursor: pointer;
 }
@@ -134,10 +134,10 @@ nav {
 }
 
 .nav_list i {
-  font-size: 18px;
-  margin-right: 15px;
+  font-size: 1rem;
+  padding: 0 10px;
   min-width: 40px;
-  text-align: center;
+  align-items: center;
 }
 
 .link_name {
@@ -183,8 +183,8 @@ nav {
   align-items: center;
   border: 1px solid #ececec;
   border-radius: 5px;
-  width: 25%;
-  height: 35px;
+  width: 18%;
+  height: 32px;
   max-width: 250px;
   justify-content: center;
 }
@@ -192,7 +192,7 @@ nav {
 .search-input-container i {
   margin-right: 15px;
   color: #ececec;
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-left: 15px;
   cursor: pointer;
 }
@@ -205,27 +205,27 @@ nav {
   margin-left: 2px;
   margin-right: 5px;
   color: white;
-  font-size: 1.2rem;
-  background-color: #0d1117;
+  font-size: 1.05rem;
+  background-color: var(--navdark);
 }
 
 .search-input-container input::placeholder {
   color: #a7a3a3;
 }
 .account-logo a img {
-  width: 38px;
-  height: 39px;
+  width: 32px;
+  height: 33px;
   border-radius: 50%;
   margin-top: -1px;
 }
 .notification-logo a img {
-  width: 30px;
-  height: 30px;
-  margin-right: 25px;
+  width: 28px;
+  height: 28px;
+  margin-right: 20px;
 }
 .create-logo a img {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   margin-right: 20px;
 }
 .login-btn button {
@@ -234,9 +234,10 @@ nav {
   border-color: #ececec;
   border: 1px solid white;
   width: 60px;
-  height: 35px;
+  height: 32px;
   margin-right: 20px;
   border-radius: 5px;
+  font-size: 1.05rem;
 }
 .login-btn button:hover {
   background-color: rgb(255, 255, 255);
@@ -249,9 +250,10 @@ nav {
   border-color: #ececec;
   border: 1px solid white;
   width: 65px;
-  height: 35px;
+  height: 32px;
   margin-right: 20px;
   border-radius: 5px;
+  font-size: 1.05rem;
 }
 
 .signup-btn button:hover {
