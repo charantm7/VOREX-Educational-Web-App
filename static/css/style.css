@@ -17,6 +17,9 @@ body {
 :root {
   --bodydark: #151b23;
   --navdark: #0d1117;
+  --white: #fff;
+  --black: black;
+  --bodylight: #ececec;
 }
 
 .silkscreen-regular {
@@ -49,13 +52,13 @@ nav {
   padding: 15px 20px;
   align-items: center;
   justify-content: space-between;
-  color: rgb(255, 255, 255);
-  border-bottom: 1px #fff;
+  color: var(--bodylight);
+  border-bottom: 1px var(--white);
 }
 
 .nav-main-links li a {
   list-style: none;
-  color: #ececec;
+  color: var(--bodylight);
   margin-left: -10px;
   margin-top: 10px;
   text-decoration: none;
@@ -88,13 +91,13 @@ nav {
 
 .logo i {
   font-size: 1.3rem;
-  color: #ececec;
+  color: var(--bodylight);
   cursor: pointer;
 }
 
 .logo_name {
   font-size: 22px;
-  color: #ececec;
+  color: var(--bodylight);
   font-weight: 400;
   margin-left: 25px;
   gap: 2px;
@@ -120,7 +123,7 @@ nav {
 .nav_list a {
   display: flex;
   align-items: center;
-  color: #d7d7d7;
+  color: var(--bodylight);
   font-size: 20px;
   text-decoration: none;
   padding: 10px 10px;
@@ -129,8 +132,8 @@ nav {
 }
 
 .nav_list a:hover {
-  background: #ffffff;
-  color: #000000;
+  background: var(--white);
+  color: var(--black);
 }
 
 .nav_list i {
@@ -181,7 +184,7 @@ nav {
   display: flex;
   position: absolute;
   align-items: center;
-  border: 1px solid #ececec;
+  border: 1px solid var(--bodylight);
   border-radius: 5px;
   width: 18%;
   height: 32px;
@@ -191,7 +194,7 @@ nav {
 
 .search-input-container i {
   margin-right: 15px;
-  color: #ececec;
+  color: var(--bodylight);
   font-size: 0.9rem;
   margin-left: 15px;
   cursor: pointer;
@@ -204,13 +207,13 @@ nav {
   height: auto;
   margin-left: 2px;
   margin-right: 5px;
-  color: white;
+  color: var(--white);
   font-size: 1.05rem;
   background-color: var(--navdark);
 }
 
 .search-input-container input::placeholder {
-  color: #a7a3a3;
+  color: var(--bodylight);
 }
 .account-logo a img {
   width: 32px;
@@ -229,10 +232,10 @@ nav {
   margin-right: 20px;
 }
 .login-btn button {
-  background-color: #1e1e1e;
-  color: #ececec;
-  border-color: #ececec;
-  border: 1px solid white;
+  background-color: var(--navdark);
+  color: var(--bodylight);
+  border-color: var(--bodylight);
+  border: 1px solid var(--white);
   width: 60px;
   height: 32px;
   margin-right: 20px;
@@ -240,15 +243,15 @@ nav {
   font-size: 1.05rem;
 }
 .login-btn button:hover {
-  background-color: rgb(255, 255, 255);
-  color: black;
+  background-color: var(--white);
+  color: var(--black);
   transition: 0.4s ease;
 }
 .signup-btn button {
-  background-color: #1e1e1e;
-  color: #ececec;
-  border-color: #ececec;
-  border: 1px solid white;
+  background-color: var(--navdark);
+  color: var(--bodylight);
+  border-color: var(--bodylight);
+  border: 1px solid var(--white);
   width: 65px;
   height: 32px;
   margin-right: 20px;
@@ -257,13 +260,13 @@ nav {
 }
 
 .signup-btn button:hover {
-  background-color: rgb(255, 255, 255);
-  color: black;
+  background-color: var(--white);
+  color: var(--black);
   transition: 0.4s ease;
 }
 hr {
   border: none;
-  border-top: 2px solid white;
+  border-top: 2px solid var(--white);
   margin: 0px auto;
 }
 

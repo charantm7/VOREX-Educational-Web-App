@@ -1,7 +1,68 @@
+:root {
+  --roomborder: #ececec;
+  --roomtext: white;
+  --roomdark: #0d1117;
+}
+
 .rooms {
   display: flex;
   height: 100%;
   background-color: #161b22;
+}
+
+.pre-dif-rooms {
+  margin: 10px 10px 10px 10px;
+}
+.room1 {
+  display: flex;
+  border: 1px solid var(--roomborder);
+  height: 150px;
+  width: 350px;
+  text-align: center;
+  margin: 50px 0 0 50px;
+  border-radius: 8px;
+  background-color: var(--roomdark);
+  flex-direction: row;
+}
+.room1 a {
+  text-decoration: none;
+  color: var(--white);
+  margin-top: 40px;
+  text-align: center;
+  margin-left: 140px;
+}
+.room1 p {
+  margin-top: 80px;
+  font-size: 1rem;
+  margin-left: 65px;
+  position: absolute;
+}
+.room2 {
+  display: flex;
+  border: 1px solid var(--roomborder);
+  height: 150px;
+  width: 350px;
+  text-align: center;
+  margin-left: 33%;
+  contain-intrinsic-block-size: AUTO 100px;
+  background-color: var(--roomdark);
+  flex-direction: row;
+  position: absolute;
+  top: 125px;
+  border-radius: 8px;
+}
+.room2 a {
+  text-decoration: none;
+  color: var(--white);
+  margin-top: 40px;
+  text-align: center;
+  margin-left: 140px;
+}
+.room2 p {
+  margin-top: 80px;
+  font-size: 1rem;
+  margin-left: 65px;
+  position: absolute;
 }
 
 .your-rooms-container {
