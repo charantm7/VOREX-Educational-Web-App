@@ -1,0 +1,121 @@
+.quicksand {
+  font-family: "Quicksand", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+:root {
+  --roomborder: #ececec;
+  --roomtext: #d1d1d1;
+  --roomdark: #0d1117;
+  --roomlight: #151b23;
+  --borderbottom: #4e4e4eb9;
+  --borderbottom-1: #43434383;
+  --white: white;
+  --lwhite: #ddddddec;
+  --llwhite: #d3d3d3e8;
+  --room-bottom: #2a2e38;
+  --white: #fff;
+  --black: #000;
+  --bodydark: #151b23;
+  --navdark: #0d1117;
+  --lightBulue: rgb(34, 237, 255);
+  --links: rgb(34, 237, 255);
+}
+
+footer {
+  display: none;
+}
+
+.main-dash {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 2rem;
+  background: var(--bodydark);
+}
+.main-dash .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem 1rem 0.5rem;
+  color: var(--lwhite);
+}
+.main-dash .top #back-icon {
+  text-decoration: none;
+  color: var(--lwhite);
+  font-size: 22px;
+}
+.main-dash .top #back-icon:hover {
+  color: white;
+}
+.main-dash .top p {
+  font-size: 1.7vw;
+}
+.main-dash .top-1 {
+  display: flex;
+  gap: 20px;
+}
+.main-dash .top-1 a {
+  text-decoration: none;
+  color: var(--llwhite);
+  transition: 0.2s ease-in-out;
+}
+.main-dash .top-1 a:hover {
+  text-decoration: underline;
+  color: var(--white);
+}
+.main-dash table {
+  width: 100%;
+  background: var(--navdark);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.main-dash tr {
+  height: 90px;
+}
+.main-dash th,
+.main-dash td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid var(--borderbottom-1);
+  color: var(--lwhite);
+}
+.main-dash th a,
+.main-dash td a {
+  text-decoration: none;
+  color: var(--lwhite);
+  transition: 0.1s ease-in-out;
+}
+.main-dash th a:hover,
+.main-dash td a:hover {
+  text-decoration: underline;
+  color: white;
+}
+.main-dash th {
+  background: rgba(33, 41, 56, 0.848);
+  color: var(--lwhite);
+  cursor: pointer;
+}
+.main-dash .description {
+  width: 40%;
+}
+.main-dash tr:hover {
+  background: rgba(187, 187, 187, 0.0509803922);
+}
+.main-dash .pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.main-dash .pagination button {
+  padding: 8px 12px;
+  margin: 2px;
+  border: none;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+.main-dash .pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}/*# sourceMappingURL=dashboard.css.map */

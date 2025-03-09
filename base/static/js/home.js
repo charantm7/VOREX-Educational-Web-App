@@ -10,3 +10,7 @@ function openYourRoom() {
 function openJoinedRoom() {
   window.location.href = "joined-room/";
 }
+
+function OpenDashboard() {
+  window.location.href = "dashboard/";
+}

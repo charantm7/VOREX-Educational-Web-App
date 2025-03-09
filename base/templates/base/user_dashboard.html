@@ -1,0 +1,49 @@
+{% extends 'base.html' %}{% load static %} {% block title %}
+<title>User Dashboard</title>
+{% endblock %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+{% endblock %} {% block nav1 %}
+<a href="{% url 'User-dashboard' %}">/ user dashboard</a>
+{% endblock %} {% block content %}
+<div class="main-dash quicksand">
+  <div class="top">
+    <a href="{% url 'Dashboard' %}" id="back-icon"><i class="fa-solid fa-arrow-left" title="Back"></i></a>
+    <p class="quicksand">VOREX USERS</p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">User Name</th>
+        <th>Email</th>
+        <th onclick="sortTable(1)">First Name</th>
+        <th onclick="sortTable(2)">Last Name</th>
+        <th onclick="sortTable(3)">Joined At</th>
+        <th>Last Login</th>
+        <th>Status</th>
+        <th>User Type</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      {% for user in users %}
+      <tr>
+        <td><a href="{% url 'Profile' user.username %}">{{user.username}}</a></td>
+        <td>{{user.email}}</td>
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.date_joined}}</td>
+        <td>{{user.last_login}}</td>
+        {% if user.is_active %}
+        <td>Active</td>
+        {% else %}
+        <td>Inactive</td>
+        {% endif %} {% if user.is_superuser %}
+        <td>Admin</td>
+        {% else %}
+        <td>User</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
