@@ -534,6 +534,27 @@ def joined_room(request):
     return render(request, 'base/joined_room.html', context)
 
 
+#dashboard
+@login_required(login_url='User_login')
+def dashboard(request):
+    room = Room.objects.all()
+    context = {
+        'rooms':room
+    }
+
+    return render(request, 'base/dashboard.html',context)
+
+def user_dashboard(request):
+    user = User.objects.all()
+    context = {
+        'users': user,
+    }
+    return render(request, 'base/user_dashboard.html', context)
+
+def study_material_dashboard(request):
+    return render(request, 'base/study_material_dashboard.html')
+
+
 # Oauth 
 def google_login_redirect(request):
     return redirect("/accounts/google/login/")

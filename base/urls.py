@@ -13,7 +13,10 @@ urlpatterns = [
     # your rooms and joined rooms
      path("your-rooms/<str:user_name>/",views.your_room, name='Your-Room'),
     path('joined-room/',views.joined_room, name='Joined-Room'),
-    path('<str:tag_name>/',views.tag, name='Tag'),
+    path('dashboard/',views.dashboard, name='Dashboard'),
+    path('user-dashboard/',views.user_dashboard, name='User-dashboard'),
+    path('study-materials-dashboard/',views.study_material_dashboard, name='Study-dashboard'),
+    
 
     # authentication
     path('authentication/',views.auth_page, name='auth_page'),
@@ -25,11 +28,13 @@ urlpatterns = [
     path('profile/<str:user_tag>/',views.profile, name='Profile'),
     path('update_user/<str:user_tag>/',views.user_update, name='Update-user'),
     path('update_profile/<str:user_tag>/',views.profile_update, name='Update-profile'),
+
     
     # creation, deletion and edition
     path('create_room/',views.create_room, name='Create-room'),
     path('edit_room/<str:room_name>/',views.edit_room, name='Edit-room'),
     path('delete_room/<str:room_name>/',views.delete_room, name='Delete-room'),
+    path('<str:tag_name>/',views.tag, name='Tag'),
     
 
     # join and exit 

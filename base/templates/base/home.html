@@ -24,6 +24,9 @@
       Your Rooms
     </button>
     <button title="Joied Rooms" onclick="openJoinedRoom()">Joined Rooms</button>
+    {% if request.user.is_superuser %}
+    <button onclick="OpenDashboard()" title="Dashboard">Dashboard</button>
+    {% endif %}
   </div>
   {% endif %}
   <div class="content">
