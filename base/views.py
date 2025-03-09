@@ -545,9 +545,11 @@ def dashboard(request):
     return render(request, 'base/dashboard.html',context)
 
 def user_dashboard(request):
-    user = User.objects.all()
+    user = UserProfile.objects.all()
+       
     context = {
         'users': user,
+        
     }
     return render(request, 'base/user_dashboard.html', context)
 
