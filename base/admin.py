@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Room, RoomMembership, ChatBox, Tag, StudyMaterials,UserProfile,Followrequest, Folder, ChatBoxMembership, RoomChatIndividual
+from .models import Room, RoomMembership, ChatBox, Tag, StudyMaterials,UserProfile,Followrequest, Folder, ChatBoxMembership, RoomChatIndividual, Activity, InfoContent, InfoContentUrl
 
 admin.site.register(RoomMembership)
 admin.site.register(StudyMaterials)
@@ -13,3 +13,6 @@ admin.site.register(Followrequest)
 admin.site.register(Folder)
 admin.site.register(ChatBoxMembership)
 admin.site.register(RoomChatIndividual)
+admin.site.register(Activity)
+admin.site.register(InfoContent)
+admin.site.register(InfoContentUrl)

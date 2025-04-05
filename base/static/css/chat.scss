@@ -28,7 +28,7 @@
 .chat-container {
   display: flex;
   width: 100%;
-  height: 93vh;
+  height: 92vh;
   background: var(--navdark);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   .create-chat-group {
@@ -187,9 +187,6 @@
 
   .sidebar {
     background-color: var(--member-side);
-    overflow-y: auto;
-    overflow-x: hidden;
-
     padding: 0 10px 0 0;
   }
 
@@ -201,7 +198,7 @@
     color: white;
   }
   .chats {
-    padding: 25px 50px 20px 30px;
+    padding: 25px 30px 20px 30px;
 
     .chat-top {
       display: flex;
@@ -215,6 +212,10 @@
       P {
         font-size: larger;
       }
+    }
+    .chat-members {
+      overflow: hidden;
+      max-height: 82vh;
     }
   }
 
@@ -236,15 +237,17 @@
   /* change border bottom color of the item in the list  */
   .chats .list-group-item {
     // border-bottom: 1px solid #435f7a;
-    width: 105%;
+    width: 100%;
   }
 
-  .chats .contacts {
+  .chats .chat-members .contacts {
     display: flex;
     flex-direction: column;
     gap: 10px;
-
     padding: 30px 0;
+    // border: 1px solid #e9ecef;
+    width: auto;
+    overflow-y: auto;
 
     .members-container {
       display: flex;

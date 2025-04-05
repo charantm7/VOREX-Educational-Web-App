@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Room, UserProfile, ChatBox, Folder, StudyMaterials, ChatBoxMembership
+from .models import Room, UserProfile, ChatBox, Folder, StudyMaterials, ChatBoxMembership, InfoContent, InfoContentUrl
 from django.contrib.auth.models import User
 from django import forms
 
@@ -54,3 +54,32 @@ class StudyMaterialForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['file'].initial = None
+
+
+class InfoContentForm(forms.ModelForm):
+    class Meta:
+        model = InfoContent
+        fields = ['title', 'content']
+        widgets = {
+            'content': forms.Textarea(attrs={'placeholder': 'Enter content'}),
+        }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['content'].initial = None
+        
+        
+    
+
+class InfoContentUrlForm(forms.ModelForm):
+    class Meta:
+        model = InfoContentUrl
+        fields = ['title', 'url']
+        
+        widgets = {
+            'url': forms.URLInput(attrs={'placeholder': 'Enter URL'}),  # Fix this line
+            'title': forms.TextInput(attrs={'placeholder': 'Enter Title'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['url'].initial = None
