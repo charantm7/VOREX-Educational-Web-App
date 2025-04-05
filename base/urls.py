@@ -76,10 +76,11 @@ urlpatterns = [
 
 
     # Oauth authentication url
-     path("accounts/login/", views.google_login_redirect),  # Redirect login page to Google
+    path("accounts/login/", views.google_login_redirect),  # Redirect login page to Google
     path("accounts/signup/",
          views.google_login_redirect),
 
+    #Info content form url
    
     
 

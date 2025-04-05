@@ -26,6 +26,112 @@ p {
   overflow: hidden;
   background-color: var(--roombg);
 }
+.rooms #info-content-form {
+  position: absolute;
+  z-index: 99999;
+  width: 20%;
+  top: 25%;
+  left: 30%;
+  height: auto;
+  border: 1px solid white;
+  width: 35%;
+  background-color: rgba(82, 82, 82, 0.68);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.rooms #info-content-form .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rooms #info-content-form .info-title {
+  display: flex;
+  flex-direction: column;
+}
+.rooms #info-content-form .info-title input {
+  height: 35px;
+  outline: invert;
+  border-radius: 3px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.192);
+  padding: 0 10px;
+  color: white;
+}
+.rooms #info-content-form .description {
+  display: flex;
+  flex-direction: column;
+}
+.rooms #info-content-form .description textarea {
+  height: auto;
+  outline: invert;
+  border-radius: 3px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.192);
+  padding: 1rem;
+  color: white;
+}
+.rooms #info-content-form button {
+  padding: 8px;
+  border-radius: 10px;
+}
+.rooms #info-url-form {
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid white;
+  padding: 1rem;
+  width: 30%;
+  background-color: rgba(133, 133, 133, 0.473);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+}
+.rooms #info-url-form .top {
+  display: flex;
+  justify-content: space-between;
+}
+.rooms #info-url-form .title {
+  display: flex;
+  flex-direction: column;
+}
+.rooms #info-url-form .title input {
+  height: 40px;
+  padding: 0 10px;
+  outline: invert;
+  background-color: rgba(255, 255, 255, 0.174);
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+.rooms #info-url-form .title ::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.557);
+}
+.rooms #info-url-form .url {
+  display: flex;
+  flex-direction: column;
+}
+.rooms #info-url-form .url input {
+  height: 40px;
+  padding: 0 10px;
+  outline: invert;
+  background-color: rgba(255, 255, 255, 0.174);
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+.rooms #info-url-form .url ::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.557);
+}
+.rooms #info-url-form button {
+  padding: 8px;
+  border-radius: 10px;
+}
 .rooms .tab button {
   background-color: inherit;
   float: left;
@@ -55,6 +161,9 @@ p {
   padding: 20px 30px;
   border-top: none;
   background-color: var(--hover);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .rooms #Info .tabcontent-top {
   display: flex;
@@ -124,6 +233,84 @@ p {
 }
 .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 a:hover {
   text-decoration: underline;
+}
+.rooms #Info .bottom {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  height: 100%;
+  padding: 1rem 2rem;
+}
+.rooms #Info .bottom .urls {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.rooms #Info .bottom .urls a {
+  text-decoration: none;
+  color: var(--lwhite);
+  font-size: 1vw;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: var(--hover);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border);
+}
+.rooms #Info .bottom .info-content {
+  display: flex;
+  flex-direction: row;
+}
+.rooms #Info .bottom .info-content .info-content-box {
+  padding: 1rem 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 70%;
+}
+.rooms #Info .bottom .info-content .info-content-box .content-card {
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: rgba(40, 69, 99, 0.142);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.rooms #Info .bottom .info-content .info-content-box .content-card .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.rooms #Info .bottom .info-content .info-content-box .content-card p {
+  font-size: 14px;
+  color: var(--lwhite);
+}
+.rooms #Info .bottom .info-content .info-url-box {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  gap: 10px;
+  padding: 1rem;
+  width: 30%;
+}
+.rooms #Info .bottom .info-content .info-url-box .url-card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(57, 96, 134, 0.154);
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+.rooms #Info .bottom .info-content .info-url-box .url-card .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.rooms #Info .bottom .info-content .info-url-box .url-card a {
+  font-size: 14px;
 }
 
 @media (max-width: 700px) {

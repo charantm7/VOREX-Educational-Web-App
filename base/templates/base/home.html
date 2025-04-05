@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block title %}
+{% extends 'base.html' %} {% load static %} {% block title %} {% load humanize %}
 <title>Home</title>
 {% endblock %} {% block link %}
 <link rel="stylesheet" href="{% static 'css/body.css' %}" />
@@ -103,8 +103,40 @@
       {% endfor %}
     </div>
   </div>
-  <div class="activity"></div>
-</div>
-<script src="{% static 'js/home.js' %}"></script>
+  <div class="activity">
+    <div class="top">
+      <p class="open-sans">Recent Activity</p>
+      <i class="fa-solid fa-chart-line"></i>
+    </div>
+    <div class="activity-body">
+      {% for activity in rooms %}
+      <div class="activity-card">
+        <div class="card-top">
+          <div class="card-top-left">
+            {% if activity.created_by.profile and activity.created_by.profile.profile_pic %}
+            <img src="{{ activity.created_by.profile.profile_pic.url }}" alt="Profile Picture" />
+            {% else %}
+            <img src="{% static 'assets/default.png' %}" alt="Default Picture" />
+            {% endif %}
+            <a href="{% url 'Profile' activity.created_by.username %}">@{{activity.created_by.username}}</a>
+          </div>
+          <p>{{ activity.created_at|naturaltime }}</p>
+        </div>
+        <div class="card-mid quicksand">
+          <p>Created a room "{{activity.name}}"</p>
+        </div>
+        <div class="card-bottom quicksand">
+          {% if activity and activity.is_private %} Room:
+          <p>Private</p>
+          {% elif activity and not activity.is_private %} Room:
+          <a href="{% url 'Rooms' activity.name %}">{{ activity.name }}</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <script src="{% static 'js/home.js' %}"></script>
 
-{% endblock %}
+    {% endblock %}
+  </div>
+</div>

@@ -57,7 +57,10 @@
               ><i class="fa-solid fa-download"></i
             ></a>
             {% if request.user == material.upload_by %}
-            <a href="{% url 'Delete-file' folder.name  material.pk %}" title="Delete"
+            <a
+              href="{% url 'Delete-file' folder.name  material.pk %}"
+              title="Delete"
+              onclick="DeleteFile(event)"
               ><i class="fa-solid fa-trash" id="tooltip"></i
             ></a>
             {% endif %}
@@ -76,6 +79,14 @@
   }
   function closeFile() {
     document.querySelector(".upload-file").style.display = "none";
+  }
+  function DeleteFile(event) {
+    event.preventDefault();
+    const url = event.currentTarget.getAttribute("href");
+    const confirmation = confirm("Are you sure you want to delete this file?");
+    if (confirmation) {
+      window.location.href = url;
+    }
   }
 </script>
 {% endblock %}

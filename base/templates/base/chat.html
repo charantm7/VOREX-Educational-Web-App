@@ -20,7 +20,7 @@
       <button type="submit" name="group_chat_submit">create</button>
     </form>
   </div>
-  <div class="container-fluid h-100">
+  <div class="container-fluid h-100 container-chat">
     <div class="row h-100">
       <!-- User List Sidebar (4 Columns) -->
       <div class="col-3 sidebar chats">
@@ -30,51 +30,52 @@
           ></a>
           <p>Chats</p>
         </div>
+        <div class="chat-members">
+          <div class="contacts">
+            {% for item in user_last_messages %}
+            <a
+              href="{% url 'chat' room_name=rooms.name chat_name=item.user.username %}"
+              class="list-group-item list-group-item-action {% if item.user.username == room_name %} active {% endif %}"
+              data-id="{{ room_name }}"
+            >
+              <div class="members-container">
+                <!-- Profile Icon -->
+                <img
+                  src="https://ui-avatars.com/api/?name={{ item.user.username|urlencode }}&size=64&background=random"
+                  alt="{{ item.user.username }}'s Profile Image"
+                  class="profile-icon rounded-circle mr-3"
+                  style="width: 2.5rem; height: 2.5rem; object-fit: cover"
+                />
 
-        <div class="contacts">
-          {% for item in user_last_messages %}
-          <a
-            href="{% url 'chat' room_name=rooms.name chat_name=item.user.username %}"
-            class="list-group-item list-group-item-action {% if item.user.username == room_name %} active {% endif %}"
-            data-id="{{ room_name }}"
-          >
-            <div class="members-container">
-              <!-- Profile Icon -->
-              <img
-                src="https://ui-avatars.com/api/?name={{ item.user.username|urlencode }}&size=64&background=random"
-                alt="{{ item.user.username }}'s Profile Image"
-                class="profile-icon rounded-circle mr-3"
-                style="width: 2.5rem; height: 2.5rem; object-fit: cover"
-              />
+                <!-- Message Content and Username -->
+                <div class="w-100">
+                  <div class="d-flex justify-content-between">
+                    <strong class="text-truncate">{{ item.user.username }}</strong>
+                    {% if item.last_message %}
+                    <small class="text-nowrap timestamp"> {{ item.last_message.timestamp|date:"H:i" }}</small>
+                    {% endif %}
+                  </div>
 
-              <!-- Message Content and Username -->
-              <div class="w-100">
-                <div class="d-flex justify-content-between">
-                  <strong class="text-truncate">{{ item.user.username }}</strong>
-                  {% if item.last_message %}
-                  <small class="text-nowrap timestamp"> {{ item.last_message.timestamp|date:"H:i" }}</small>
-                  {% endif %}
-                </div>
-
-                <!-- Last message preview -->
-                <div class="d-flex flex-direction-row">
-                  {% if item.last_message %}
-                  <small
-                    class="d-flex text-truncate last-msg flex-directiion-row message-by"
-                    style="max-width: 90%; font-size: 14px"
-                    id="last-message"
-                  >
-                    {% if item.last_message.sender == request.user %} You: {% endif %}
-                    <div>{{ item.last_message.content|truncatewords:5 }}</div>
-                  </small>
-                  {% else %}
-                  <small class="">No messages yet</small>
-                  {% endif %}
+                  <!-- Last message preview -->
+                  <div class="d-flex flex-direction-row">
+                    {% if item.last_message %}
+                    <small
+                      class="d-flex text-truncate last-msg flex-directiion-row message-by"
+                      style="max-width: 90%; font-size: 14px"
+                      id="last-message"
+                    >
+                      {% if item.last_message.sender == request.user %} You: {% endif %}
+                      <div>{{ item.last_message.content|truncatewords:5 }}</div>
+                    </small>
+                    {% else %}
+                    <small class="">No messages yet</small>
+                    {% endif %}
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-          {% endfor %}
+            </a>
+            {% endfor %}
+          </div>
         </div>
       </div>
 

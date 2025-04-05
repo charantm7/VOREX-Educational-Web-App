@@ -20,6 +20,7 @@ class Room(models.Model):
         return self.name
     def member_count(self):
         return self.members_count.count()
+    
 
 
 class RoomMembership(models.Model):
@@ -108,3 +109,33 @@ class Followrequest(models.Model):
         return f"{self.from_user.username} -> {self.to_user.username}"
     
 
+class Activity(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="activities")
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="activities", null=True, blank=True)
+    activity = models.CharField(max_length=50)
+    activity_description = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.activity} at {self.timestamp}"
+    
+class InfoContent(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="info_content", null=True, blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="info_content_creator", null=True, blank=True)
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+    
+class InfoContentUrl(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="info_content_url", null=True, blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="info_content_url_creator", null=True, blank=True)
+    title = models.CharField(max_length=255, null=True, blank=True)
+    url = models.URLField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.url

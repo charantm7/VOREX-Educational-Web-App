@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Tag, Room, RoomMembership, ChatBox, StudyMaterials, RoomChatIndividual,UserProfile, Followrequest, Folder, ChatBoxMembership
+from .models import Tag, Room, RoomMembership, ChatBox, StudyMaterials, RoomChatIndividual,UserProfile, Followrequest, Folder, ChatBoxMembership, Activity, InfoContent, InfoContentUrl
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import RoomForm, ProfileForm, UserForm, ChatBoxForm, FolderForm, StudyMaterialForm, ChatBoxMemberForm
+from .forms import RoomForm, ProfileForm, UserForm, ChatBoxForm, FolderForm, StudyMaterialForm, ChatBoxMemberForm, InfoContentForm, InfoContentUrlForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.db.models import Q
@@ -12,19 +12,20 @@ from datetime import datetime
 
 
 def home(request):
+    activities = Activity.objects.order_by('-timestamp')[:10]
 
     if request.user.is_authenticated:
         if request.user.is_superuser:
-            room = Room.objects.all()
+            room = Room.objects.all().order_by('-created_at')
         else:
             room = Room.objects.filter(
                 Q(is_private=False) | Q(members_count=request.user)
-            ).distinct()
+            ).distinct().order_by('-created_at')
     else:
         room = Room.objects.filter(
-            Q(is_private=False))
+            Q(is_private=False)).order_by('-created_at')
     tag = Tag.objects.all()
-    context = {'rooms': room, 'tags': tag}
+    context = {'rooms': room, 'tags': tag, 'activities': activities}
     return render(request, 'base/home.html', context)
 
 
@@ -37,13 +38,22 @@ def rooms(request, room_name):
     profile = get_object_or_404(UserProfile, user=room.created_by)
     group_chat = ChatBox.objects.filter(room=room)
     group_chat_member = ChatBoxMembership.objects.filter(chat_box__in=group_chat)
+    info_content = InfoContent.objects.filter(room=room).order_by('-created_at')[:10]
+    info_content_url = InfoContentUrl.objects.filter(room=room).order_by('-created_at')[:10]
 
     # Initialize forms  
     folder_form = FolderForm()
     group_chat_form = ChatBoxForm()
     group_chat_member_form = ChatBoxMemberForm()
+    info_content_form = InfoContentForm()
+    info_content_url_form = InfoContentUrlForm()
+
+    #get form
+    show_info_form = request.GET.get('form') == 'info'
+    show_info_url_form = request.GET.get('form') == 'info-url'
 
     if request.method == 'POST':
+        
         if 'folder_submit' in request.POST:
             folder_form = FolderForm(request.POST)
             if folder_form.is_valid():
@@ -74,6 +84,26 @@ def rooms(request, room_name):
                 return redirect('Rooms', room_name=room_name)
             messages.error(request, "Invalid Member Form")
 
+        elif 'info_content_submit' in request.POST:
+            info_content_form = InfoContentForm(request.POST)
+            if info_content_form.is_valid():
+                info_content = info_content_form.save(commit=False)
+                info_content.created_by = request.user
+                info_content.room = room
+                info_content.save()
+                return redirect(f"{reverse('Rooms', args=[room_name])}#info-content-form")
+            messages.error(request, 'Invalid Info Content Form')
+
+        elif 'info_content_url_submit' in request.POST:
+            info_content_url_form = InfoContentUrlForm(request.POST)
+            if info_content_url_form.is_valid():
+                info_content_url = info_content_url_form.save(commit=False)
+                info_content_url.created_by = request.user
+                info_content_url.room = room
+                info_content_url.save()
+                return redirect(f"{reverse('Rooms', args=[room_name])}#info-url-form")
+            messages.error(request, 'Invalid Info Content URL Form')
+
     if request.user not in members_joined:
         messages.error(request, "You are not a member of this room! Join to continue.")
         return redirect("Home")
@@ -90,6 +120,12 @@ def rooms(request, room_name):
         'group_chat_member': group_chat_member,
         'group_chat_form': group_chat_form,
         'group_chat_member_form': group_chat_member_form,
+        'show_info_form': show_info_form,
+        'info_content_form': info_content_form,
+        'info_content_url_form': info_content_url_form,
+        'show_info_url_form': show_info_url_form,
+        'info_content': info_content,
+        'info_content_url': info_content_url,
         
     }
 
@@ -261,10 +297,16 @@ def create_room(request):
     if request.method == 'POST':
         form = RoomForm(request.POST)
         if form.is_valid():
-            form = form.save(commit=False)
-            form.created_by = request.user
-            form.save()
-            form.members_count.add(form.created_by)
+            room = form.save(commit=False)
+            room.created_by = request.user
+            room.save()
+            room.members_count.add(room.created_by)
+
+            Activity.objects.create(
+                user=request.user,
+                activity=f"created a room '{room.name}'",
+                room=room
+            )
             return redirect('Home')
 
         else:
@@ -560,3 +602,5 @@ def study_material_dashboard(request):
 # Oauth 
 def google_login_redirect(request):
     return redirect("/accounts/google/login/")
+
+

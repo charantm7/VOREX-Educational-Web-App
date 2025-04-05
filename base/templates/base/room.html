@@ -12,6 +12,43 @@
 <link rel="stylesheet" href="{% static 'css/room.css' %}" />
 {% endblock %} {% block content %}
 <div class="rooms">
+  {% if show_info_form %}
+  <form method="POST" id="info-content-form">
+    {% csrf_token %}
+    <div class="top">
+      <p>Add Info Content</p>
+      <button type="button" onclick="closeInfoUrlForm()">Close</button>
+    </div>
+    <div class="info-title">
+      <label for="title">Title</label>
+      {{ info_content_form.title }}
+    </div>
+    <div class="description">
+      <label for="description">Description</label>
+      {{ info_content_form.content }}
+    </div>
+    <button type="submit" name="info_content_submit">Add Info Content</button>
+  </form>
+
+  {% endif %} {% if show_info_url_form %}
+  <form method="POST" id="info-url-form" onlick="openInfoUrlForm()">
+    {% csrf_token %}
+    <div class="top">
+      <p>Add URL</p>
+      <button type="button" onclick="closeInfoUrlForm()">Close</button>
+    </div>
+    <div class="title">
+      <label for="title">Title</label>
+      {{ info_content_url_form.title }}
+    </div>
+    <div class="url">
+      <label for="url">URL</label>
+      {{ info_content_url_form.url }}
+    </div>
+    <button type="submit" name="info_content_url_submit">Add Info Content URL</button>
+  </form>
+  {% endif %}
+
   <div class="tab">
     <button class="tablinks" id="tab-Info" onclick="openTab(event, 'Info')" id="defaultOpen()">
       <i class="fas fa-tachometer-alt"></i><span class="btn-txt">Dashboard</span>
@@ -43,6 +80,43 @@
         <p>Stats: {{members}} Joined</p>
       </div>
     </div>
+    <div class="bottom">
+      <div class="urls">
+        <a href="?form=info#info-content-form">📝 Add Info</a>
+        <a href="?form=info-url#info-url-form">🔗 Add URL</a>
+      </div>
+      <div class="info-content">
+        <div class="info-content-box">
+          {% for info in info_content %}
+          <div class="content-card">
+            <div class="top">
+              <h5>{{ info.title }}</h5>
+              {% if request.user == info.created_by %}
+              <i class="fa-solid fa-trash"></i>
+              {% endif %}
+            </div>
+
+            <p class="roboto-mono">{{ info.content|linebreaksbr|safe }}</p>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="info-url-box">
+          {% for url in info_content_url %}
+          <div class="url-card">
+            <div class="top">
+              <p style="font-size: 15px">{{ url.title }}</p>
+              {% if request.user == url.created_by %}
+              <i class="fa-solid fa-trash"></i>
+              {% endif %}
+            </div>
+
+            <a href="{{ url.url }}" target="_blank">{{ url.url }}</a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
 
   {% block materials %} {% include 'base/study_materials.html' %} {% endblock %}
@@ -69,6 +143,10 @@
     }
     function Removegroup() {
       document.querySelector(".create-chat-group").style.display = "none";
+    }
+
+    function closeInfoUrlForm() {
+      window.location.href = "{% url 'Rooms' rooms.name %}";
     }
   </script>
   {% endblock %}
