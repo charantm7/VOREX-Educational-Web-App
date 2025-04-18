@@ -3,47 +3,85 @@ footer {
 }
 
 .update-profile-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100%;
   padding: 40px 0;
   font-family: "Poppins", sans-serif;
 }
+
 .update-profile-container form {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto 1fr;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -ms-grid-rows: auto auto 1fr;
+      grid-template-rows: auto auto 1fr;
   grid-gap: 10px;
-  grid-template-areas: "title" "top" "bottom";
+      grid-template-areas: "title" "top" "bottom";
   border-radius: 10px;
   width: 50%;
   background-color: var(--navdark);
   padding: 20px;
 }
+
 .update-profile-container form .title {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
   grid-area: title;
   text-align: center;
   border-bottom: 1px solid white;
-  justify-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
   width: 30%;
   padding-bottom: 5px;
 }
+
 .update-profile-container form .top {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
   grid-area: top;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-bottom: 1px solid white;
 }
+
 .update-profile-container form .top .current-picture {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   padding: 20px;
 }
+
 .update-profile-container form .top .current-picture img {
   width: 150px;
   height: 150px;
@@ -51,22 +89,39 @@ footer {
   -o-object-fit: cover;
      object-fit: cover;
 }
+
 .update-profile-container form .top .new-picture {
   padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 .update-profile-container form .bottom {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
   grid-area: bottom;
   padding: 10px;
 }
+
 .update-profile-container form .bottom .bio {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 .update-profile-container form .bottom .bio label {
   margin-bottom: 10px;
 }
+
 .update-profile-container form .bottom .bio textarea {
   height: 100px;
   background-color: var(--bodydark);
@@ -76,37 +131,64 @@ footer {
 }
 
 .update-user-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100%;
   font-family: "Poppins", sans-serif;
   font-size: 1vw;
   padding: 40px 0;
 }
+
 .update-user-container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 20px;
   border-radius: 10px;
   gap: 20px;
   background-color: var(--navdark);
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 30%;
 }
+
 .update-user-container form h2 {
   padding: 5px;
   border-bottom: 0.1px solid white;
 }
-.update-user-container form [class^=user-] {
+
+.update-user-container form [class^="user-"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 10px;
   width: 100%;
 }
-.update-user-container form [class^=user-] input {
+
+.update-user-container form [class^="user-"] input {
   background-color: var(--bodydark);
   border: none;
   border-radius: 5px;
@@ -115,8 +197,15 @@ footer {
 }
 
 .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
-}/*# sourceMappingURL=updateprofile.css.map */
+}
+/*# sourceMappingURL=updateprofile.css.map */

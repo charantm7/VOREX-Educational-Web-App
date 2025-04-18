@@ -8,17 +8,26 @@
   position: absolute;
   top: 70px;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   background-color: #f4f4f4;
   padding: 10px 25px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   max-width: 80%;
   font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
@@ -48,11 +57,21 @@
   cursor: pointer;
   margin-left: 15px;
   font-weight: bold;
+  -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
 }
 
 .message .close-btn:hover {
   color: #ff0000;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes fadeOut {
@@ -63,8 +82,10 @@
     opacity: 0;
   }
 }
+
 .message.fade-out {
-  animation: fadeOut 1s forwards;
+  -webkit-animation: fadeOut 1s forwards;
+          animation: fadeOut 1s forwards;
 }
 
 @media (max-width: 576px) {
@@ -72,4 +93,5 @@
     font-size: 14px;
     padding: 10px 10px;
   }
-}/*# sourceMappingURL=popmessage.css.map */
+}
+/*# sourceMappingURL=popmessage.css.map */

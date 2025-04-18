@@ -10,37 +10,59 @@
 .main {
   height: 100%;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .main-1 {
   border: 2px solid var(--top);
   width: 30%;
   border-radius: 4px;
-  box-shadow: 20px 20px 20px var(--black);
+  -webkit-box-shadow: 20px 20px 20px var(--black);
+          box-shadow: 20px 20px 20px var(--black);
 }
+
 .main-1 .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: var(--top);
   width: 100%;
   padding: 10px;
 }
+
 .main-1 .bottom {
   background-color: var(--bottom);
   padding: 20px;
   font-size: 20px;
 }
+
 .main-1 .bottom .name {
   text-decoration: none;
   color: var(--white);
 }
+
 .main-1 .bottom .name:hover {
   text-decoration: underline;
 }
+
 .main-1 .bottom .accept {
   padding: 3px 7px;
   font-size: 15px;
@@ -49,6 +71,7 @@
   color: var(--white);
   border-radius: 8px;
 }
+
 .main-1 .bottom .decline {
   padding: 3px 7px;
   font-size: 15px;
@@ -56,4 +79,5 @@
   text-decoration: none;
   color: var(--white);
   border-radius: 8px;
-}/*# sourceMappingURL=profile_request.css.map */
+}
+/*# sourceMappingURL=profile_request.css.map */

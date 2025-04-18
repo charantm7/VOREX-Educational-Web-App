@@ -3,19 +3,34 @@ footer {
 }
 
 .main-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100%;
   font-size: 1vw;
   font-family: "Poppins", sans-serif;
   overflow: auto;
   padding: 40px 0;
 }
+
 .main-body form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 20px;
   border-radius: 10px;
   gap: 20px;
@@ -23,13 +38,16 @@ footer {
   width: 30%;
   height: 100%;
 }
+
 .main-body form h3 {
   margin-bottom: 20px;
   text-align: center;
 }
+
 .main-body form label {
   font-size: 1vw;
 }
+
 .main-body form input {
   width: 100%;
   background-color: var(--bodydark);
@@ -40,6 +58,7 @@ footer {
   outline: none;
   border: 1px solid rgba(130, 129, 129, 0.256);
 }
+
 .main-body form textarea {
   width: 100%;
   height: 100px;
@@ -51,27 +70,58 @@ footer {
   color: white;
   border: 1px solid rgba(130, 129, 129, 0.275);
 }
+
 .main-body form .room-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 10px;
 }
+
 .main-body form .room-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 10px;
 }
+
 .main-body form .room-tag {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 10px;
 }
+
 .main-body form .room-tag select {
   background-color: var(--bodydark);
   border: 1px solid rgba(130, 129, 129, 0.275);
@@ -82,30 +132,45 @@ footer {
   font-size: 1vw;
   outline: none;
 }
+
 .main-body form .room-tag select ::webkit-scrollbar {
   background-color: var(--bodydark);
-  border: 1px solid rgb(130, 129, 129);
+  border: 1px solid #828181;
   border-radius: 5px;
   width: 10px;
 }
+
 .main-body form .room-private {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   gap: 10px;
 }
+
 .main-body form .room-private input {
   width: 4%;
   margin: 0;
 }
+
 .main-body form button {
   height: 40px;
   font-size: 1vw;
   border-radius: 10px;
   border: none;
+  -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
 }
+
 .main-body form button:hover {
   background-color: rgba(255, 255, 255, 0.794);
   border: none;
@@ -131,4 +196,5 @@ footer {
   .main-body form button {
     font-size: 17px;
   }
-}/*# sourceMappingURL=createroom.css.map */
+}
+/*# sourceMappingURL=createroom.css.map */

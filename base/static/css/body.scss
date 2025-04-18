@@ -7,7 +7,7 @@
   --roomlight: #151b23;
   --borderbottom: #4e4e4eb9;
   --white: white;
-  --llwhite: #d3d3d3e8;
+  --llwhite: #ffffffb7;
   --room-bottom: #2a2e38;
   --white: #fff;
   --black: #000;
@@ -471,5 +471,8 @@ p {
         }
       }
     }
+  }
+  .activity{
+    display: none;
   }
 }

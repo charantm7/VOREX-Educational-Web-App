@@ -183,8 +183,10 @@ p {
         display: flex;
         flex-direction: row;
         align-items: center;
+        height: 100%;
         // border: 1px solid white;
         gap: 50px;
+        width: 70%;
         i {
           font-size: 15vw;
           color: var(--lwhite);
@@ -215,6 +217,9 @@ p {
         // border: 1px solid #fff;
         gap: 10px;
         margin-top: 0;
+        height: 100%;
+        width: 20%;
+        margin-top: 7%;
 
         p {
           color: var(--lwhite);
@@ -225,6 +230,7 @@ p {
           align-items: center;
           gap: 10px;
           font-size: 1vw;
+          margin-left: 15%;
 
           img {
             height: 35px;
@@ -241,14 +247,16 @@ p {
             text-decoration: underline;
           }
         }
+        .status{
+          margin-left: 15%;
+        }
       }
     }
     .bottom {
       display: flex;
       flex-direction: column;
-      border: 1px solid var(--border);
       height: 100%;
-      padding: 1rem 2rem;
+      padding: 1rem .5rem;
       .urls {
         display: flex;
         flex-direction: row;
@@ -270,6 +278,7 @@ p {
       .info-content {
         display: flex;
         flex-direction: row;
+        color: var(--lwhite);
 
         .info-content-box {
           padding: 1rem 0 1rem 0;
@@ -279,7 +288,7 @@ p {
           width: 70%;
           .content-card {
             padding: 1rem;
-            border-radius: 10px;
+            border-radius: 5px;
             background-color: rgba(40, 69, 99, 0.142);
             display: flex;
             flex-direction: column;
@@ -303,15 +312,15 @@ p {
           height: auto;
           // border-left: 1px solid white;
           gap: 10px;
-          padding: 1rem;
           width: 30%;
+          padding: 1rem 0 1rem 1rem;
 
           .url-card {
             display: flex;
             flex-direction: column;
             background-color: rgba(57, 96, 134, 0.154);
             padding: 10px 15px;
-            border-radius: 10px;
+            border-radius: 5px;
             .top {
               display: flex;
               flex-direction: row;
@@ -390,11 +399,11 @@ p {
 @media (max-width: 576px) {
   .rooms {
     #Info {
-      padding: 5px 10px;
+      padding: 1rem 1rem;
       // border: 1px solid white;
       .tabcontent-top {
         gap: 10px;
-        padding: 10px 0 10px 10px;
+        padding: 1rem 0;
         // border: 1px solid white;
         .tabcontent-top-left {
           // border: 1px solid white;
@@ -416,20 +425,53 @@ p {
         .tabcontent-top-right {
           font-size: 0.8em;
           width: 30%;
-          margin-top: 9%;
           gap: 5px;
           font-size: 0.6em;
           // border: 1px solid white;
           margin-right: 0;
           .tabcontent-top-right-1 {
-            margin-top: 5px;
+            margin-left: 8%;
             gap: 5px;
+           
             img {
               height: 25px;
               width: 25px;
             }
             a {
               font-size: 10px;
+            }
+
+          }
+          .status{
+            font-size: 12px;
+            margin-left: 8%;
+          }
+        }
+      }
+
+      .bottom{
+        .urls{
+          a{
+            font-size: 12px;
+          }
+        }
+        .info-content{
+          flex-direction: column;
+          .info-content-box{
+            width: 100%;
+            .content-card{
+              p{
+                font-size: 12px;
+              }
+            }
+          }
+          .info-url-box{
+            width: 100%;
+            padding: 0 0 0 0;
+            .url-card{
+              a{
+                font-size: 12px;
+              }
             }
           }
         }
@@ -598,7 +640,7 @@ p {
   justify-content: space-between;
   // border: 1px solid var(--border);
   width: 100%;
-  padding: 10px;
+  padding: 10px 0                                             ;
 
   &-left {
     // border: 1px solid var(--border);
@@ -608,7 +650,7 @@ p {
     align-items: center;
     gap: 20px;
     &-folder {
-      padding: 10px;
+      padding: .7rem .9rem;
       background-color: var(--roombg);
       border-radius: 5px;
       cursor: pointer;
@@ -622,7 +664,7 @@ p {
       gap: 10px;
       color: var(--lwhite);
       // border: 1px solid var(--border);
-      padding: 10px;
+      padding: .7rem .9rem;
       cursor: pointer;
       background-color: var(--roombg);
       border-radius: 5px;
@@ -632,6 +674,7 @@ p {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     border: 1px solid var(--border);
     background-color: var(--roombg);
     border-radius: 5px;
@@ -661,6 +704,7 @@ p {
   flex: 1;
   min-height: 100vh;
   padding: 1rem;
+  border-radius: 5px;
 
   .card {
     background-color: var(--roombg);
@@ -755,21 +799,28 @@ footer {
     .materials-top-left {
       gap: 10px;
       .materials-top-left-folder {
-        font-size: 12px;
-        padding: 10px;
+        font-size: 10px;
+        padding: 10px 15px;
       }
       .materials-top-left-code {
-        font-size: 12px;
-        padding: 10px;
+        font-size: 10px;
+        padding: 10px 15px;
       }
     }
     .materials-top-mid {
       width: auto;
       color: var(--lwhite);
       border: none;
+      width: 40%;
       input {
-        display: none;
+        height: 35px;
+        font-size: 12px;
+        width: 90%;
+        padding:  0 0 0 10px;
+        
+        
       }
+      
     }
   }
   .materials-bottom {

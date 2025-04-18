@@ -6,7 +6,7 @@
   --roomlight: #151b23;
   --borderbottom: #4e4e4eb9;
   --white: white;
-  --llwhite: #d3d3d3e8;
+  --llwhite: #ffffffb7;
   --room-bottom: #2a2e38;
   --white: #fff;
   --black: #000;
@@ -24,10 +24,13 @@ p {
 .main-body {
   font-family: sans-serif;
   min-height: 100vh;
+  display: -ms-grid;
   display: grid;
-  grid-template-rows: auto auto 1fr;
-  grid-template-columns: 1fr 20%;
-  grid-template-areas: "topic activity" "create-room-btn activity" "contents activity";
+  -ms-grid-rows: auto auto 1fr;
+      grid-template-rows: auto auto 1fr;
+  -ms-grid-columns: 1fr 20%;
+      grid-template-columns: 1fr 20%;
+      grid-template-areas: "topic activity" "create-room-btn activity" "contents activity";
 }
 
 .topic {
@@ -35,6 +38,7 @@ p {
   overflow-x: auto;
   white-space: nowrap;
 }
+
 .topic a {
   display: inline-block;
   color: var(--roomtext);
@@ -42,18 +46,28 @@ p {
   padding: 14px;
   text-decoration: none;
 }
+
 .topic a:hover {
   background-color: #1d2329;
 }
 
 .create-room-btn {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
   grid-area: create-room-btn;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   padding: 1rem 3rem 0 3rem;
   gap: 1rem;
 }
+
 .create-room-btn button {
   padding: 10px 20px;
   background-color: var(--roomdark);
@@ -65,24 +79,38 @@ p {
 }
 
 .content {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
   grid-area: contents;
   padding: 2rem 3rem;
 }
+
 .content .card {
   background-color: var(--roomdark);
   color: var(--roomtext);
   height: 100%;
   border-radius: 8px;
 }
+
 .content .card-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 2rem 1rem 2rem 1rem;
   height: 20%;
   border-bottom: 0.1px solid var(--borderbottom);
 }
+
 .content .card-top img {
   height: 35px;
   width: 35px;
@@ -90,14 +118,18 @@ p {
   -o-object-fit: cover;
      object-fit: cover;
 }
+
 .content .card-top a {
   margin-left: 5px;
   text-decoration: none;
   color: var(--llwhite);
+  -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
   max-width: 100%;
   min-width: 0;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -106,27 +138,46 @@ p {
   margin-left: 1%;
   font-size: 1vw;
 }
+
 .content .card-top a:hover {
   color: var(--white);
   text-decoration: underline;
 }
+
 .content .card-top p {
   font-size: 0.9rem;
   margin-right: 5px;
 }
+
 .content .card-mid {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   border-bottom: 1px solid var(--borderbottom);
   height: 60%;
 }
+
 .content .card-mid-left {
   width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 .content .card-mid-left a {
   margin-left: 2%;
   text-decoration: none;
@@ -134,24 +185,31 @@ p {
   font-size: 1.2vw;
   max-width: 70%;
   min-width: 0;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-bottom: 3%;
   position: absolute;
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+
 .content .card-mid-left a:hover {
   color: var(--white);
   text-decoration: underline;
 }
+
 .content .card-mid-left small {
   margin: 15px 0 0 2%;
   font-size: 12px;
   max-width: 80%;
   min-width: 0;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -159,33 +217,57 @@ p {
   margin-top: 3.5%;
   color: var(--llwhite);
 }
+
 .content .card-mid-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   width: 12%;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 10px;
 }
+
 .content .card-mid-right a {
   margin-left: 5px;
   margin-top: 25px;
   text-decoration: none;
   color: var(--llwhite);
+  -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
 }
+
 .content .card-mid-right-gobal {
   margin-top: 25px;
   color: var(--llwhite);
 }
+
 .content .card-mid-right-gobal i {
   margin-left: 5px;
 }
+
 .content .card-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   text-align: center;
   padding: 1.7rem 1.5rem;
   height: 20%;
@@ -193,84 +275,133 @@ p {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
+
 .content .card-bottom p {
   font-size: 1vw;
   color: var(--llwhite);
 }
+
 .content .card-bottom p a {
   text-decoration: none;
   color: var(--llwhite);
   font-size: 1vw;
 }
+
 .content .card-bottom p a:hover {
   text-decoration: underline;
   color: #3758fd;
 }
+
 .content .card-bottom .card-bottom-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
 }
+
 .content .card-bottom .card-bottom-right button {
   padding: 5px 20px;
   background-color: var(--roomdark);
   border: 1px solid var(--roomdark);
   color: var(--llwhite);
   border-radius: 20px;
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+
 .content .card-bottom .card-bottom-right button a {
   color: var(--llwhite);
   text-decoration: none;
 }
+
 .content .card-bottom .card-bottom-right button:hover {
   background-color: var(--llwhite);
   border: 1px solid var(--llwhite);
   color: var(--roomdark);
 }
+
 .content .card-bottom .card-bottom-right button:hover a {
   color: var(--black);
   text-decoration: none;
 }
 
 .activity {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 2;
   grid-area: activity;
   background-color: var(--roomdark);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 .activity .top {
   width: 100%;
   padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 5px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-bottom: 1px solid var(--borderbottom);
 }
+
 .activity .top p {
   color: var(--llwhite);
   font-size: 1.2vw;
   margin-right: 5px;
 }
+
 .activity .top i {
   color: var(--llwhite);
   font-size: 1.2vw;
 }
+
 .activity .activity-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 1rem;
   width: 100%;
   height: 100%;
   padding: 0 10px;
 }
+
 .activity .activity-body .activity-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   width: 100%;
   padding: 5px;
   gap: 3px;
@@ -278,22 +409,38 @@ p {
   color: var(--llwhite);
   border-bottom: 1px solid var(--borderbottom);
 }
+
 .activity .activity-body .activity-card .card-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
 }
+
 .activity .activity-body .activity-card .card-top p {
   font-size: 0.7rem;
   color: var(--llwhite);
   margin-left: 40px;
 }
+
 .activity .activity-body .activity-card .card-top-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
 }
+
 .activity .activity-body .activity-card .card-top-left img {
   height: 35px;
   width: 35px;
@@ -301,27 +448,33 @@ p {
   -o-object-fit: cover;
      object-fit: cover;
 }
+
 .activity .activity-body .activity-card .card-top-left a {
   text-decoration: none;
   color: var(--llwhite);
 }
+
 .activity .activity-body .activity-card .card-top-left a:hover {
   color: var(--white);
   text-decoration: underline;
 }
+
 .activity .activity-body .activity-card .card-mid p {
   font-size: 0.9rem;
   color: var(--llwhite);
   margin-left: 40px;
 }
+
 .activity .activity-body .activity-card .card-bottom {
   font-size: 0.9rem;
   margin-left: 40px;
 }
+
 .activity .activity-body .activity-card .card-bottom a {
   text-decoration: none;
   color: var(--llwhite);
 }
+
 .activity .activity-body .activity-card .card-bottom a:hover {
   color: var(--white);
   text-decoration: underline;
@@ -329,10 +482,13 @@ p {
 
 @media (max-width: 700px) {
   .main-body {
+    display: -ms-grid;
     display: grid;
-    grid-template-rows: auto auto 1fr;
-    grid-template-columns: 1fr;
-    grid-template-areas: "topic" "create-room-btn" "contents";
+    -ms-grid-rows: auto auto 1fr;
+        grid-template-rows: auto auto 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: "topic" "create-room-btn" "contents";
   }
   .create-room-btn {
     padding: 1rem 1rem 0 1rem;
@@ -380,12 +536,16 @@ p {
     height: 25%;
   }
 }
+
 @media (max-width: 576px) {
   .main-body {
+    display: -ms-grid;
     display: grid;
-    grid-template-rows: auto auto 1fr;
-    grid-template-columns: 1fr;
-    grid-template-areas: "topic" "create-room-btn" "contents";
+    -ms-grid-rows: auto auto 1fr;
+        grid-template-rows: auto auto 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: "topic" "create-room-btn" "contents";
   }
   .create-room-btn {
     padding: 1rem 1rem 0 1rem;
@@ -440,4 +600,8 @@ p {
   .content .card-bottom p a {
     font-size: 15px;
   }
-}/*# sourceMappingURL=body.css.map */
+  .activity {
+    display: none;
+  }
+}
+/*# sourceMappingURL=body.css.map */
