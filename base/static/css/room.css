@@ -14,18 +14,25 @@ p {
 }
 
 .rooms {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .rooms {
   font-family: sans-serif;
 }
+
 .rooms .tab {
   grid-area: tabs;
   overflow: hidden;
   background-color: var(--roombg);
 }
+
 .rooms #info-content-form {
   position: absolute;
   z-index: 99999;
@@ -38,19 +45,38 @@ p {
   background-color: rgba(82, 82, 82, 0.68);
   border-radius: 10px;
   padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 1rem;
 }
+
 .rooms #info-content-form .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .rooms #info-content-form .info-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 .rooms #info-content-form .info-title input {
   height: 35px;
   outline: invert;
@@ -60,10 +86,17 @@ p {
   padding: 0 10px;
   color: white;
 }
+
 .rooms #info-content-form .description {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 .rooms #info-content-form .description textarea {
   height: auto;
   outline: invert;
@@ -73,16 +106,23 @@ p {
   padding: 1rem;
   color: white;
 }
+
 .rooms #info-content-form button {
   padding: 8px;
   border-radius: 10px;
 }
+
 .rooms #info-url-form {
   position: absolute;
   top: 35%;
   left: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 1rem;
   border: 1px solid white;
   padding: 1rem;
@@ -92,14 +132,26 @@ p {
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
 }
+
 .rooms #info-url-form .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .rooms #info-url-form .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 .rooms #info-url-form .title input {
   height: 40px;
   padding: 0 10px;
@@ -109,13 +161,21 @@ p {
   border-radius: 5px;
   color: white;
 }
+
 .rooms #info-url-form .title ::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.557);
 }
+
 .rooms #info-url-form .url {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 .rooms #info-url-form .url input {
   height: 40px;
   padding: 0 10px;
@@ -125,13 +185,16 @@ p {
   border-radius: 5px;
   color: white;
 }
+
 .rooms #info-url-form .url ::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.557);
 }
+
 .rooms #info-url-form button {
   padding: 8px;
   border-radius: 10px;
 }
+
 .rooms .tab button {
   background-color: inherit;
   float: left;
@@ -139,86 +202,147 @@ p {
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
   color: var(--lwhite);
   font-size: 0.9vw;
 }
+
 .rooms .tab button:hover {
   background-color: var(--hover);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+
 .rooms .tab button.active {
   background-color: var(--hover);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+
 .rooms .tablinks i {
   padding-right: 10px;
 }
+
 .rooms #Info {
   min-height: 100vh;
   padding: 20px 30px;
   border-top: none;
   background-color: var(--hover);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 20px;
 }
+
 .rooms #Info .tabcontent-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   border-bottom: 1px solid #fff;
   gap: 70px;
   padding: 40px 40px;
   width: 100%;
   height: 100%;
 }
+
 .rooms #Info .tabcontent-top .tabcontent-top-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
   gap: 50px;
+  width: 70%;
 }
+
 .rooms #Info .tabcontent-top .tabcontent-top-left i {
   font-size: 15vw;
   color: var(--lwhite);
 }
+
 .rooms #Info .tabcontent-top .tabcontent-top-left .tabcontent-top-left-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 20px;
 }
+
 .rooms #Info .tabcontent-top .tabcontent-top-left .tabcontent-top-left-1 p {
   font-family: "VT323", monospace;
   font-size: 4vw;
   color: var(--lwhite);
 }
+
 .rooms #Info .tabcontent-top .tabcontent-top-left .tabcontent-top-left-1 small {
   font-size: 1vw;
   color: var(--lwhite);
 }
+
 .rooms #Info .tabcontent-top .tabcontent-top-right {
   margin-right: 80px;
   font-size: 1.2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 10px;
   margin-top: 0;
+  height: 100%;
+  width: 20%;
+  margin-top: 7%;
 }
+
 .rooms #Info .tabcontent-top .tabcontent-top-right p {
   color: var(--lwhite);
 }
+
 .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
   font-size: 1vw;
+  margin-left: 15%;
 }
+
 .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 img {
   height: 35px;
   width: 35px;
@@ -226,26 +350,44 @@ p {
   -o-object-fit: cover;
      object-fit: cover;
 }
+
 .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 a {
   text-decoration: none;
   color: var(--lwhite);
   font-size: 1vw;
 }
+
 .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 a:hover {
   text-decoration: underline;
 }
-.rooms #Info .bottom {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border);
-  height: 100%;
-  padding: 1rem 2rem;
+
+.rooms #Info .tabcontent-top .tabcontent-top-right .status {
+  margin-left: 15%;
 }
-.rooms #Info .bottom .urls {
+
+.rooms #Info .bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  padding: 1rem .5rem;
+}
+
+.rooms #Info .bottom .urls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   gap: 1rem;
 }
+
 .rooms #Info .bottom .urls a {
   text-decoration: none;
   color: var(--lwhite);
@@ -254,61 +396,116 @@ p {
   border-radius: 5px;
   background-color: var(--hover);
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
   border: 1px solid var(--border);
 }
+
 .rooms #Info .bottom .info-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: var(--lwhite);
 }
+
 .rooms #Info .bottom .info-content .info-content-box {
   padding: 1rem 0 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 1rem;
   width: 70%;
 }
+
 .rooms #Info .bottom .info-content .info-content-box .content-card {
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: rgba(40, 69, 99, 0.142);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 10px;
 }
+
 .rooms #Info .bottom .info-content .info-content-box .content-card .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .rooms #Info .bottom .info-content .info-content-box .content-card p {
   font-size: 14px;
   color: var(--lwhite);
 }
+
 .rooms #Info .bottom .info-content .info-url-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: auto;
   height: auto;
   gap: 10px;
-  padding: 1rem;
   width: 30%;
+  padding: 1rem 0 1rem 1rem;
 }
+
 .rooms #Info .bottom .info-content .info-url-box .url-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: rgba(57, 96, 134, 0.154);
   padding: 10px 15px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
+
 .rooms #Info .bottom .info-content .info-url-box .url-card .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .rooms #Info .bottom .info-content .info-url-box .url-card a {
   font-size: 14px;
 }
@@ -364,13 +561,14 @@ p {
     padding: 0.5rem;
   }
 }
+
 @media (max-width: 576px) {
   .rooms #Info {
-    padding: 5px 10px;
+    padding: 1rem 1rem;
   }
   .rooms #Info .tabcontent-top {
     gap: 10px;
-    padding: 10px 0 10px 10px;
+    padding: 1rem 0;
   }
   .rooms #Info .tabcontent-top .tabcontent-top-left {
     gap: 10%;
@@ -391,13 +589,12 @@ p {
   .rooms #Info .tabcontent-top .tabcontent-top-right {
     font-size: 0.8em;
     width: 30%;
-    margin-top: 9%;
     gap: 5px;
     font-size: 0.6em;
     margin-right: 0;
   }
   .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 {
-    margin-top: 5px;
+    margin-left: 8%;
     gap: 5px;
   }
   .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 img {
@@ -406,6 +603,32 @@ p {
   }
   .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 a {
     font-size: 10px;
+  }
+  .rooms #Info .tabcontent-top .tabcontent-top-right .status {
+    font-size: 12px;
+    margin-left: 8%;
+  }
+  .rooms #Info .bottom .urls a {
+    font-size: 12px;
+  }
+  .rooms #Info .bottom .info-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .rooms #Info .bottom .info-content .info-content-box {
+    width: 100%;
+  }
+  .rooms #Info .bottom .info-content .info-content-box .content-card p {
+    font-size: 12px;
+  }
+  .rooms #Info .bottom .info-content .info-url-box {
+    width: 100%;
+    padding: 0 0 0 0;
+  }
+  .rooms #Info .bottom .info-content .info-url-box .url-card a {
+    font-size: 12px;
   }
   .rooms .tab button {
     font-size: 16px;
@@ -418,9 +641,13 @@ p {
     padding: 0.5rem;
   }
 }
+
 @media screen and (max-width: 768px) {
   .chat-container {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     height: 85.5vh;
   }
   /* Make Sidebar Full Width on Mobile */
@@ -431,19 +658,30 @@ p {
   }
   .chat-area {
     display: none;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     width: 100%;
     height: 90vh;
     background: var(--hover);
     z-index: 1000;
   }
   .chat-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .chat-messages {
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
   }
   .back-btn {
     display: block;
@@ -454,13 +692,20 @@ p {
     color: white;
   }
 }
+
 #Materials {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
   padding: 20px 20px;
   gap: 10px;
 }
+
 #Materials .create-folder {
   display: none;
   position: absolute;
@@ -473,27 +718,51 @@ p {
   border-radius: 10px;
   overflow-y: hidden;
 }
+
 #Materials .create-folder-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 20px 20px 10px 20px;
 }
+
 #Materials .create-folder-top i {
   cursor: pointer;
 }
+
 #Materials .create-folder-bottom form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 20px 20px;
   gap: 30px;
 }
+
 #Materials .create-folder-bottom form .input-folder-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 5px;
 }
+
 #Materials .create-folder-bottom form .input-folder-name input {
   height: 40px;
   outline: none;
@@ -503,6 +772,7 @@ p {
   padding: 0 10px;
   border-radius: 5px;
 }
+
 #Materials .create-folder-bottom form button {
   width: 35%;
   padding: 2px 5px;
@@ -511,7 +781,10 @@ p {
 
 .delete {
   display: none;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: absolute;
   top: 40%;
   left: 40%;
@@ -520,14 +793,25 @@ p {
   border-radius: 10px;
   background-color: rgba(57, 57, 57, 0.878);
   gap: 20px;
+  -webkit-transition: -webkit-transform 0.3s ease-in;
+  transition: -webkit-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
-  transform: scale(1.1);
+  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
+
 .delete .bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   gap: 15px;
 }
+
 .delete .bottom .cancel-btn {
   padding: 1px 8px;
   border-radius: 5px;
@@ -536,58 +820,97 @@ p {
   font-size: 15px;
   background-color: transparent;
 }
+
 .delete .bottom .delete-btn {
   padding: 3px 10px;
   border-radius: 5px;
-  border: 0.5px solid rgb(22, 22, 22);
+  border: 0.5px solid #161616;
   font-size: 15px;
-  background-color: rgb(22, 22, 22);
+  background-color: #161616;
   outline: none;
   color: white;
 }
 
 .materials-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
-  padding: 10px;
+  padding: 10px 0;
 }
+
 .materials-top-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 20px;
 }
+
 .materials-top-left-folder {
-  padding: 10px;
+  padding: .7rem .9rem;
   background-color: var(--roombg);
   border-radius: 5px;
   cursor: pointer;
   color: var(--lwhite);
   font-size: 1vw;
 }
+
 .materials-top-left-code {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
   color: var(--lwhite);
-  padding: 10px;
+  padding: .7rem .9rem;
   cursor: pointer;
   background-color: var(--roombg);
   border-radius: 5px;
 }
+
 .materials-top-mid {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   border: 1px solid var(--border);
   background-color: var(--roombg);
   border-radius: 5px;
   width: 20%;
 }
+
 .materials-top-mid input {
   width: 100%;
   height: 45px;
@@ -600,6 +923,7 @@ p {
   font-size: 16px;
   background-color: transparent;
 }
+
 .materials-top-mid i {
   padding: 10px 15px;
   cursor: pointer;
@@ -608,30 +932,47 @@ p {
 
 .materials-bottom {
   border: 1px solid var(--border);
-  flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   min-height: 100vh;
   padding: 1rem;
+  border-radius: 5px;
 }
+
 .materials-bottom .card {
   background-color: var(--roombg);
   color: var(--lwhite);
   padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 5px;
 }
+
 .materials-bottom .card .card-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 0.5rem;
 }
+
 .materials-bottom .card .card-top i {
   font-size: 1.5rem;
   color: var(--lwhite);
 }
+
 .materials-bottom .card .card-top a {
   text-decoration: none;
   color: var(--lwhite);
@@ -639,29 +980,45 @@ p {
   display: block;
   max-width: 100%;
   min-width: 0;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .materials-bottom .card .card-top a:hover {
   text-decoration: underline;
 }
+
 .materials-bottom .card .card-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .materials-bottom .card .card-bottom p {
   margin-top: 0.5rem;
   font-size: 0.8rem;
   color: var(--lwhite);
 }
+
 .materials-bottom .card .card-bottom a {
   margin-top: 0.5rem;
   text-decoration: none;
 }
+
 .materials-bottom .card .card-bottom a i {
   font-size: 0.9rem;
   cursor: pointer;
@@ -682,6 +1039,7 @@ footer {
     width: 45%;
   }
 }
+
 @media (max-width: 576px) {
   #Materials .create-folder {
     width: 75%;
@@ -692,26 +1050,33 @@ footer {
     gap: 10px;
   }
   .materials-top .materials-top-left .materials-top-left-folder {
-    font-size: 12px;
-    padding: 10px;
+    font-size: 10px;
+    padding: 10px 15px;
   }
   .materials-top .materials-top-left .materials-top-left-code {
-    font-size: 12px;
-    padding: 10px;
+    font-size: 10px;
+    padding: 10px 15px;
   }
   .materials-top .materials-top-mid {
     width: auto;
     color: var(--lwhite);
     border: none;
+    width: 40%;
   }
   .materials-top .materials-top-mid input {
-    display: none;
+    height: 35px;
+    font-size: 12px;
+    width: 90%;
+    padding: 0 0 0 10px;
   }
   .materials-bottom .custom-col {
-    flex: 0 0 100% !important;
+    -webkit-box-flex: 0 !important;
+        -ms-flex: 0 0 100% !important;
+            flex: 0 0 100% !important;
     max-width: 100% !important;
   }
   .materials-bottom .card {
     width: 100%;
   }
-}/*# sourceMappingURL=room.css.map */
+}
+/*# sourceMappingURL=room.css.map */

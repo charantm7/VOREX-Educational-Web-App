@@ -33,7 +33,7 @@
   </head>
   <body>
     <nav>
-      <div class="nav-container">
+      <div class="nav-container roboto-mono">
         <div class="nav-container-left">
           <div class="hamburger" onclick="myFunction(this)" id="menuBtn">
             <div class="bar1"></div>
@@ -58,6 +58,7 @@
           </div>
           {% endif %}
           <div class="search-container" id="tooltip">
+            <input type="text" placeholder="Search..." />
             <i class="fas fa-search"></i>
           </div>
           <div class="nav-container-right-create-logo" id="tooltip">
@@ -66,9 +67,6 @@
             </a>
           </div>
 
-          <div class="nav-container-right-notification-logo" id="tooltip">
-            <a href="#"><i class="fa-solid fa-envelope"></i></a>
-          </div>
           <div class="nav-container-right-account-logo">
             <a href="/"><img src="{% static 'assets/main.png' %}" alt="account img" /></a>
           </div>

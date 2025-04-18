@@ -28,51 +28,76 @@ footer {
 }
 
 .main-dash {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100vh;
   padding: 2rem;
   background: var(--bodydark);
 }
+
 .main-dash .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 0 0.5rem 1rem 0.5rem;
   color: var(--lwhite);
 }
+
 .main-dash .top #back-icon {
   text-decoration: none;
   color: var(--lwhite);
   font-size: 22px;
 }
+
 .main-dash .top #back-icon:hover {
   color: white;
 }
+
 .main-dash .top p {
   font-size: 1.7vw;
 }
+
 .main-dash .top-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 20px;
 }
+
 .main-dash .top-1 a {
   text-decoration: none;
   color: var(--llwhite);
+  -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
 }
+
 .main-dash .top-1 a:hover {
   text-decoration: underline;
   color: var(--white);
 }
+
 .main-dash table {
   width: 100%;
   background: var(--navdark);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+
 .main-dash tr {
   height: 90px;
 }
+
 .main-dash th,
 .main-dash td {
   padding: 12px;
@@ -80,33 +105,45 @@ footer {
   border: 1px solid var(--borderbottom-1);
   color: var(--lwhite);
 }
+
 .main-dash th a,
 .main-dash td a {
   text-decoration: none;
   color: var(--lwhite);
+  -webkit-transition: 0.1s ease-in-out;
   transition: 0.1s ease-in-out;
 }
+
 .main-dash th a:hover,
 .main-dash td a:hover {
   text-decoration: underline;
   color: white;
 }
+
 .main-dash th {
   background: rgba(33, 41, 56, 0.848);
   color: var(--lwhite);
   cursor: pointer;
 }
+
 .main-dash .description {
   width: 40%;
 }
+
 .main-dash tr:hover {
-  background: rgba(187, 187, 187, 0.0509803922);
+  background: #bbbbbb0d;
 }
+
 .main-dash .pagination {
   margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 .main-dash .pagination button {
   padding: 8px 12px;
   margin: 2px;
@@ -115,7 +152,9 @@ footer {
   color: white;
   cursor: pointer;
 }
+
 .main-dash .pagination button:disabled {
   background: #ccc;
   cursor: not-allowed;
-}/*# sourceMappingURL=dashboard.css.map */
+}
+/*# sourceMappingURL=dashboard.css.map */
