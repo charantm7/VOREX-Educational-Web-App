@@ -9,7 +9,9 @@ from django.http import JsonResponse
 from django.db.models import Q
 from django.urls import reverse
 from datetime import datetime
+import logging
 
+logger = logging.getLogger(__name__)
 
 def home(request):
     activities = Activity.objects.order_by('-timestamp')[:10]
@@ -30,9 +32,9 @@ def home(request):
 
 
 @login_required(login_url='User_login')
-def rooms(request, room_name):
+def rooms(request, room_id):
     
-    room = get_object_or_404(Room, name=room_name)
+    room = get_object_or_404(Room, id=room_id)
     folder = Folder.objects.filter(room=room)
     members_joined = room.members_count.all()
     profile = get_object_or_404(UserProfile, user=room.created_by)
@@ -61,7 +63,7 @@ def rooms(request, room_name):
                 folder_instance.created_by = request.user
                 folder_instance.room = room
                 folder_instance.save()
-                return redirect('Rooms', room_name=room_name)
+                return redirect('Rooms', room_id=room_id)
             messages.error(request, 'Invalid Folder Form')
 
         elif 'group_chat_submit' in request.POST:
@@ -71,7 +73,7 @@ def rooms(request, room_name):
                 chat.created_by = request.user
                 chat.room = room
                 chat.save()
-                return redirect('Rooms', room_name=room_name)
+                return redirect('Rooms', room_id=room_id)
             messages.error(request, 'Invalid Group Chat Form')
 
         elif 'group_chat_member_submit' in request.POST:
@@ -81,7 +83,7 @@ def rooms(request, room_name):
                 group_member.message_by = request.user
                 group_member.chat_box = chat  # Fixed assignment
                 group_member.save()
-                return redirect('Rooms', room_name=room_name)
+                return redirect('Rooms', room_id=room_id)
             messages.error(request, "Invalid Member Form")
 
         elif 'info_content_submit' in request.POST:
@@ -91,7 +93,7 @@ def rooms(request, room_name):
                 info_content.created_by = request.user
                 info_content.room = room
                 info_content.save()
-                return redirect(f"{reverse('Rooms', args=[room_name])}#info-content-form")
+                return redirect(f"{reverse('Rooms', args=[room_id])}#info-content-form")
             messages.error(request, 'Invalid Info Content Form')
 
         elif 'info_content_url_submit' in request.POST:
@@ -101,7 +103,7 @@ def rooms(request, room_name):
                 info_content_url.created_by = request.user
                 info_content_url.room = room
                 info_content_url.save()
-                return redirect(f"{reverse('Rooms', args=[room_name])}#info-url-form")
+                return redirect(f"{reverse('Rooms', args=[room_id])}#info-url-form")
             messages.error(request, 'Invalid Info Content URL Form')
 
     if request.user not in members_joined:
@@ -132,9 +134,9 @@ def rooms(request, room_name):
     return render(request, 'base/room.html', context)
 
 @login_required(login_url='User_login')
-def chat(request, room_name, chat_name):
+def chat(request, room_id, chat_name):
     
-    room = get_object_or_404(Room, name=room_name)
+    room = get_object_or_404(Room, id=room_id)
     profile = get_object_or_404(UserProfile, user=room.created_by)
     group_chat = ChatBox.objects.filter(room=room)
     group_chat_member = ChatBoxMembership.objects.filter(chat_box__in=group_chat)
@@ -297,20 +299,27 @@ def create_room(request):
     if request.method == 'POST':
         form = RoomForm(request.POST)
         if form.is_valid():
-            room = form.save(commit=False)
-            room.created_by = request.user
-            room.save()
-            room.members_count.add(room.created_by)
+            try:
+                room = form.save(commit=False)
+                room.created_by = request.user
+                room.save()
+                form.save_m2m()  # Save tags relationship
 
-            Activity.objects.create(
-                user=request.user,
-                activity=f"created a room '{room.name}'",
-                room=room
-            )
-            return redirect('Home')
+                room.members_count.add(room.created_by)
 
+                Activity.objects.create(
+                    user=request.user,
+                    activity=f"created a room '{room.name}'",
+                    room=room
+                )
+                return redirect('Home')
+            except Exception as e:
+                messages.error(request, f'Error creating room: {str(e)}')
+                return redirect('Create-room')
         else:
-            messages.error(request, 'Invalid form')
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f'{field}: {error}')
             return redirect('Create-room')
     else:
         form = RoomForm()
@@ -509,8 +518,9 @@ def chat_view(request, room_id):
 
     return render(request, 'base/room.html', {'room': room, 'messages': messages, 'form': form})
     
-def files_in_folder(request, f_name):
-    folder = get_object_or_404(Folder, name=f_name)
+def files_in_folder(request, room_id, f_name):
+    room = get_object_or_404(Room, id=room_id)
+    folder = get_object_or_404(Folder, name=f_name, room=room)
     study_materials = StudyMaterials.objects.filter(folder=folder)
     if request.method == 'POST':
         form = StudyMaterialForm(request.POST, request.FILES)
@@ -520,34 +530,36 @@ def files_in_folder(request, f_name):
             form.folder = folder
             form.room = folder.room
             form.save()
-            return redirect('Folder', f_name=f_name)
+            return redirect('Folder', room_id=room_id, f_name=f_name)
         else:   
             messages.error(request, 'Invalid form')
-            return redirect('Folder', f_name=f_name)
+            return redirect('Folder', room_id=room_id, f_name=f_name)
         
     else:
         form = StudyMaterialForm()
-    context = { 'form': form, 'study_materials': study_materials, 'folder': folder}
+    context = { 'form': form, 'study_materials': study_materials, 'folder': folder, 'room': room}
     return render(request, 'base/files_in_folder.html', context)
 
-def delete_file(request, file_id, f_name):
-    folder = get_object_or_404(Folder, name=f_name)
+def delete_file(request, file_id, room_id, f_name):
+    room = get_object_or_404(Room, id=room_id)
+    folder = get_object_or_404(Folder, name=f_name, room=room)
     study_materials = get_object_or_404(StudyMaterials,folder=folder, pk=file_id)
     study_materials.delete()
-    return redirect("Folder", f_name=f_name)
+    return redirect("Folder", room_id=room_id, f_name=f_name)
 
 
-def delete_folder(request, f_name, room_name):
-    room = get_object_or_404(Room, name=room_name)
+def delete_folder(request, room_id, f_name):
+
+    room = get_object_or_404(Room, id=room_id)
     folder = get_object_or_404(Folder, name=f_name, room=room)
     folder.delete()
-    return redirect('Rooms', room_name=room_name)
+    return redirect('Rooms', room_id=room_id)
 
-def delete_group(request, g_name, room_name):
-    room = get_object_or_404(Room, name=room_name)
+def delete_group(request, room_id, g_name):
+    room = get_object_or_404(Room, id=room_id)
     chat_box = get_object_or_404(ChatBox,group_name=g_name, room=room )
     chat_box.delete()
-    return redirect('Rooms',room_name=room_name)
+    return redirect('Rooms',room_id=room_id)
 
 
 
@@ -602,5 +614,22 @@ def study_material_dashboard(request):
 # Oauth 
 def google_login_redirect(request):
     return redirect("/accounts/google/login/")
+
+def search_tags(request):
+    search = request.GET.get('search', '')
+    logger.debug(f"Searching tags with term: {search}")
+    
+    if search:
+        tags = Tag.objects.filter(name__icontains=search)
+    else:
+        tags = Tag.objects.all()
+    
+    results = [{'id': tag.id, 'text': tag.name} for tag in tags[:10]]
+    logger.debug(f"Found tags: {results}")
+    return JsonResponse({'results': results})
+
+def debug_tags(request):
+    tags = Tag.objects.all()
+    return JsonResponse({'tags': list(tags.values('id', 'name'))})
 
 

@@ -55,6 +55,7 @@
   --bodydark: #151b23;
   --navdark: #0d1117;
   --llwhite: #ffffffb7;
+  --white: #ffffff;
   --black: black;
   --bodylight: #ececec;
   --text: #cecece;
@@ -190,7 +191,7 @@ nav {
         a {
           text-decoration: none;
           color: var(--llwhite);
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
 
         .nav1 {
@@ -264,8 +265,10 @@ nav {
           border: 1px solid var(--nav-border);
           border-radius: 3px;
           transition: 0.4s ease;
-          padding: 0.2rem 0.5rem;
+          padding: 0.2rem .5rem;
           font-size: 14px;
+          width: 80px;
+          
         }
         a button:hover {
           background-color: var(--llwhite);

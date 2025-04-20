@@ -30,9 +30,11 @@
       <tr>
         <td>{{room.name}}</td>
         <td class="description">{{room.description}}</td>
-        {% for tag in room.tags.all %}
-        <td>{{tag.name}}</td>
-        {% endfor %}
+        <td>
+          {% for tag in room.tags.all %}
+            {{tag.name}}{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </td>
         <td>{{room.member_count}}</td>
         <td>{{room.created_at}}</td>
         <td><a href="{% url 'Profile' room.created_by %}">{{room.created_by}}</a></td>

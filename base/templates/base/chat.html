@@ -3,7 +3,7 @@
 {% endblock %} {% block link %}
 <link rel="stylesheet" href="{% static 'css/chat.css' %}" />
 {% endblock %} {% block nav1 %}
-<a href="{% url 'chat' rooms.name request.user.username %}">/ chat</a>
+<a href="{% url 'chat' rooms.id request.user.username %}">/ chat</a>
 {% endblock %} {% block content %}
 <div id="Group" class="chat-container tabcontent open-sans">
   <div class="create-chat-group">
@@ -11,7 +11,7 @@
       <p>Create Group</p>
       <i class="fas fa-times" onclick="Removegroup()"></i>
     </div>
-    <form action="{% url 'Create-group-chat' rooms.name %}" method="post">
+    <form action="{% url 'Create-group-chat' rooms.id %}" method="post">
       {% csrf_token %}
       <div class="input-g-name">
         <label for="Group-name">Group Name</label>
@@ -25,7 +25,7 @@
       <!-- User List Sidebar (4 Columns) -->
       <div class="col-3 sidebar chats">
         <div class="chat-top">
-          <a href="{% url 'Rooms' rooms.name %}" id="back-icon"
+          <a href="{% url 'Rooms' rooms.id %}" id="back-icon"
             ><i class="fa-solid fa-arrow-left" title="Back"></i
           ></a>
           <p>Chats</p>
@@ -34,7 +34,7 @@
           <div class="contacts">
             {% for item in user_last_messages %}
             <a
-              href="{% url 'chat' room_name=rooms.name chat_name=item.user.username %}"
+              href="{% url 'chat' room_id=rooms.id chat_name=item.user.username %}"
               class="list-group-item list-group-item-action {% if item.user.username == room_name %} active {% endif %}"
               data-id="{{ room_name }}"
             >

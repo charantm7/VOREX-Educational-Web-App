@@ -179,6 +179,7 @@ p {
       padding: 40px 40px;
       width: 100%;
       height: 100%;
+      
       .tabcontent-top-left {
         display: flex;
         flex-direction: row;
@@ -336,6 +337,7 @@ p {
     }
   }
 }
+
 @media (max-width: 700px) {
   .rooms {
     #Info {
@@ -491,7 +493,6 @@ p {
     }
   }
 }
-
 @media screen and (max-width: 768px) {
   .chat-container {
     flex-direction: column;
@@ -595,6 +596,7 @@ p {
     }
   }
 }
+
 .delete {
   display: none;
   flex-direction: column;
@@ -670,6 +672,7 @@ p {
       border-radius: 5px;
     }
   }
+
   &-mid {
     display: flex;
     flex-direction: row;
@@ -699,6 +702,7 @@ p {
     }
   }
 }
+
 .materials-bottom {
   border: 1px solid var(--border);
   flex: 1;
@@ -817,10 +821,7 @@ footer {
         font-size: 12px;
         width: 90%;
         padding:  0 0 0 10px;
-        
-        
       }
-      
     }
   }
   .materials-bottom {

@@ -1,0 +1,13 @@
+{
+    "version": "0.1.0",
+    "tasks": [
+      {
+        "label": "SASS Compile",
+        "command": "sass",
+        "args": ["static/css/style.scss:static/css/style.css", "--no-source-map"],
+        "problemMatcher": [],
+        "runOn": "manual"
+      }
+    ]
+  }
+  

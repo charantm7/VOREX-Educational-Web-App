@@ -63,6 +63,7 @@
   --bodydark: #151b23;
   --navdark: #0d1117;
   --llwhite: #ffffffb7;
+  --white: #ffffff;
   --black: black;
   --bodylight: #ececec;
   --text: #cecece;
@@ -212,7 +213,7 @@ nav .nav-container-left .nav-links {
 nav .nav-container-left .nav-links a {
   text-decoration: none;
   color: var(--llwhite);
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 nav .nav-container-left .nav-links .nav1 {
@@ -315,8 +316,9 @@ nav .nav-container-right-signup-btn a button {
   border-radius: 3px;
   -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem .5rem;
   font-size: 14px;
+  width: 80px;
 }
 
 nav .nav-container-right-signup-btn a button:hover {
