@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Room, UserProfile, ChatBox, Folder, StudyMaterials, ChatBoxMembership, InfoContent, InfoContentUrl, Tag
+from .models import Room, UserProfile, ChatBox, Folder, StudyMaterials, ChatBoxMembership, InfoContent, InfoContentUrl, Tag, CodeSnippet, CodeFolder
 from django.contrib.auth.models import User
 from django import forms
 from django_select2.forms import Select2Widget, ModelSelect2Widget
@@ -113,3 +113,24 @@ class InfoContentUrlForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['url'].initial = None
+
+
+class CodeSnippetForm(forms.ModelForm):
+    class Meta:
+        model = CodeSnippet
+        fields = ['title', 'language', 'code']
+        widgets = {
+            'code': forms.Textarea(attrs={
+                'rows': 10,
+                'placeholder': 'Paste your code here...',
+                'style': 'font-family: monospace;'
+            })
+        }
+
+class CodeFolderForm(forms.ModelForm):
+    class Meta:
+        model = CodeFolder
+        fields = ['name']
+
+
+

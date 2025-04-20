@@ -31,7 +31,7 @@
   </form>
 
   {% endif %} {% if show_info_url_form %}
-  <form method="POST" id="info-url-form" onlick="openInfoUrlForm()">
+  <form method="POST" id="info-url-form">
     {% csrf_token %}
     <div class="top">
       <p>Add URL</p>
@@ -58,6 +58,9 @@
     </button>
     <button class="tablinks" id="tab-Materials" onclick="openTab(event, 'Materials')">
       <i class="fa-solid fa-book"></i><span class="btn-txt">Study Materials</span>
+    </button>
+    <button class="tablinks" id="tab-Code" onclick="openTab(event, 'Code')">
+      <i class="fa-solid fa-code"></i><span class="btn-txt">Code</span>
     </button>
   </div>
 
@@ -120,6 +123,9 @@
   </div>
 
   {% block materials %} {% include 'base/study_materials.html' %} {% endblock %}
+  <div id="Code" class="tabcontent">
+    {% block code %} {% include 'base/code_folder.html' %} {% endblock %}
+  </div>
   <script src="{% static 'js/room.js'%}"></script>
   <script>
     function openChat() {
@@ -146,6 +152,9 @@
     }
 
     function closeInfoUrlForm() {
+      window.location.href = "{% url 'Rooms' rooms.id %}";
+    }
+    function closeCodeFolderForm() {
       window.location.href = "{% url 'Rooms' rooms.id %}";
     }
   </script>

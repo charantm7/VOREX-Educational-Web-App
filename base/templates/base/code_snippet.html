@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {% load static %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/code_snippet.css' %}" />
+{% endblock %} {% block title %}
+<title>Code Snippet</title>
+{% endblock %} {% block nav1 %}
+<a href="{% url 'code-folder' room_id=room.id folder_name=folder.name %}">/ {{folder.name}}</a>
+{% endblock %} {% block content %}
+<div class="main quicksand">
+  <div class="code-snippet-form">
+    <form method="POST" action="{% url 'code-folder' room_id=room.id folder_name=folder.name %}">
+      {% csrf_token %}
+      <div class="top">
+        <p>Upload Code Snippet</p>
+        <button type="button" class="close-btn" onclick="closeCodeSnippetForm()">Close</button>
+      </div>
+      <div class="title">
+        <label for="title">Name</label>
+        {{ form.title }}
+      </div>
+      <div class="language">
+        <label for="language">Language</label>
+        {{ form.language }}
+      </div>
+      <div class="code">
+        <label for="code">Code</label>
+        {{ form.code }}
+      </div>
+      <button type="submit" name="code_snippet_submit">Upload Code</button>
+    </form>
+  </div>
+  <div class="top">
+    <div class="top-left">
+      <button onclick="window.history.back()">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back</span>
+      </button>
+      <button onclick="openCodeSnippetForm()">
+        <i class="fa-solid fa-code"></i>
+        <span>Add Code Snippet</span>
+      </button>
+    </div>
+    <div class="top-right">
+      <h3>Code Snippets</h3>
+    </div>
+  </div>
+  <div class="code-bottom">
+    {% for snippet in code_snippets %}
+    <div class="code-box">
+      <div class="code-box-top">
+        <h4>{{ snippet.title }}</h4>
+        <div class="code-box-top-right">
+          <small>By: {{ snippet.uploaded_by }}</small>
+          <small>Language: {{ snippet.language }}</small>
+          <small>{{ snippet.created_at|date:"M d, Y" }}</small>
+        </div>
+      </div>
+      <div class="code-container">
+        <div onclick="copyToClipboard(this)" class="copy-btn" title="Copy to clipboard">
+          <span>Copy</span>
+        </div>
+        <pre><code class="language-{{ snippet.language|lower }}">{{ snippet.code }}</code></pre>
+      </div>
+    </div>
+    {% empty %}
+    <p style="color: gray">No code snippets uploaded yet.</p>
+    {% endfor %}
+  </div>
+</div>
+<script>
+  function openCodeSnippetForm() {
+    document.querySelector(".code-snippet-form").style.display = "flex";
+  }
+  function closeCodeSnippetForm() {
+    document.querySelector(".code-snippet-form").style.display = "none";
+  }
+  function copyToClipboard(btn) {
+    // Find the <code> element inside the same container
+    const codeBlock = btn.parentElement.querySelector("code");
+    const text = codeBlock.innerText;
+
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        btn.innerText = "Copied!";
+        setTimeout(() => {
+          btn.innerText = "Copy";
+        }, 2000);
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  }
+</script>
+<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-cpp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+
+{% endblock %}

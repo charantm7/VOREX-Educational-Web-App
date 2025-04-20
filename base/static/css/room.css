@@ -374,7 +374,7 @@ p {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100%;
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
 }
 
 .rooms #Info .bottom .urls {
@@ -864,31 +864,13 @@ p {
 }
 
 .materials-top-left-folder {
-  padding: .7rem .9rem;
+  padding: 0.7rem 0.9rem;
   background-color: var(--roombg);
   border-radius: 5px;
   cursor: pointer;
   color: var(--lwhite);
   font-size: 1vw;
-}
-
-.materials-top-left-code {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 10px;
-  color: var(--lwhite);
-  padding: .7rem .9rem;
-  cursor: pointer;
-  background-color: var(--roombg);
-  border-radius: 5px;
+  border: 1px solid var(--border);
 }
 
 .materials-top-mid {
@@ -956,6 +938,27 @@ p {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 5px;
+}
+
+.materials-bottom .card .card-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 20px;
+}
+
+.materials-bottom .card .card-type p {
+  font-size: 10px;
 }
 
 .materials-bottom .card .card-top {
@@ -1029,6 +1032,279 @@ footer {
   display: none;
 }
 
+#Code {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px 20px;
+  gap: 10px;
+}
+
+#Code .code-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#Code .code-top .code-top-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0;
+}
+
+#Code .code-top .code-top-left a {
+  text-decoration: none;
+  color: var(--lwhite);
+  font-size: 1vw;
+  padding: 0.7rem 0.9rem;
+  border-radius: 5px;
+  background-color: var(--roombg);
+  border: 1px solid var(--border);
+}
+
+#Code .code-top .code-top-mid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: 1px solid var(--border);
+  background-color: var(--roombg);
+  border-radius: 5px;
+  width: 20%;
+}
+
+#Code .code-top .code-top-mid input {
+  width: 100%;
+  height: 45px;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: var(--hover);
+  color: var(--text);
+  font-size: 16px;
+  background-color: transparent;
+}
+
+#Code .code-top .code-top-mid i {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: var(--lwhite);
+}
+
+#Code .code-bottom {
+  border: 1px solid var(--border);
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-height: 100vh;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+#Code .code-bottom .card {
+  background-color: var(--roombg);
+  color: var(--lwhite);
+  padding: 1rem;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+}
+
+#Code .code-bottom .card .card-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 20px;
+}
+
+#Code .code-bottom .card .card-type p {
+  font-size: 10px;
+}
+
+#Code .code-bottom .card .card-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5rem;
+}
+
+#Code .code-bottom .card .card-top i {
+  font-size: 1.5rem;
+  color: var(--lwhite);
+}
+
+#Code .code-bottom .card .card-top a {
+  text-decoration: none;
+  color: var(--lwhite);
+  font-weight: bold;
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#Code .code-bottom .card .card-top a:hover {
+  text-decoration: underline;
+}
+
+#Code .code-bottom .card .card-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#Code .code-bottom .card .card-bottom p {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--lwhite);
+}
+
+#Code .code-bottom .card .card-bottom a {
+  margin-top: 0.5rem;
+  text-decoration: none;
+}
+
+#Code .code-bottom .card .card-bottom a i {
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--lwhite);
+}
+
+#Code #code-folder-form {
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  padding: 1rem;
+  width: 30%;
+  background-color: rgba(133, 133, 133, 0.473);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  z-index: 99999;
+}
+
+#Code #code-folder-form .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#Code #code-folder-form .top .close-btn {
+  padding: 8px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.666);
+  border: 1px solid var(--border);
+  width: 20%;
+}
+
+#Code #code-folder-form .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#Code #code-folder-form .title input {
+  height: 35px;
+  outline: invert;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.192);
+  padding: 0 10px;
+  color: white;
+}
+
+#Code #code-folder-form button {
+  padding: 8px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.666);
+  border: 1px solid var(--border);
+  width: 50%;
+}
+
 @media (max-width: 700px) {
   #Materials .create-folder {
     width: 55%;
@@ -1076,6 +1352,15 @@ footer {
     max-width: 100% !important;
   }
   .materials-bottom .card {
+    width: 100%;
+  }
+  .code-bottom .custom-col {
+    -webkit-box-flex: 0 !important;
+        -ms-flex: 0 0 100% !important;
+            flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .code-bottom .card {
     width: 100%;
   }
 }
