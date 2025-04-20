@@ -27,6 +27,21 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Orbitron:wght@500&family=Silkscreen&family=VT323&display=swap"
       rel="stylesheet"
     />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <!-- Django Select2 CSS -->
+    <link href="{% static 'django_select2/django_select2.css' %}" type="text/css" media="all" rel="stylesheet">
+    
+    <!-- Django Select2 JS -->
+    <script src="{% static 'django_select2/django_select2.js' %}"></script>
+    
     {% block title %}
     <title>Home</title>
     {% endblock %} {% block link %} {% endblock %}
@@ -66,7 +81,6 @@
               <i class="fa-solid fa-plus"></i>
             </a>
           </div>
-
           <div class="nav-container-right-account-logo">
             <a href="/"><img src="{% static 'assets/main.png' %}" alt="account img" /></a>
           </div>
@@ -172,5 +186,17 @@
       </div>
     </footer>
     <script src="{% static 'js/script.js' %}"></script>
+    <script>
+      $(document).ready(function () {
+          $('.select2-multiple').on('select2:select', function (e) {
+              if ($(this).select2('data').length >= 4) {
+                  $(this).find("option:not(:selected)").prop("disabled", true);
+              }
+          }).on('select2:unselect', function (e) {
+              $(this).find("option").prop("disabled", false);
+          });
+      });
+  </script>
+  
   </body>
 </html>

@@ -1,11 +1,15 @@
 {% extends 'base.html' %} {% load static %} {% block link %}
 <link rel="stylesheet" href="{% static 'css/createroom.css' %}" />
-{% endblock %} {% block content %}
-<div class="main-body">
+{% endblock %}
+{% block nav1 %}
+<a href="{% url 'Create-room' %}">/ Create Room</a>
+{% endblock %}
+{% block content %}
+<div class="main-body quicksand"> 
   <form action="{% url 'Create-room' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="room-title">
-      <label for="room-title">Room Title</label>
+      <label for="room-title">Room Name</label>
       {{form.name}}
     </div>
     <div class="room-description">
@@ -17,10 +21,18 @@
       {{form.tags}}
     </div>
     <div class="room-private">
-      <label for="room-private">Private</label>
+      <label for="room-private">Private Room</label>
       {{form.is_private}}
     </div>
     <button type="submit">Create</button>
   </form>
+  <div class="create-room-container">
+    <div class="create-room-container-left">
+      <h1>Create Room</h1>
+    </div>
+    <div class="create-room-container-right">
+      
+    </div>
+  </div>
 </div>
 {% endblock %}

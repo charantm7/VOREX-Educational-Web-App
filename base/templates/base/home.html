@@ -47,7 +47,7 @@
           </div>
           <div class="card-mid">
             <div class="card-mid-left">
-              <a href="{% url 'Rooms' room.name %}" title="{{room.name}}">{{room.name}}</a>
+              <a href="{% url 'Rooms' room.id %}" title="{{room.name}}">{{room.name}}</a>
               <small>{{room.description}}</small>
             </div>
 
@@ -70,8 +70,9 @@
           </div>
           <div class="card-bottom">
             <p>
-              {{room.member_count}} Joined / {% for tag in room.tags.all %}
-              <a href="{% url 'Tag' tag.name %}">{{ tag.name }}</a>
+              {{room.member_count}} Joined
+              {% for tag in room.tags.all %}
+                  / <a href="{% url 'Tag' tag.name %}"> {{ tag.name }}</a>
               {% endfor %}
             </p>
             <div class="card-bottom-right">
@@ -129,7 +130,7 @@
           {% if activity and activity.is_private %} Room:
           <p>Private</p>
           {% elif activity and not activity.is_private %} Room:
-          <a href="{% url 'Rooms' activity.name %}">{{ activity.name }}</a>
+          <a href="{% url 'Rooms' activity.id %}">{{ activity.name }}</a>
           {% endif %}
         </div>
       </div>

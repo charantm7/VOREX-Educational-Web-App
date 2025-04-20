@@ -1,7 +1,7 @@
 {% extends 'base.html' %}{% load static %} {% block title %}
 <title>Files</title>
 {% endblock %} {% block nav1 %}
-<a href="{% url 'Folder' folder.name %}">/ {{folder.name}}</a>
+<a href="{% url 'Folder' room.id folder.name %}">/ {{folder.name}}</a>
 {% endblock %} {% block link %}
 <link rel="stylesheet" href="{% static 'css/file_in_folder.css' %}" />
 {% endblock %} {% block content %}
@@ -10,7 +10,7 @@
     <p>Upload File</p>
     <i class="fas fa-times" onclick="closeFile()"></i>
   </div>
-  <form action="{% url 'Upload-file' folder.name %}" method="POST" enctype="multipart/form-data">
+  <form action="{% url 'Upload-file' room.id folder.name %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="title">
       <label for="title">Title</label>
@@ -26,7 +26,7 @@
 <div class="main">
   <div class="top">
     <div class="top-1">
-      <a href="{% url 'Rooms' folder.room.name %}" id="back-icon"
+      <a href="{% url 'Rooms' folder.room.id %}" id="back-icon"
         ><i class="fa-solid fa-arrow-left" title="Back"></i
       ></a>
       <div class="upload-file-icon" title="Upload file" onclick="Uploadfile()">
@@ -58,7 +58,7 @@
             ></a>
             {% if request.user == material.upload_by %}
             <a
-              href="{% url 'Delete-file' folder.name  material.pk %}"
+              href="{% url 'Delete-file' room.id folder.name material.pk %}"
               title="Delete"
               onclick="DeleteFile(event)"
               ><i class="fa-solid fa-trash" id="tooltip"></i

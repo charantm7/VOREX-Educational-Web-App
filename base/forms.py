@@ -1,13 +1,43 @@
 from django.forms import ModelForm
-from .models import Room, UserProfile, ChatBox, Folder, StudyMaterials, ChatBoxMembership, InfoContent, InfoContentUrl
+from .models import Room, UserProfile, ChatBox, Folder, StudyMaterials, ChatBoxMembership, InfoContent, InfoContentUrl, Tag
 from django.contrib.auth.models import User
 from django import forms
+from django_select2.forms import Select2Widget, ModelSelect2Widget
+from django.core.exceptions import ValidationError
+
+from django_select2.forms import ModelSelect2MultipleWidget  # use Multiple widget!
+
+
 
 class RoomForm(ModelForm):
     class Meta:
         model = Room
-        fields = ['name', 'description', 'tags','is_private']
-        
+        fields = ['name', 'description', 'tags', 'is_private']
+        widgets = {
+            'tags': ModelSelect2MultipleWidget(
+                model=Tag,
+                search_fields=['name__icontains'],
+                attrs={
+                    'data-placeholder': 'Search and select up to 4 tags...',
+                    'class': 'select2-multiple',
+                    'data-maximum-selection-length': '4'
+                }
+            )
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['tags'].queryset = Tag.objects.all().order_by('name')
+        self.fields['tags'].required = False
+        self.fields['name'].widget.attrs.update({'class': 'form-control'})
+        self.fields['description'].widget.attrs.update({'class': 'form-control'})
+
+    def clean_tags(self):
+        tags = self.cleaned_data.get('tags')
+        if tags and tags.count() > 4:
+            raise ValidationError("You can select a maximum of 4 tags.")
+        return tags
+
 
 class ProfileForm(ModelForm):
     class Meta:

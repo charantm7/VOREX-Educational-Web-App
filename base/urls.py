@@ -1,4 +1,4 @@
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from . import views
 
 
@@ -7,7 +7,7 @@ urlpatterns = [
     path('',views.home, name='Home'),
     
     # room pattern
-    path('rooms/<str:room_name>/',views.rooms, name='Rooms'),
+    path('rooms/<int:room_id>/',views.rooms, name='Rooms'),
     
 
     # your rooms and joined rooms
@@ -53,25 +53,25 @@ urlpatterns = [
     path('404-error/',views.error_404, name='Error-page'),
 
     # folder creation, deletion
-    path('create-folder/<str:room_name>/',views.rooms, name='Create-folder'),
-    path('folder/<str:f_name>/',views.files_in_folder, name='Folder'),
-    path('delete-folder/<str:room_name>/<str:f_name>/',views.delete_folder,name='Delete-folder'),
+    path('create-folder/<int:room_id>/',views.rooms, name='Create-folder'),
+    path('folder/<int:room_id>/<str:f_name>/',views.files_in_folder, name='Folder'),
+    path('delete-folder/<int:room_id>/<str:f_name>/',views.delete_folder,name='Delete-folder'),
 
     # file upload and deletion
-    path('upload-file/<str:f_name>/',views.files_in_folder, name='Upload-file'),
-    path('delete-file/<str:f_name>/<str:file_id>',views.delete_file, name='Delete-file'),
+    path('upload-file/<int:room_id>/<str:f_name>/',views.files_in_folder, name='Upload-file'),
+    path('delete-file/<int:room_id>/<str:f_name>/<str:file_id>',views.delete_file, name='Delete-file'),
     
 
     # chat url
-    path('create-group-chat/<str:room_name>/',views.rooms, name='Create-group-chat'),
+    path('create-group-chat/<int:room_id>/',views.rooms, name='Create-group-chat'),
 
-    path('message/<str:room_name>/',views.rooms, name='Create-message'),
+    path('message/<int:room_id>/',views.rooms, name='Create-message'),
     
     path('delete-group/<str:room_name>/<str:g_name>/',views.delete_group,name='Delete-group'),
 
-    path('chat/<str:room_name>/<str:chat_name>/',views.chat, name='chat'),
+    path('chat/<int:room_id>/<str:chat_name>/',views.chat, name='chat'),
 
-    path('group-chat/<str:room_name>/<str:group_name>/', views.rooms, name='group-chat'),
+    path('group-chat/<int:room_id>/<str:group_name>/', views.rooms, name='group-chat'),
 
 
 
@@ -82,7 +82,6 @@ urlpatterns = [
 
     #Info content form url
    
-    
 
 ]
 
