@@ -1,0 +1,66 @@
+<div class="code-top">
+  <div class="code-top-left" title="Create Code Folder">
+    <a href="?form=code-folder#code-folder-form">📁 Add Code Folder</a>
+  </div>
+
+  <div class="code-top-mid">
+    <input type="text" placeholder="Search code" />
+    <i class="fas fa-search"></i>
+  </div>
+</div>
+
+{% if show_code_folder_form %}
+<form method="POST" id="code-folder-form">
+  {% csrf_token %}
+  <div class="top">
+    <p>Create Code Folder</p>
+    <button type="button" class="close-btn" onclick="closeCodeFolderForm()">Close</button>
+  </div>
+  <div class="title">
+    <label for="title">Name</label>
+    {{ code_folder_form.name }}
+  </div>
+  <button type="submit" name="code_folder_submit">Create Folder</button>
+</form>
+{% endif %}
+
+<div class="code-bottom">
+  <div class="row g-3">
+    {% for folder in code_folder %}
+    <div class="col-5 col-sm-4 col-md-3 col-lg-3 custom-col">
+      <div class="card">
+        <div class="card-type">
+          <p>{{folder.created_at|date:"M d, Y"}}</p>
+          <p>Code</p>
+        </div>
+        <div class="card-top">
+          <i class="fa-solid fa-code"></i>
+          <a href="{% url 'code-folder' rooms.id folder.name %}" title="{{folder.name}}">{{ folder.name }}</a>
+        </div>
+        <div class="card-bottom">
+          <p>By: {{ folder.created_by.username|default:'Unknown' }}</p>
+          {% if request.user == folder.created_by %}
+          <a onclick="DeleteFolder('{{folder.name}}')"><i class="fa-solid fa-trash"> </i></a>
+
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div id="delete-{{ folder.name }}" class="delete" style="display: none">
+      <div class="top">
+        <p>Delete This Folder?</p>
+      </div>
+      <div class="bottom">
+        <button class="cancel-btn" onclick="CancelDelete('{{ folder.name }}')">Cancel</button>
+        <a href="{% url 'Delete-folder' rooms.id folder.name %}">
+          <button class="delete-btn">Delete</button>
+        </a>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center">
+      <p>No folders available.</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>

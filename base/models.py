@@ -139,3 +139,44 @@ class InfoContentUrl(models.Model):
 
     def __str__(self):
         return self.url
+
+class CodeFolder(models.Model):
+    name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="code_folders", null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    
+
+class CodeSnippet(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='code_snippets')
+    folder = models.ForeignKey(CodeFolder, on_delete=models.CASCADE, related_name='code_snippets', null=True, blank=True)
+    title = models.CharField(max_length=255)
+    language = models.CharField(max_length=50, choices=[
+        ('python', 'Python'),
+        ('javascript', 'JavaScript'),
+        ('c', 'C'),
+        ('cpp', 'C++'),
+        ('java', 'Java'),
+        ('html', 'HTML'),
+        ('css', 'CSS'),
+        ('sql', 'SQL'),
+        ('php', 'PHP'),
+        ('ruby', 'Ruby'),
+        ('swift', 'Swift'),
+        ('kotlin', 'Kotlin'),
+        ('go', 'Go'),
+        ('rust', 'Rust'),
+        ('typescript', 'TypeScript'),
+        ('c#', 'C#'),
+        # add more if you want
+    ])
+    code = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    uploaded_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f"{self.title} ({self.language})"

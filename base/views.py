@@ -1,9 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Tag, Room, RoomMembership, ChatBox, StudyMaterials, RoomChatIndividual,UserProfile, Followrequest, Folder, ChatBoxMembership, Activity, InfoContent, InfoContentUrl
+
+#models
+from .models import Tag, Room, RoomMembership, ChatBox, StudyMaterials, RoomChatIndividual,UserProfile, Followrequest, Folder, ChatBoxMembership, Activity, InfoContent, InfoContentUrl, CodeSnippet, CodeFolder
+
+#auth
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import RoomForm, ProfileForm, UserForm, ChatBoxForm, FolderForm, StudyMaterialForm, ChatBoxMemberForm, InfoContentForm, InfoContentUrlForm
+
+#forms
+from .forms import RoomForm, ProfileForm, UserForm, ChatBoxForm, FolderForm, StudyMaterialForm, ChatBoxMemberForm, InfoContentForm, InfoContentUrlForm, CodeSnippetForm, CodeFolderForm
+
+#django
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.db.models import Q
@@ -40,6 +48,7 @@ def rooms(request, room_id):
     profile = get_object_or_404(UserProfile, user=room.created_by)
     group_chat = ChatBox.objects.filter(room=room)
     group_chat_member = ChatBoxMembership.objects.filter(chat_box__in=group_chat)
+    code_folder = CodeFolder.objects.filter(room=room)
     info_content = InfoContent.objects.filter(room=room).order_by('-created_at')[:10]
     info_content_url = InfoContentUrl.objects.filter(room=room).order_by('-created_at')[:10]
 
@@ -49,10 +58,12 @@ def rooms(request, room_id):
     group_chat_member_form = ChatBoxMemberForm()
     info_content_form = InfoContentForm()
     info_content_url_form = InfoContentUrlForm()
+    code_folder_form = CodeFolderForm()
 
     #get form
     show_info_form = request.GET.get('form') == 'info'
     show_info_url_form = request.GET.get('form') == 'info-url'
+    show_code_folder_form = request.GET.get('form') == 'code-folder'
 
     if request.method == 'POST':
         
@@ -106,6 +117,18 @@ def rooms(request, room_id):
                 return redirect(f"{reverse('Rooms', args=[room_id])}#info-url-form")
             messages.error(request, 'Invalid Info Content URL Form')
 
+        elif 'code_folder_submit' in request.POST:
+            code_folder_form = CodeFolderForm(request.POST)
+            if code_folder_form.is_valid():
+                code_folder = code_folder_form.save(commit=False)
+                code_folder.created_by = request.user
+                code_folder.room = room
+                code_folder.save()
+                return redirect(f"{reverse('Rooms', args=[room_id])}#code-folder-form")
+            messages.error(request, 'Invalid Code Folder Form')
+
+
+
     if request.user not in members_joined:
         messages.error(request, "You are not a member of this room! Join to continue.")
         return redirect("Home")
@@ -128,10 +151,14 @@ def rooms(request, room_id):
         'show_info_url_form': show_info_url_form,
         'info_content': info_content,
         'info_content_url': info_content_url,
-        
+        'code_folder': code_folder,
+        'show_code_folder_form': show_code_folder_form,
+        'code_folder_form': code_folder_form,
     }
 
     return render(request, 'base/room.html', context)
+
+
 
 @login_required(login_url='User_login')
 def chat(request, room_id, chat_name):
@@ -180,27 +207,6 @@ def chat(request, room_id, chat_name):
         'user_last_messages': user_last_messages,
         'search_query': search_query 
     })
-
-
-
-
-# def fetch_messages(request, room_name, chat_type, chat_id):
-#     room = get_object_or_404(Room, name=room_name)
-#     messages = []
-
-#     if chat_type == 'group':
-#         chat = get_object_or_404(ChatBox, id=chat_id, room=room)
-#         messages = ChatBoxMembership.objects.filter(chatbox=chat).order_by('created_at')
-#     elif chat_type == 'individual':
-#         user = get_object_or_404(User, id=chat_id)
-#         messages = RoomChatIndividual.objects.filter(
-#             room=room, sender=request.user, receiver=user
-#         ).order_by('created_at')
-
-#     message_data = [{"user": msg.user.username if hasattr(msg, 'user') else msg.sender.username,
-#                      "content": msg.content, "created_at": msg.created_at.strftime('%H:%M')} for msg in messages]
-
-#     return JsonResponse({"messages": message_data})
 
 
 def tag(request, tag_name):
@@ -631,5 +637,34 @@ def search_tags(request):
 def debug_tags(request):
     tags = Tag.objects.all()
     return JsonResponse({'tags': list(tags.values('id', 'name'))})
+
+
+
+def code_in_folder(request, room_id, folder_name):
+    room = get_object_or_404(Room, id=room_id)
+    folder = get_object_or_404(CodeFolder, name=folder_name, room=room)
+    code_snippets = CodeSnippet.objects.filter(folder=folder)
+
+    form = CodeSnippetForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            snippet = form.save(commit=False)
+            snippet.folder = folder
+            snippet.room = room
+            snippet.uploaded_by = request.user
+            snippet.save()
+            messages.success(request, "Code snippet uploaded!")
+            return redirect('code-folder', room_id=room_id, folder_name=folder_name)
+        else:
+            messages.error(request, "Invalid form")
+
+    return render(request, 'base/code_snippet.html', {
+        'code_snippets': code_snippets,
+        'folder': folder,
+        'form': form,
+        'room': room
+    })
+
+
 
 

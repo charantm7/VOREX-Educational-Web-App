@@ -80,8 +80,16 @@ urlpatterns = [
     path("accounts/signup/",
          views.google_login_redirect),
 
-    #Info content form url
-   
+    #Code snippet upload url
+ 
+
+    #Code folder url
+    path('room/<int:room_id>/code-folder/<str:folder_name>/', views.code_in_folder, name='code-folder'),
+
+    
+
+    
+ 
 
 ]
 
