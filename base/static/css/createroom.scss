@@ -16,7 +16,7 @@ footer {
     padding: 2rem;
     border-radius: 7px;
     gap: 20px;
-    background-color: #0d11177b;
+    background-color: #ffffff09;
     width: 40%;
 
     h3 {
@@ -29,8 +29,8 @@ footer {
     }
     input {
       width: 100%;
-      background-color: var(--bodydark);
-      padding: 0 .5rem;
+      background-color: transparent;
+      padding: 0 0.5rem;
       height: 40px;
       color: white;
       outline: none;
@@ -42,15 +42,15 @@ footer {
       background-color: var(--bodydark);
       color: white;
       outline: none;
-      // border: 1px solid rgba(130, 129, 129, 0.438); 
+      // border: 1px solid rgba(130, 129, 129, 0.438);
     }
-    
+
     textarea {
       width: 100%;
       height: 100px;
       outline: none;
       max-height: 120px;
-      background-color: var(--bodydark);
+      background-color: transparent;
       padding: 10px;
       border-radius: 5px;
       color: white;
@@ -60,7 +60,7 @@ footer {
       background-color: var(--bodydark);
       color: white;
       outline: none;
-      // border: 1px solid rgba(130, 129, 129, 0.438); 
+      // border: 1px solid rgba(130, 129, 129, 0.438);
     }
 
     .room-title {
@@ -68,7 +68,7 @@ footer {
       flex-direction: column;
       align-items: start;
       justify-content: center;
-      gap: 5px;
+      gap: 10px;
     }
     .room-description {
       display: flex;
@@ -87,9 +87,9 @@ footer {
 
       .select2-container {
         width: 100% !important;
-        
+
         .select2-selection--multiple {
-          background-color: var(--bodydark);
+          background-color: transparent;
           border: 1px solid rgba(130, 129, 129, 0.275);
           border-radius: 5px;
           min-height: 42px;
@@ -125,7 +125,7 @@ footer {
             }
 
             &::before {
-              content: '';
+              content: "";
               line-height: 1;
             }
           }
@@ -146,7 +146,7 @@ footer {
             padding: 4px 8px;
             min-width: 120px;
             height: 30px;
-            
+
             &::placeholder {
               color: rgba(255, 255, 255, 0.5);
             }
@@ -191,9 +191,9 @@ footer {
               border-radius: 50%;
               transition: all 0.2s ease;
               order: 2;
-              
+
               &::before {
-                content: '×';
+                content: "×";
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -243,7 +243,7 @@ footer {
       input {
         width: 3%;
         height: 20px;
-        
+
         margin: 0;
       }
     }
@@ -255,12 +255,33 @@ footer {
       transition: 0.2s ease-in-out;
       width: 50%;
       font-weight: 600;
-      background-color: #ffffffb3;
+      background-color: #ffffffa4;
       color: black;
     }
     button:hover {
       background-color: rgba(255, 255, 255, 0.794);
       border: none;
+    }
+  }
+  .create-room-container {
+    display: flex;
+    flex-direction: column;
+    // border: 1px solid white;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 40%;
+
+    .create-room-container-left {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+    }
+    video {
+      width: 100%;
+      height: 80%;
+      object-fit: cover;
     }
   }
 }
@@ -304,7 +325,7 @@ footer {
 
   .select2-search {
     padding: 8px;
-    
+
     .select2-search__field {
       width: 100%;
       background-color: rgba(255, 255, 255, 0.05);
@@ -312,7 +333,7 @@ footer {
       border-radius: 4px;
       color: white;
       padding: 8px 12px;
-      
+
       &:focus {
         outline: none;
         border-color: #205067;
@@ -322,16 +343,16 @@ footer {
 
   .select2-results__options {
     padding: 4px;
-    
+
     .select2-results__option {
       padding: 8px 12px;
       border-radius: 4px;
       transition: all 0.2s ease;
-      
+
       &[aria-selected="true"] {
         background-color: rgba(32, 80, 103, 0.3);
       }
-      
+
       &--highlighted[aria-selected] {
         background-color: #205067;
       }
@@ -350,7 +371,7 @@ footer {
 .select2-results__options::-webkit-scrollbar-thumb {
   background: rgba(130, 129, 129, 0.5);
   border-radius: 4px;
-  
+
   &:hover {
     background: rgba(130, 129, 129, 0.7);
   }

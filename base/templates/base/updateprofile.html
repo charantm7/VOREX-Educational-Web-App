@@ -1,25 +1,79 @@
 {% extends 'base.html' %} {% load static %} {% block link %}
 <link rel="stylesheet" href="{% static 'css/updateprofile.css' %}" />
+
+<div
+  id="global-loader"
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <div class="loader"></div>
+</div>
+<style>
+  .loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #6366f1;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
 {% endblock %} {% block title %}
 <title>Update Profile</title>
 {% endblock %} {% block nav1 %}
 <a href="{% url 'Update-profile' user.username %}">/ Update Profile</a>
 {% endblock %} {% block content %}
-<div class="update-profile-container">
+<div class="update-profile-container quicksand">
+  <div class="update-right">
+    <h1>Update Profile</h1>
+    <p>😎 Just vibing through life with decent Wi-Fi.</p>
+    <video autoplay loop muted>
+      <source src="{% static 'assets/guy.mp4' %}" type="video/mp4" />
+    </video>
+  </div>
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-
-    <h2 class="title">Update Profile</h2>
     <div class="top">
       <div class="current-picture">
         {% if profile.profile_pic %}
-        <img src="{{profile.profile_pic.url}}" alt="profile pic" />
+        <a href="{{profile.profile_pic.url}}" target="_blank">
+          <img src="{{profile.profile_pic.url}}" alt="profile pic" />
+        </a>
         {% else %}
         <img src="{% static 'assets/default.png' %}" alt="profile pic" />
         {% endif %}
         <label for="currrent_picture">Current Picture</label>
       </div>
-      <div class="new-picture">{{form.profile_pic}}</div>
+
+      <div class="new-picture-input">{{ form.profile_pic }}</div>
+    </div>
+    <div class="mid">
+      <div style="margin-top: 10px">
+        <img id="cropperPreview" style="max-width: 50%; max-height: 200px; display: none" />
+      </div>
+      <input type="hidden" name="cropped_image_data" id="croppedImageData" />
     </div>
     <div class="bottom">
       <div class="bio">
@@ -27,9 +81,52 @@
         {{form.bio}}
       </div>
     </div>
-    <div class="btn">
-      <button type="submit" class="btn btn-primary">Update Profile</button>
+    <div class="btn-s">
+      <button type="submit">Update Profile</button>
     </div>
   </form>
 </div>
+<script>
+  let cropper;
+
+  const profileInput = document.getElementById("id_profile_pic");
+  const preview = document.getElementById("cropperPreview");
+  const hiddenInput = document.getElementById("croppedImageData");
+
+  profileInput.addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      preview.src = event.target.result;
+      preview.style.display = "block";
+
+      if (cropper) cropper.destroy();
+
+      cropper = new Cropper(preview, {
+        aspectRatio: 1,
+        viewMode: 1,
+        autoCropArea: 1,
+        crop() {
+          const canvas = cropper.getCroppedCanvas();
+          hiddenInput.value = canvas.toDataURL("image/jpeg");
+        },
+      });
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Loader on form submit and page unload
+  const loader = document.getElementById("global-loader");
+
+  document.querySelector("form").addEventListener("submit", function () {
+    loader.style.display = "flex";
+  });
+
+  window.addEventListener("beforeunload", function () {
+    loader.style.display = "flex";
+  });
+</script>
+
 {% endblock %}

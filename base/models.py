@@ -53,6 +53,15 @@ class StudyMaterials(models.Model):
         if self.room != self.folder.room:
             raise ValueError("The study material's room must match the folder's room.")
         super().save(*args, **kwargs)
+
+    def file_size_kb(self):
+        try:
+            return round(self.file.size / 1024, 2)  # in KB
+        except:
+            return 0
+
+    def file_type(self):
+        return self.file.name.split('.')[-1].upper()
  
 
 class ChatBox(models.Model):

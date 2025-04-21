@@ -1,7 +1,16 @@
 {% extends 'base.html' %} {% load static %} {% block link %}
 <link rel="stylesheet" href="{% static 'css/createroom.css' %}" />
 {% endblock %} {% block content %}
-<div class="main-body">
+<div class="main-body quicksand">
+  <div class="create-room-container">
+    <div class="create-room-container-left">
+      <h1>Create Room</h1>
+      <p>🎨 In this space, ideas grow wild and free.</p>
+    </div>
+    <video autoplay loop muted>
+      <source src="{% static 'assets/office1.mp4' %}" type="video/mp4" />
+    </video>
+  </div>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="room-title">
