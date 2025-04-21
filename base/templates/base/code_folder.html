@@ -40,7 +40,9 @@
         <div class="card-bottom">
           <p>By: {{ folder.created_by.username|default:'Unknown' }}</p>
           {% if request.user == folder.created_by %}
-          <a onclick="DeleteFolder('{{folder.name}}')"><i class="fa-solid fa-trash"> </i></a>
+          <a onclick="DeleteCodeFolder(event)" href="{% url 'delete-code-folder' rooms.id folder.name %}"
+            ><i class="fa-solid fa-trash"> </i
+          ></a>
 
           {% endif %}
         </div>
@@ -64,3 +66,14 @@
     {% endfor %}
   </div>
 </div>
+
+<script>
+  function DeleteCodeFolder(event) {
+    event.preventDefault();
+    const url = event.currentTarget.getAttribute("href");
+    const confirmation = confirm("Are you sure you want to delete this folder?");
+    if (confirmation) {
+      window.location.href = url;
+    }
+  }
+</script>

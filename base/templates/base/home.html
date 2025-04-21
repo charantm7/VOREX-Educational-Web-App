@@ -70,9 +70,8 @@
           </div>
           <div class="card-bottom">
             <p>
-              {{room.member_count}} Joined
-              {% for tag in room.tags.all %}
-                  / <a href="{% url 'Tag' tag.name %}"> {{ tag.name }}</a>
+              {{room.member_count}} Joined {% for tag in room.tags.all %} /
+              <a href="{% url 'Tag' tag.name %}"> {{ tag.name }}</a>
               {% endfor %}
             </p>
             <div class="card-bottom-right">
@@ -82,7 +81,7 @@
                 <div>
                   {% if not room.is_private %}
                   <button>
-                    <b><a href="{% url 'Join-room' room.name %}">Join</a></b>
+                    <b><a href="{% url 'Join-room' room.id %}">Join</a></b>
                   </button>
                   {% elif room.is_private == True %}
                   <button>
@@ -92,7 +91,7 @@
                 </div>
                 {% else %}
                 <button>
-                  <b><a href="{% url 'Exit-room' room.name %} ">Exit</a></b>
+                  <b><a href="{% url 'Exit-room' room.id %} ">Exit</a></b>
                 </button>
                 {% endif %}
               </div>
