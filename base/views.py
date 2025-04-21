@@ -18,6 +18,8 @@ from django.db.models import Q
 from django.urls import reverse
 from datetime import datetime
 import logging
+import base64
+from django.core.files.base import ContentFile
 
 logger = logging.getLogger(__name__)
 
@@ -333,8 +335,8 @@ def create_room(request):
     return render(request, 'base/createroom.html', context)
 
 
-def edit_room(request, room_name):
-    room = get_object_or_404(Room, name=room_name)
+def edit_room(request, room_id):
+    room = get_object_or_404(Room, id=room_id)
     if request.method == 'POST':
         form = RoomForm(request.POST, instance=room)
         if form.is_valid():
@@ -348,8 +350,8 @@ def edit_room(request, room_name):
     return render(request, 'base/editroom.html', context)
 
 
-def delete_room(request, room_name):
-    room = get_object_or_404(Room, name=room_name)
+def delete_room(request, room_id):
+    room = get_object_or_404(Room, id=room_id)
     room.delete()
     messages.success(request, 'Room deleted successfully')
     return redirect('Home')
@@ -420,6 +422,14 @@ def profile_update(request, user_tag):
 
     else:   
         form = ProfileForm(instance=profile)
+
+    if request.method == 'POST':
+        cropped_data = request.POST.get('cropped_image_data')
+        if cropped_data:
+            format, imgstr = cropped_data.split(';base64,') 
+            ext = format.split('/')[-1]  
+            image_file = ContentFile(base64.b64decode(imgstr), name=f'profile_cropped.{ext}')
+            form.instance.profile_pic = image_file
 
     context = {'form': form, 'profile': profile}
     return render(request, 'base/updateprofile.html', context)
@@ -706,4 +716,8 @@ def delete_code_folder(request, room_id, folder_name):
     folder = get_object_or_404(CodeFolder, name=folder_name, room=room)
     folder.delete()
     return redirect('Rooms', room_id=room_id)
+
+
+
+
 

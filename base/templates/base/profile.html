@@ -10,7 +10,9 @@
   <div class="profile-container-top">
     <div class="profile-container-top-left">
       {% if profile.profile_pic %}
-      <img src="{{profile.profile_pic.url}}" alt="profile pic" />
+      <a href="{{profile.profile_pic.url}}" target="_blank">
+        <img src="{{profile.profile_pic.url}}" alt="profile pic" />
+      </a>
       {% else %}
       <img src="{% static 'assets/default.png' %}" alt="profile pic" />
       {% endif %}

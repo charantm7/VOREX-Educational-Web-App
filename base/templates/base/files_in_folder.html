@@ -19,11 +19,12 @@
     <div class="file">
       <label for="file">File</label>
       {{form.file}}
+      <div id="file-info" style="margin-top: 8px; font-size: 14px; color: whitesmoke"></div>
     </div>
     <button type="submit">Upload</button>
   </form>
 </div>
-<div class="main">
+<div class="main quicksand">
   <div class="top">
     <div class="top-1">
       <a href="{% url 'Rooms' folder.room.id %}" id="back-icon"
@@ -44,6 +45,10 @@
       {% for material in study_materials %}
       <div class="col-5 col-sm-4 col-md-3 col-lg-3 custom-column">
         <div class="file-materials">
+          <div class="material-type">
+            <p>{{ material.file_type }}</p>
+            <p>{{ material.file_size_kb }} KB</p>
+          </div>
           <div class="file-icon-name">
             <i class="fa-solid fa-file"></i>
             <a href="{{ material.file.url }}" class="quicksand" download title="{{material.title}}"
@@ -88,5 +93,25 @@
       window.location.href = url;
     }
   }
+  document.addEventListener("DOMContentLoaded", function () {
+    const fileInput = document.querySelector('input[type="file"]');
+    const fileInfoDiv = document.getElementById("file-info");
+
+    fileInput.addEventListener("change", function () {
+      fileInfoDiv.innerHTML = "";
+
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const fileSizeKB = (file.size / 1024).toFixed(2);
+        const fileType = file.type || "Unknown";
+
+        fileInfoDiv.innerHTML = `
+          <strong>Selected File:</strong> ${file.name}<br>
+          <strong>Type:</strong> ${fileType}<br>
+          <strong>Size:</strong> ${fileSizeKB} KB
+        `;
+      }
+    });
+  });
 </script>
 {% endblock %}

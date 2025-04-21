@@ -79,7 +79,7 @@ class StudyMaterialForm(ModelForm):
         model = StudyMaterials
         fields = ['title', 'file']
         widgets = {
-            'file': forms.ClearableFileInput(attrs={'accept': 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}),
+            'file': forms.ClearableFileInput(),  # Removed the 'accept' attribute
         }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

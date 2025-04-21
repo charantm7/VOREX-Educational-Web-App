@@ -32,8 +32,8 @@ urlpatterns = [
     
     # creation, deletion and edition
     path('create_room/',views.create_room, name='Create-room'),
-    path('edit_room/<str:room_name>/',views.edit_room, name='Edit-room'),
-    path('delete_room/<str:room_name>/',views.delete_room, name='Delete-room'),
+    path('edit_room/<int:room_id>/',views.edit_room, name='Edit-room'),
+    path('delete_room/<int:room_id>/',views.delete_room, name='Delete-room'),
     path('<str:tag_name>/',views.tag, name='Tag'),
     
 
