@@ -38,8 +38,8 @@ urlpatterns = [
     
 
     # join and exit 
-    path('join_room/<str:room_name>/',views.join_room, name='Join-room'),
-    path('exit_room/<str:room_name>/',views.exit_room, name='Exit-room'),
+    path('join_room/<int:room_id>/',views.join_room, name='Join-room'),
+    path('exit_room/<int:room_id>/',views.exit_room, name='Exit-room'),
     path('room-members/<str:room_tag>/',views.room_member_count, name='Room-members'),
 
     # follow and unfollow concept
@@ -86,7 +86,14 @@ urlpatterns = [
     #Code folder url
     path('room/<int:room_id>/code-folder/<str:folder_name>/', views.code_in_folder, name='code-folder'),
 
-    
+    #Code snippet deletion url
+    path('delete-code-snippet/<int:room_id>/<str:folder_name>/<str:code_snippet_id>/', views.delete_code_snippet, name='delete-code-snippet'),
+
+    #Code snippet edition url
+    path('edit-code-snippet/<int:room_id>/<str:folder_name>/<str:code_snippet_id>/', views.edit_code_snippet, name='edit-code-snippet'),
+
+    #Code folder deletion url
+    path('delete-code-folder/<int:room_id>/<str:folder_name>/', views.delete_code_folder, name='delete-code-folder'),
 
     
  

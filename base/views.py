@@ -355,20 +355,25 @@ def delete_room(request, room_name):
     return redirect('Home')
 
 
-def join_room(request, room_name):
-    room = get_object_or_404(Room, name=room_name)
+def join_room(request, room_id):
+    room = get_object_or_404(Room, id=room_id)
     if request.user in room.members_count.all():
         messages.error(request, 'You are already a member of this room')
-        return redirect('Rooms', room_name=room_name)
+        return redirect('Rooms', room_id=room_id)
     else:
         room.members_count.add(request.user)
         room.save()
+        Activity.objects.create(
+            user=request.user,
+            activity=f"joined room '{room.name}'",
+            room=room
+        )
         messages.success(request, 'You are now a member of this room')
-        return redirect('Rooms', room_name=room_name)
+        return redirect('Rooms', room_id=room_id)
 
 
-def exit_room(request, room_name):
-    room = get_object_or_404(Room, name=room_name)
+def exit_room(request, room_id):
+    room = get_object_or_404(Room, id=room_id)
     room.members_count.remove(request.user)
     messages.success(request, 'Exited from the room successfully')
     return redirect('Home')
@@ -666,5 +671,39 @@ def code_in_folder(request, room_id, folder_name):
     })
 
 
+def delete_code_snippet(request, room_id, folder_name, code_snippet_id):
+    room = get_object_or_404(Room, id=room_id)
+    folder = get_object_or_404(CodeFolder, name=folder_name, room=room)
+    code_snippet = get_object_or_404(CodeSnippet, id=code_snippet_id, folder=folder)
+    code_snippet.delete()
+    return redirect('code-folder', room_id=room_id, folder_name=folder_name)
 
+def edit_code_snippet(request, room_id, folder_name, code_snippet_id):
+    room = get_object_or_404(Room, id=room_id)
+    folder = get_object_or_404(CodeFolder, name=folder_name, room=room)
+    code_snippet = get_object_or_404(CodeSnippet, id=code_snippet_id, folder=folder)
+    form = CodeSnippetForm(request.POST or None, instance=code_snippet)
+    if request.method == 'POST':
+        if form.is_valid():
+            snippet = form.save(commit=False)
+            snippet.folder = folder
+            snippet.room = room
+            snippet.uploaded_by = request.user
+            snippet.save()
+            messages.success(request, "Code snippet updated!")
+            return redirect('code-folder', room_id=room_id, folder_name=folder_name)
+        else:
+            messages.error(request, "Invalid form")
+
+    return render(request, 'base/code_snippet.html', {
+        'code_snippet': code_snippet,
+        'form': form,
+        'room': room
+    })
+
+def delete_code_folder(request, room_id, folder_name):
+    room = get_object_or_404(Room, id=room_id)
+    folder = get_object_or_404(CodeFolder, name=folder_name, room=room)
+    folder.delete()
+    return redirect('Rooms', room_id=room_id)
 

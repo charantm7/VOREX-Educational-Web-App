@@ -49,9 +49,26 @@
       <div class="code-box-top">
         <h4>{{ snippet.title }}</h4>
         <div class="code-box-top-right">
-          <small>By: {{ snippet.uploaded_by }}</small>
-          <small>Language: {{ snippet.language }}</small>
-          <small>{{ snippet.created_at|date:"M d, Y" }}</small>
+          <div class="code-box-top-right-left">
+            <small>By: {{ snippet.uploaded_by }}</small>
+            <small>Language: {{ snippet.language }}</small>
+            <small>{{ snippet.created_at|date:"M d, Y" }}</small>
+          </div>
+          {% if request.user == snippet.uploaded_by %}
+          <div class="code-box-customize">
+            <a
+              onclick="DeleteCodeSnippet(event)"
+              href="{% url 'delete-code-snippet' room_id=room.id folder_name=folder.name code_snippet_id=snippet.id %}"
+            >
+              <i class="fa-solid fa-trash"></i>
+            </a>
+            <a
+              href="{% url 'edit-code-snippet' room_id=room.id folder_name=folder.name code_snippet_id=snippet.id %}"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </a>
+          </div>
+          {% endif %}
         </div>
       </div>
       <div class="code-container">
@@ -89,6 +106,15 @@
       .catch((err) => {
         console.error("Failed to copy text: ", err);
       });
+  }
+
+  function DeleteCodeSnippet(event) {
+    event.preventDefault();
+    const url = event.currentTarget.getAttribute("href");
+    const confirmation = confirm("Are you sure you want to delete this code snippet?");
+    if (confirmation) {
+      window.location.href = url;
+    }
   }
 </script>
 <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
