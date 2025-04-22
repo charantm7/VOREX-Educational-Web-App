@@ -81,6 +81,7 @@ urlpatterns = [
          views.google_login_redirect),
 
     #Code snippet upload url
+    path('code-snippet/<int:room_id>/<str:folder_name>/', views.code_in_folder, name='code-snippet'),
  
 
     #Code folder url
@@ -94,6 +95,9 @@ urlpatterns = [
 
     #Code folder deletion url
     path('delete-code-folder/<int:room_id>/<str:folder_name>/', views.delete_code_folder, name='delete-code-folder'),
+
+    #Code snippet upload url
+    path('upload-code/<int:room_id>/<str:folder_name>/', views.upload_code, name='upload-code'),
 
     
  

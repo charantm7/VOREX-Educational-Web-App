@@ -658,7 +658,7 @@ def debug_tags(request):
 def code_in_folder(request, room_id, folder_name):
     room = get_object_or_404(Room, id=room_id)
     folder = get_object_or_404(CodeFolder, name=folder_name, room=room)
-    code_snippets = CodeSnippet.objects.filter(folder=folder)
+    code_snippets = CodeSnippet.objects.filter(folder=folder, room=room)
 
     form = CodeSnippetForm(request.POST or None)
     if request.method == 'POST':
@@ -676,6 +676,26 @@ def code_in_folder(request, room_id, folder_name):
     return render(request, 'base/code_snippet.html', {
         'code_snippets': code_snippets,
         'folder': folder,
+        'room': room
+    })
+
+def upload_code(request, room_id, folder_name):
+    room = get_object_or_404(Room, id=room_id)
+    folder = get_object_or_404(CodeFolder, name=folder_name, room=room)
+    form = CodeSnippetForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            snippet = form.save(commit=False)
+            snippet.folder = folder
+            snippet.room = room
+            snippet.uploaded_by = request.user
+            snippet.save()
+            messages.success(request, "Code snippet uploaded!")
+            return redirect('code-folder', room_id=room_id, folder_name=folder_name)
+        else:
+            messages.error(request, "Invalid form")
+
+    return render(request, 'base/upload_code.html', {
         'form': form,
         'room': room
     })
@@ -701,16 +721,19 @@ def edit_code_snippet(request, room_id, folder_name, code_snippet_id):
             snippet.uploaded_by = request.user
             snippet.save()
             messages.success(request, "Code snippet updated!")
-            return redirect('code-folder', room_id=room_id, folder_name=folder_name)
+            
         else:
             messages.error(request, "Invalid form")
+    else:
+        form = CodeSnippetForm(instance=code_snippet)
 
-    return render(request, 'base/code_snippet.html', {
-        'code_snippet': code_snippet,
+    return render(request, 'base/upload_code.html', {
         'form': form,
+        'code_snippet': code_snippet,
         'room': room
     })
 
+    
 def delete_code_folder(request, room_id, folder_name):
     room = get_object_or_404(Room, id=room_id)
     folder = get_object_or_404(CodeFolder, name=folder_name, room=room)
