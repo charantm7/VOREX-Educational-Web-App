@@ -62,6 +62,9 @@
     <button class="tablinks" id="tab-Code" onclick="openTab(event, 'Code')">
       <i class="fa-solid fa-code"></i><span class="btn-txt">Code</span>
     </button>
+    <button class="tablinks" id="tab-editor" onclick="openTab(event, 'editor')">
+      <i class="fa-solid fa-terminal"></i><span class="btn-txt">Code Editor</span>
+    </button>
   </div>
 
   <div id="Info" class="tabcontent">
@@ -125,6 +128,9 @@
   {% block materials %} {% include 'base/study_materials.html' %} {% endblock %}
   <div id="Code" class="tabcontent">
     {% block code %} {% include 'base/code_folder.html' %} {% endblock %}
+  </div>
+  <div id="editor" class="tabcontent">
+    {% block editor %} {% include 'base/code_editor.html' %} {% endblock %}
   </div>
   <script src="{% static 'js/room.js'%}"></script>
   <script>
