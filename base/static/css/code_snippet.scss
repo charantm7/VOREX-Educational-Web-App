@@ -2,14 +2,121 @@ footer {
   display: none;
 }
 
+.main-upload {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  padding: 2rem;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+
+    .left-top {
+      display: flex;
+      justify-content: space-evenly;
+      button {
+        background-color: var(--navdark);
+        color: var(--llwhite);
+        border: none;
+        padding: 0.2rem 1rem;
+        border-radius: 5px;
+      }
+    }
+
+    video {
+      height: 80%;
+      object-fit: cover;
+    }
+  }
+}
+
+.code-snippet-form {
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.179);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 10px;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      button {
+        border: none;
+        padding: 0.2rem 0.7rem;
+        border-radius: 5px;
+      }
+    }
+    .title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      input {
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.179);
+        color: var(--llwhite);
+      }
+    }
+    .language {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      select {
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.179);
+        color: var(--llwhite);
+      }
+      option {
+        background-color: var(--navdark);
+        color: var(--llwhite);
+      }
+    }
+    .code {
+      display: flex;
+      flex-direction: column;
+      textarea {
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.179);
+        color: var(--llwhite);
+        max-height: 200px;
+      }
+      ::placeholder {
+        color: var(--llwhite);
+      }
+    }
+    button {
+      border: none;
+      padding: 0.7rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}
+
 .main {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 2rem;
-  .code-snippet-form {
-    display: none;
-  }
 
   .top {
     // border: 1px solid var(--navdark);
@@ -87,7 +194,7 @@ footer {
               text-decoration: none;
               color: var(--llwhite);
               i {
-                font-size: 1.2rem;
+                font-size: 1rem;
               }
             }
           }

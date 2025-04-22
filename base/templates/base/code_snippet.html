@@ -6,31 +6,9 @@
 <a href="{% url 'code-folder' room_id=room.id folder_name=folder.name %}">/ {{folder.name}}</a>
 {% endblock %} {% block content %}
 <div class="main quicksand">
-  <div class="code-snippet-form">
-    <form method="POST" action="{% url 'code-folder' room_id=room.id folder_name=folder.name %}">
-      {% csrf_token %}
-      <div class="top">
-        <p>Upload Code Snippet</p>
-        <button type="button" class="close-btn" onclick="closeCodeSnippetForm()">Close</button>
-      </div>
-      <div class="title">
-        <label for="title">Name</label>
-        {{ form.title }}
-      </div>
-      <div class="language">
-        <label for="language">Language</label>
-        {{ form.language }}
-      </div>
-      <div class="code">
-        <label for="code">Code</label>
-        {{ form.code }}
-      </div>
-      <button type="submit" name="code_snippet_submit">Upload Code</button>
-    </form>
-  </div>
   <div class="top">
     <div class="top-left">
-      <button onclick="window.history.back()">
+      <button onclick="back()">
         <i class="fa-solid fa-arrow-left"></i>
         <span>Back</span>
       </button>
@@ -85,7 +63,7 @@
 </div>
 <script>
   function openCodeSnippetForm() {
-    document.querySelector(".code-snippet-form").style.display = "flex";
+    window.location.href = "{% url 'upload-code' room_id=room.id folder_name=folder.name %}";
   }
   function closeCodeSnippetForm() {
     document.querySelector(".code-snippet-form").style.display = "none";
@@ -115,6 +93,9 @@
     if (confirmation) {
       window.location.href = url;
     }
+  }
+  function back() {
+    window.location.href = "{% url 'Rooms' room_id=room.id %}";
   }
 </script>
 <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />

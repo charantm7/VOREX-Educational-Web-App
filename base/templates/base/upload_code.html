@@ -1,0 +1,38 @@
+{% extends 'base.html' %}{% load static %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/code_snippet.css' %}" />
+{% endblock %} {% block content %}
+<div class="main-upload quicksand">
+  <div class="left">
+    <div class="left-top">
+      <button onclick="window.history.back()">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+      <h2>Upload Code Snippet</h2>
+    </div>
+    <video autoplay loop muted playsinline>
+      <source src="{% static 'assets/office1.mp4' %}" type="video/mp4" />
+    </video>
+  </div>
+  <div class="code-snippet-form quicksand">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="top">
+        <p>Upload Code Snippet</p>
+      </div>
+      <div class="title">
+        <label for="title">Name</label>
+        {{ form.title }}
+      </div>
+      <div class="language">
+        <label for="language">Language</label>
+        {{ form.language }}
+      </div>
+      <div class="code">
+        <label for="code">Code</label>
+        {{ form.code }}
+      </div>
+      <button type="submit" name="code_snippet_submit">Upload Code</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
