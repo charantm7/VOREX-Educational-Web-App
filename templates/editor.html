@@ -1,0 +1,85 @@
+<div class="editor-body">
+  <div class="editor-header">
+    <div></div>
+    <!-- Empty left side -->
+    <div class="editor-controls">
+      <select id="language">
+        <option value="python">Python</option>
+        <option value="c">C</option>
+        <option value="cpp">C++</option>
+        <option value="java">Java</option>
+        <option value="csharp">C#</option>
+        <option value="javascript">JavaScript</option>
+      </select>
+      <button onclick="runCode()"><i class="fa-solid fa-play"></i> Run</button>
+    </div>
+  </div>
+
+  <div id="terminal" class="terminal hidden">
+    <div class="terminal-header">
+      <h3>Output</h3>
+    </div>
+    <div id="output"></div>
+  </div>
+
+  <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
+  <script>
+    let editor;
+
+    require.config({ paths: { vs: "https://unpkg.com/monaco-editor@latest/min/vs" } });
+    require(["vs/editor/editor.main"], function () {
+      editor = monaco.editor.create(document.getElementById("editor"), {
+        value: "// Write your code here",
+        language: "javascript",
+        theme: "vs-dark",
+        automaticLayout: true,
+        fontSize: 16,
+        fontFamily: "Fira Code",
+        lineNumbers: "on",
+        minimap: { enabled: true },
+        wordWrap: "on",
+        tabSize: 4,
+        insertSpaces: true,
+        scrollBeyondLastLine: false,
+        formatOnType: true,
+        formatOnPaste: true,
+        renderWhitespace: "boundary",
+        cursorSmoothCaretAnimation: true,
+        smoothScrolling: true,
+      });
+    });
+
+    async function runCode() {
+      let code = editor.getValue();
+      const language = document.getElementById("language").value;
+
+      const inputMatches = [...code.matchAll(/input\(.*?\)/g)];
+
+      for (const match of inputMatches) {
+        const userInput = prompt("Your code needs input. Please enter:");
+        code = code.replace(match[0], `"${userInput}"`);
+      }
+
+      const response = await fetch("http://localhost:5000/run", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ language, code }),
+      });
+
+      const data = await response.json();
+      document.getElementById("output").innerText = data.output;
+    }
+
+    function closeTerminal() {
+      document.getElementById("terminal").classList.add("hidden");
+    }
+
+    document.getElementById("language").addEventListener("change", (e) => {
+      const lang = e.target.value;
+      let monacoLang = lang;
+      if (lang === "c" || lang === "cpp") monacoLang = "cpp";
+      if (lang === "csharp") monacoLang = "csharp";
+      editor.updateOptions({ language: monacoLang });
+    });
+  </script>
+</div>

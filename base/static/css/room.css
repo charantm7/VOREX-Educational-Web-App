@@ -1368,4 +1368,85 @@ footer {
     width: 100%;
   }
 }
+
+.editor-body {
+  background: #1e1e2f;
+  padding: 0;
+  height: 85vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -ms-grid-rows: auto 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas: "header editor" "terminal editor";
+  font-family: "Fira Code", monospace;
+}
+
+.editor-header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: header;
+  width: 477px;
+  padding: 10px 10px;
+}
+
+.editor-header .editor-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.editor-header .editor-controls select {
+  padding: 10px 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.204);
+  background-color: rgba(255, 255, 255, 0.104);
+  color: var(--lwhite);
+  font-size: 12px;
+}
+
+.editor-header .editor-controls select option {
+  font-size: 12px;
+  background-color: var(--roombg);
+  color: var(--lwhite);
+}
+
+.editor-header .editor-controls button {
+  padding: 10px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.204);
+  background-color: rgba(255, 255, 255, 0.104);
+  color: var(--lwhite);
+}
+
+.code-editor {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  grid-area: editor;
+  border: 1px solid rgba(255, 255, 255, 0.204);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.terminal {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: terminal;
+  width: 477px;
+  padding: 10px 10px;
+  overflow-y: auto;
+}
 /*# sourceMappingURL=room.css.map */

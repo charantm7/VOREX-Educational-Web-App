@@ -78,3 +78,4 @@ python-decouple>=3.8  # Use this instead of just 'decouple'
 pytest-django>=4.5
 coverage>=7.4
 django-debug-toolbar>=4.3
+monaco-editor>=0.45.0

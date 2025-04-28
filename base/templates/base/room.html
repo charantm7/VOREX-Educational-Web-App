@@ -129,9 +129,7 @@
   <div id="Code" class="tabcontent">
     {% block code %} {% include 'base/code_folder.html' %} {% endblock %}
   </div>
-  <div id="editor" class="tabcontent">
-    {% block editor %} {% include 'base/code_editor.html' %} {% endblock %}
-  </div>
+  <div id="editor" class="tabcontent">{% block editor %} {% include 'editor.html' %} {% endblock %}</div>
   <script src="{% static 'js/room.js'%}"></script>
   <script>
     function openChat() {

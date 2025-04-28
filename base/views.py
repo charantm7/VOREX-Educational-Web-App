@@ -721,6 +721,7 @@ def edit_code_snippet(request, room_id, folder_name, code_snippet_id):
             snippet.uploaded_by = request.user
             snippet.save()
             messages.success(request, "Code snippet updated!")
+            return redirect('code-folder', room_id=room_id, folder_name=folder_name)
             
         else:
             messages.error(request, "Invalid form")

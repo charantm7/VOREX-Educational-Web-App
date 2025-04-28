@@ -1034,3 +1034,67 @@ footer {
     }
   }
 }
+
+.editor-body {
+  background: #1e1e2f;
+  padding: 0;
+  height: 85vh;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header editor"
+    "terminal editor";
+
+  font-family: "Fira Code", monospace;
+  // border: 1px solid rgba(255, 255, 255, 0.204);
+}
+
+.editor-header {
+  grid-area: header;
+  width: 477px;
+  // border: 1px solid rgba(255, 255, 255, 0.204);
+  padding: 10px 10px;
+
+  .editor-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    select {
+      padding: 10px 10px;
+      border-radius: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.204);
+      background-color: rgba(255, 255, 255, 0.104);
+      color: var(--lwhite);
+      font-size: 12px;
+
+      option {
+        font-size: 12px;
+        background-color: var(--roombg);
+        color: var(--lwhite);
+      }
+    }
+    button {
+      padding: 10px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.204);
+      background-color: rgba(255, 255, 255, 0.104);
+      color: var(--lwhite);
+    }
+  }
+}
+.code-editor {
+  grid-area: editor;
+  border: 1px solid rgba(255, 255, 255, 0.204);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.terminal {
+  grid-area: terminal;
+  width: 477px;
+  padding: 10px 10px;
+  overflow-y: auto;
+}
