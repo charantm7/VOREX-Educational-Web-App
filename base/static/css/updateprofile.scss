@@ -57,7 +57,7 @@ footer {
       }
 
       .new-picture-input {
-        margin-right: 3rem;
+        margin-right: 3swrem;
         input {
           background-color: #ffffff1d;
           color: white;
@@ -102,6 +102,47 @@ footer {
         text-align: center;
         border: none;
       }
+    }
+  }
+}
+
+.update-user-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.047);
+    width: 40%;
+    padding: 2rem 2rem;
+
+    [class*="user-"] {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+
+      input {
+        width: 100%;
+        border-radius: 0.5rem;
+        border: 1px solid var(--border);
+        background-color: transparent;
+        color: white;
+        padding: 0.5rem;
+      }
+    }
+
+    button {
+      border-radius: 0.5rem;
+      height: 40px;
+      padding: 0.5rem;
+      width: 50%;
     }
   }
 }
