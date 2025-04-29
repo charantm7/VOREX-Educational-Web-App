@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['vorexhub.onrender.com']
 SITE_ID = 2
 
 INSTALLED_APPS = [
+    'base',
     'daphne',
     'channels',
     'django.contrib.admin',
