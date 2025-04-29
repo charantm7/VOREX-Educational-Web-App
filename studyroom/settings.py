@@ -117,11 +117,20 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://vorex:rlZsgwy9gSURb4Sj6hk6vemPgxuwTpXB@dpg-d089vongi27c738bf6u0-a/vorexdb'
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vorexdb',
+        'USER': 'vorex',
+        'PASSWORD': 'rlZsgwy9gSURb4Sj6hk6vemPgxuwTpXB',
+        'HOST': 'dpg-d089vongi27c738bf6u0-a',  # e.g., "dpg-d089vongi27c738bf6u0-a"
+        'PORT': '5432',  # Default PostgreSQL port
+    }
 }
 
+DATABASES['default'] = dj_database_url.parse("postgresql://vorex:rlZsgwy9gSURb4Sj6hk6vemPgxuwTpXB@dpg-d089vongi27c738bf6u0-a.oregon-postgres.render.com/vorexdb")
+
+
+#postgresql://vorex:rlZsgwy9gSURb4Sj6hk6vemPgxuwTpXB@dpg-d089vongi27c738bf6u0-a.oregon-postgres.render.com/vorexdb
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
