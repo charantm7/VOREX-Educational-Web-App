@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block link %}
 <link rel="stylesheet" href="{% static 'css/updateprofile.css' %}" />
 {% endblock %} {% block content %}
-<div class="update-user-container">
+<div class="update-user-container quicksand">
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <h2>Update User</h2>
@@ -21,9 +21,8 @@
       <label for="last_name">Last Name</label>
       {{form.last_name}}
     </div>
-    <div class="btn">
-      <button type="submit" class="btn btn-primary">Update User</button>
-    </div>
+
+    <button type="submit">Update User</button>
   </form>
 </div>
 {% endblock %}
