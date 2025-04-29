@@ -1,81 +1,18 @@
-# ==========================
-# Django and Core Libraries
-# ==========================
-Django>=4.2
-djangorestframework>=3.14
-asgiref>=3.7
-channels>=4.0
-channels-redis>=4.1
 
-# ==========================
-# Authentication & Security
-# ==========================
-django-allauth>=0.61
-djangorestframework-simplejwt>=5.2
-bcrypt>=4.0
-
-# ==========================
-# Database and Caching
-# ==========================
-psycopg2-binary>=2.9  # Use mysqlclient if using MySQL instead
-django-redis>=5.3
-
-# ==========================
-# Real-time & Background Tasks
-# ==========================
-
-celery>=5.3
-eventlet>=0.33
-apscheduler>=3.10
-
-# ==========================
-# Frontend & Static Files
-# ==========================
-django-webpack-loader>=1.8
-whitenoise>=6.5
-
-# ==========================
-# AI / NLP (Optional Features)
-# ==========================
-openai>=1.2
-transformers>=4.36
+asgiref
+djangorestframework-simplejwt
+openai
+transformers
+monaco-editor
+django
+channels
+daphne
+requests
+django-allauth
+psycopg2-binary
+PyJWT
+Pillow
 
 
-# ==========================
-# Study Materials & File Handling
-# ==========================
-Pillow>=10.2
-pdfplumber>=0.11
-django-storages>=1.14
-boto3>=1.33
 
-# ==========================
-# Notifications
-# ==========================
-django-notifications-hq>=1.8
 
-# ==========================
-# Filtering, Search, Docs
-# ==========================
-django-filter>=23.5
-drf-yasg>=1.21  # Swagger / API Docs
-
-# ==========================
-# Analytics & Tracking
-# ==========================
-matplotlib>=3.8
-numpy>=1.26
-
-# ==========================
-# Deployment
-# ==========================
-gunicorn>=21.2
-python-decouple>=3.8  # Use this instead of just 'decouple'
-
-# ==========================
-# Testing & Debugging
-# ==========================
-pytest-django>=4.5
-coverage>=7.4
-django-debug-toolbar>=4.3
-monaco-editor>=0.45.0
