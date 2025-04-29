@@ -5,15 +5,11 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "unsafe-secret-for-dev")
-DEBUG = os.environ.get("DEBUG", "False") == "True"
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "vorexhub.onrender.com",
-    "www.vorexhub.xyz",
-    "vorexhub.xyz"
-]
+SECRET_KEY = 'django-insecure-cox_a!8#h^j(w*4g-n^3#9^-55vbv+il0--mfr*7=v675wlxbm'
+ALLOWED_HOSTS = ['vorexhub.onrender.com']
+
+DEBUG = True
+
 
 # Application definition
 SITE_ID = 2
