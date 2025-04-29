@@ -15,7 +15,7 @@ Pillow
 gunicorn
 dj-database-url
 django-select2
-
+whitenoise
 
 
 
