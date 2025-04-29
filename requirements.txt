@@ -12,6 +12,7 @@ django-allauth
 psycopg2-binary
 PyJWT
 Pillow
+gunicorn
 
 
 

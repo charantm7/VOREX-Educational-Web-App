@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: vorexhub
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn studyroom.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: studyroom.settings
+      - key: PYTHON_VERSION
+        value: 3.11
