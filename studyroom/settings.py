@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['vorexhub.onrender.com', 'localhost', '127.0.0.1', 'www.vorexhu
 
 CSRF_TRUSTED_ORIGINS = [
     'https://vorexhub.onrender.com',
+    'https://www.vorexhub.xyz',
 ]
 
 # Application definition
