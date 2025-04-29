@@ -1,0 +1,51 @@
+{
+  "src/lib/components/MonacoEditor.react.js": {
+    "description": "Monaco Editor based of https://microsoft.github.io/monaco-editor/",
+    "displayName": "MonacoEditor",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "value": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "A value that will be printed on the editor"
+      },
+      "options": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "The value displayed in the input."
+      },
+      "height": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "height for the editor"
+      },
+      "defaultLanguage": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Default language format for the editor"
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
+      }
+    }
+  }
+}
