@@ -177,7 +177,6 @@ nav .nav-container-left .hamburger {
 }
 
 nav .nav-container-left .bar1,
-nav .nav-container-left .bar2,
 nav .nav-container-left .bar3 {
   width: 25px;
   height: 3px;
@@ -185,11 +184,22 @@ nav .nav-container-left .bar3 {
   margin: 5.5px 0;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  border-radius: 2px;
+}
+
+nav .nav-container-left .bar2 {
+  width: 20px;
+  height: 3px;
+  background-color: var(--llwhite);
+  margin: 5.5px 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 2px;
 }
 
 nav .nav-container-left .change .bar1 {
-  -webkit-transform: translate(0, 8.5px) rotate(-45deg);
-          transform: translate(0, 8.5px) rotate(-45deg);
+  -webkit-transform: translate(0, 8.3px) rotate(-45deg);
+          transform: translate(0, 8.3px) rotate(-45deg);
 }
 
 nav .nav-container-left .change .bar2 {
@@ -197,8 +207,8 @@ nav .nav-container-left .change .bar2 {
 }
 
 nav .nav-container-left .change .bar3 {
-  -webkit-transform: translate(0, -8.5px) rotate(45deg);
-          transform: translate(0, -8.5px) rotate(45deg);
+  -webkit-transform: translate(0, -8.3px) rotate(45deg);
+          transform: translate(0, -8.3px) rotate(45deg);
 }
 
 nav .nav-container-left .nav-links {
@@ -252,7 +262,7 @@ nav .nav-container-right {
 
 nav .nav-container-right .search-container {
   border: 1px solid var(--nav-border);
-  padding: 0  0.55rem 0 0.4rem;
+  padding: 0 0.55rem 0 0.4rem;
   border-radius: 4px;
   -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
@@ -316,7 +326,7 @@ nav .nav-container-right-signup-btn a button {
   border-radius: 3px;
   -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
-  padding: 0.2rem .5rem;
+  padding: 0.2rem 0.5rem;
   font-size: 14px;
   width: 80px;
 }
@@ -436,7 +446,18 @@ aside .sidebar {
 }
 
 aside .sidebar.active {
-  width: 170px;
+  width: 210px;
+  padding: 0 10px;
+}
+
+aside .sidebar.active .nav_list-top li {
+  background-color: rgba(255, 255, 255, 0.015);
+  border-radius: 5px;
+}
+
+aside .sidebar.active .nav-list-bottom li {
+  background-color: rgba(255, 255, 255, 0.015);
+  border-radius: 5px;
 }
 
 aside .logo_content {
@@ -476,7 +497,14 @@ aside .sidebar.active .logo_name {
 aside .nav_list-top {
   margin-top: 20px;
   list-style: none;
-  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.8rem;
 }
 
 aside .nav_list-top li {
@@ -517,8 +545,15 @@ aside .nav_list-top i {
 
 aside .nav-list-bottom {
   list-style: none;
-  position: relative;
-  margin-bottom: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 90px;
 }
 
 aside .nav-list-bottom li {

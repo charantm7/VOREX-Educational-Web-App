@@ -66,10 +66,10 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
-        }
+        },
+        'OAUTH_PKCE_ENABLED': True,  
     }
 }
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -191,14 +191,16 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend'
 )
 
-
+# Redirect URLs after login and logout
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 SOCIALACCOUNT_AUTO_SIGNUP = True
-SOCIALACCOUNT_LOGIN_ON_GET = True
+SOCIALACCOUNT_USERNAME_GENERATOR = lambda user: user.email.split('@')[0]
+ACCOUNT_SIGNUP_FIELDS = ['email', 'password1', 'password2']  
 
-# Add this at the bottom of settings.py
-SELECT2_CACHE_BACKEND = 'default'
+
+
+
 
 CACHES = {
     'default': {
@@ -207,3 +209,21 @@ CACHES = {
 }
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'vorexx07@gmail.com'
+EMAIL_HOST_PASSWORD = 'ufhtzvedowwsvaew'
+DEFAULT_FROM_EMAIL = 'Vorex Support <vorexx07@gmail.com>'
+
+
+# Add this at the bottom of settings.py
+SELECT2_CACHE_BACKEND = 'default'
+
+

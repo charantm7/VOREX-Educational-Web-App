@@ -133,7 +133,7 @@
   <script src="{% static 'js/room.js'%}"></script>
   <script>
     function openChat() {
-      window.location.href = "{% url 'chat' rooms.id request.user.username %}";
+      window.location.href = "{% url 'chat' rooms.id %}";
     }
     function CreateFolder() {
       document.querySelector(".create-folder").style.display = "block";

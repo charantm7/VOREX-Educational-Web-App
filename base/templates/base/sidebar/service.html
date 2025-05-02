@@ -1,0 +1,61 @@
+{% extends 'base.html' %}{% load static %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/sidebaritem.css' %}" />
+{% endblock %} {% block nav1 %} / <a href="{% url 'Service' %}">Service</a>
+{% endblock %} {% block content %}
+
+<div class="vorex-services quicksand">
+  <div class="top">
+    <p>Our Services</p>
+  </div>
+  <div class="service">
+    <div class="service-item">
+      <div class="left">
+        <h2>Collaborative Study Rooms</h2>
+        <ul>
+          <li>Real-time group chats</li>
+          <li>Topic-Based Rooms</li>
+          <li>Private and Global Rooms</li>
+        </ul>
+      </div>
+      <i class="fas fa-users"></i>
+    </div>
+
+    <div class="service-item">
+      <i class="fas fa-code"></i>
+      <div class="left">
+        <h2>Code Upload & Sharing Dashboard</h2>
+        <ul style="justify-content: start">
+          <li>Users can upload, view code snippets</li>
+          <li>Syntax highlighting and language detection</li>
+          <li>User are free to use the Code</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-item">
+      <div class="left">
+        <h2>Study Materials Repository</h2>
+        <ul>
+          <li>Upload & categorize PDFs, docs, and slides by topic.</li>
+          <li>Filter by subject and tags</li>
+          <li>Admin-curated and user-submitted content</li>
+        </ul>
+      </div>
+      <i class="fas fa-book"></i>
+    </div>
+
+    <div class="service-item">
+      <i class="fas fa-user-circle"></i>
+
+      <div class="left">
+        <h2>User Profiles & Badges</h2>
+        <ul>
+          <li>Track contribution (uploads, room activity, code posts)</li>
+          <li>Earn badges for achievements (top contributor, verified helper)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

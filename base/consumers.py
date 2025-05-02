@@ -1,4 +1,3 @@
-# chat/consumers.py
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
@@ -6,14 +5,13 @@ from django.contrib.auth.models import User
 from .models import ChatBox, ChatBoxMembership, Room
 from django.core.exceptions import ObjectDoesNotExist
 
-
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         try:
             self.room_id = self.scope['url_route']['kwargs']['room_id']
             self.room_group_name = f'chat_{self.room_id}'
             
-            # Check if room exists
+            # Check if room exists and user has access
             room = await self.get_room()
             if not room:
                 await self.close()
@@ -94,5 +92,4 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 content=message
             )
         except Exception as e:
-            print(f"Error saving message: {str(e)}")
-
+            print(f"Error saving message: {str(e)}") 

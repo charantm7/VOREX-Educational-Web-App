@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 #models
-from .models import Tag, Room, RoomMembership, ChatBox, StudyMaterials, RoomChatIndividual,UserProfile, Followrequest, Folder, ChatBoxMembership, Activity, InfoContent, InfoContentUrl, CodeSnippet, CodeFolder
+from .models import Tag, Room, RoomMembership, ChatBox, StudyMaterials,UserProfile, Followrequest, Folder, ChatBoxMembership, Activity, InfoContent, InfoContentUrl, CodeSnippet, CodeFolder
 
 #auth
 from django.contrib.auth import login, logout, authenticate
@@ -43,11 +43,20 @@ def home(request):
 
 @login_required(login_url='User_login')
 def rooms(request, room_id):
-    
     room = get_object_or_404(Room, id=room_id)
     folder = Folder.objects.filter(room=room)
     members_joined = room.members_count.all()
     profile = get_object_or_404(UserProfile, user=room.created_by)
+    
+    # Get or create the default chat group for this room
+    chat_box, created = ChatBox.objects.get_or_create(
+        room=room,
+        defaults={
+            'group_name': 'General',
+            'created_by': room.created_by
+        }
+    )
+    
     group_chat = ChatBox.objects.filter(room=room)
     group_chat_member = ChatBoxMembership.objects.filter(chat_box__in=group_chat)
     code_folder = CodeFolder.objects.filter(room=room)
@@ -56,7 +65,6 @@ def rooms(request, room_id):
 
     # Initialize forms  
     folder_form = FolderForm()
-    group_chat_form = ChatBoxForm()
     group_chat_member_form = ChatBoxMemberForm()
     info_content_form = InfoContentForm()
     info_content_url_form = InfoContentUrlForm()
@@ -68,7 +76,6 @@ def rooms(request, room_id):
     show_code_folder_form = request.GET.get('form') == 'code-folder'
 
     if request.method == 'POST':
-        
         if 'folder_submit' in request.POST:
             folder_form = FolderForm(request.POST)
             if folder_form.is_valid():
@@ -79,63 +86,16 @@ def rooms(request, room_id):
                 return redirect('Rooms', room_id=room_id)
             messages.error(request, 'Invalid Folder Form')
 
-        elif 'group_chat_submit' in request.POST:
-            group_chat_form = ChatBoxForm(request.POST)
-            if group_chat_form.is_valid():
-                chat = group_chat_form.save(commit=False)
-                chat.created_by = request.user
-                chat.room = room
-                chat.save()
-                return redirect('Rooms', room_id=room_id)
-            messages.error(request, 'Invalid Group Chat Form')
-
         elif 'group_chat_member_submit' in request.POST:
             group_chat_member_form = ChatBoxMemberForm(request.POST)
             if group_chat_member_form.is_valid():
                 group_member = group_chat_member_form.save(commit=False)
                 group_member.message_by = request.user
-                group_member.chat_box = chat  # Fixed assignment
+                group_member.chat_box = chat_box
                 group_member.save()
-                return redirect('Rooms', room_id=room_id)
-            messages.error(request, "Invalid Member Form")
-
-        elif 'info_content_submit' in request.POST:
-            info_content_form = InfoContentForm(request.POST)
-            if info_content_form.is_valid():
-                info_content = info_content_form.save(commit=False)
-                info_content.created_by = request.user
-                info_content.room = room
-                info_content.save()
-                return redirect(f"{reverse('Rooms', args=[room_id])}#info-content-form")
-            messages.error(request, 'Invalid Info Content Form')
-
-        elif 'info_content_url_submit' in request.POST:
-            info_content_url_form = InfoContentUrlForm(request.POST)
-            if info_content_url_form.is_valid():
-                info_content_url = info_content_url_form.save(commit=False)
-                info_content_url.created_by = request.user
-                info_content_url.room = room
-                info_content_url.save()
-                return redirect(f"{reverse('Rooms', args=[room_id])}#info-url-form")
-            messages.error(request, 'Invalid Info Content URL Form')
-
-        elif 'code_folder_submit' in request.POST:
-            code_folder_form = CodeFolderForm(request.POST)
-            if code_folder_form.is_valid():
-                code_folder = code_folder_form.save(commit=False)
-                code_folder.created_by = request.user
-                code_folder.room = room
-                code_folder.save()
-                return redirect(f"{reverse('Rooms', args=[room_id])}#code-folder-form")
-            messages.error(request, 'Invalid Code Folder Form')
-
-
-
-    if request.user not in members_joined:
-        messages.error(request, "You are not a member of this room! Join to continue.")
-        return redirect("Home")
-
-
+                return redirect('chat', room_id=room_id)
+            else:
+                messages.error(request, "Invalid Member Form")
 
     context = {
         'rooms': room,
@@ -145,7 +105,6 @@ def rooms(request, room_id):
         'form': folder_form,
         'group_chat': group_chat,
         'group_chat_member': group_chat_member,
-        'group_chat_form': group_chat_form,
         'group_chat_member_form': group_chat_member_form,
         'show_info_form': show_info_form,
         'info_content_form': info_content_form,
@@ -163,52 +122,39 @@ def rooms(request, room_id):
 
 
 @login_required(login_url='User_login')
-def chat(request, room_id, chat_name):
-    
+def chat(request, room_id):
     room = get_object_or_404(Room, id=room_id)
     profile = get_object_or_404(UserProfile, user=room.created_by)
-    group_chat = ChatBox.objects.filter(room=room)
-    group_chat_member = ChatBoxMembership.objects.filter(chat_box__in=group_chat)
-
-   
-
-    search_query = request.GET.get('search', '') 
-    users = User.objects.exclude(id=request.user.id) 
-    chats = RoomChatIndividual.objects.filter(
-        (Q(sender=request.user) & Q(receiver__username=chat_name)) |
-        (Q(receiver=request.user) & Q(sender__username=chat_name))
+    
+    # Get or create the chat box for this room
+    chat_box, created = ChatBox.objects.get_or_create(
+        room=room,
+        defaults={
+            'group_name': 'General',
+            'created_by': room.created_by
+        }
     )
-
-    if search_query:
-        chats = chats.filter(Q(content__icontains=search_query))  
-
-    chats = chats.order_by('timestamp') 
-    user_last_messages = []
-
-    for user in users:
-        last_message = RoomChatIndividual.objects.filter(
-            (Q(sender=request.user) & Q(receiver=user)) |
-            (Q(receiver=request.user) & Q(sender=user))
-        ).order_by('-timestamp').first()
-
-        user_last_messages.append({
-            'user': user,
-            'last_message': last_message
-        })
-
-    user_last_messages.sort(
-    key=lambda x: (x['last_message'] is not None, x['last_message'].timestamp if x['last_message'] else 0),
-    reverse=True
-)
-
-    return render(request, 'base/chat.html', {
-        'rooms':room,
-        'room_name': chat_name,
-        'chats': chats,
-        'users': users,
-        'user_last_messages': user_last_messages,
-        'search_query': search_query 
-    })
+    
+    chat_messages = ChatBoxMembership.objects.filter(chat_box=chat_box).order_by('created_at')
+    
+    if request.method == 'POST':
+        form = ChatBoxMemberForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.message_by = request.user
+            message.chat_box = chat_box
+            message.save()
+            return redirect('chat', room_id=room_id)
+    
+    form = ChatBoxMemberForm()
+    context = {
+        'room': room,
+        'profile': profile,
+        'chat_box': chat_box,
+        'chat_messages': chat_messages,
+        'form': form,
+    }
+    return render(request, 'base/chat.html', context)
 
 
 def tag(request, tag_name):
@@ -742,6 +688,10 @@ def delete_code_folder(request, room_id, folder_name):
     return redirect('Rooms', room_id=room_id)
 
 
+def about(request):
+    return render(request, 'base/sidebar/about.html')
 
+def service(request):
+    return render(request, 'base/sidebar/service.html')
 
 
