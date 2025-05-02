@@ -1,0 +1,58 @@
+{% extends 'base.html' %}{% load static %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/sidebaritem.css' %}" />
+{% endblock %} {% block nav1 %} / <a href="{% url 'About' %}">About</a>
+{% endblock %} {% block content %}
+<div class="about-section quicksand">
+  <div class="top">
+    <img src="{% static 'assets/main.png' %}" alt=".." />
+    <p class="about-head orbitron">VOREX HUB</p>
+  </div>
+  <div class="mid">
+    <h1>About Us</h1>
+
+    <div class="features">
+      <div class="feature-item">
+        <i class="fas fa-user-cog"></i>
+
+        <h3>About Developer</h3>
+        <p>
+          Crafted with vision by <b>Charan T M</b> , a passionate Developer and web enthusiast. Developed as
+          part of the <em><b>Syndicate Group of Association</b></em
+          >. Focused on building tools that empower students and tech learners worldwide.
+        </p>
+      </div>
+
+      <div class="feature-item">
+        <i class="fas fa-bullseye"></i>
+
+        <h3>Our Mission</h3>
+        <p>
+          Built to be a centralized platform for focused study and collaboration. Aims to simplify learning,
+          sharing, and discussing educational content. Encourages productivity with real-time tools for
+          students and communities.
+        </p>
+      </div>
+
+      <div class="feature-item">
+        <i class="fas fa-toolbox"></i>
+
+        <h3>What You Can Do Here?</h3>
+        <p>
+          Join study rooms, upload notes, and collaborate on coding projects, verify, and accelerate your
+          learning. Chat, compete, and learn smarter — all in one seamless experience.
+        </p>
+      </div>
+
+      <div class="feature-item">
+        <i class="fas fa-users"></i>
+        <h3>Our Community</h3>
+        <p>
+          A growing community of learners, developers, and contributors. Created to foster a space that
+          promotes open knowledge and ethical growth. Everyone is welcome — connect, contribute, and thrive
+          together.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

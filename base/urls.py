@@ -9,15 +9,20 @@ urlpatterns = [
     # room pattern
     path('rooms/<int:room_id>/',views.rooms, name='Rooms'),
     
+    # chat pattern
+    path('chat/<int:room_id>/',views.chat, name='chat'),
 
     # your rooms and joined rooms
-     path("your-rooms/<str:user_name>/",views.your_room, name='Your-Room'),
+    path("your-rooms/<str:user_name>/",views.your_room, name='Your-Room'),
     path('joined-room/',views.joined_room, name='Joined-Room'),
     path('dashboard/',views.dashboard, name='Dashboard'),
     path('user-dashboard/',views.user_dashboard, name='User-dashboard'),
     path('study-materials-dashboard/',views.study_material_dashboard, name='Study-dashboard'),
-    
 
+    #sidebar
+    path('about/', views.about, name='About'),
+    path('service/', views.service, name='Service'),
+    
     # authentication
     path('authentication/',views.auth_page, name='auth_page'),
     path('user_login/',views.user_login, name='User_login'),
@@ -28,7 +33,6 @@ urlpatterns = [
     path('profile/<str:user_tag>/',views.profile, name='Profile'),
     path('update_user/<str:user_tag>/',views.user_update, name='Update-user'),
     path('update_profile/<str:user_tag>/',views.profile_update, name='Update-profile'),
-
     
     # creation, deletion and edition
     path('create_room/',views.create_room, name='Create-room'),
@@ -36,7 +40,6 @@ urlpatterns = [
     path('delete_room/<int:room_id>/',views.delete_room, name='Delete-room'),
     path('<str:tag_name>/',views.tag, name='Tag'),
     
-
     # join and exit 
     path('join_room/<int:room_id>/',views.join_room, name='Join-room'),
     path('exit_room/<int:room_id>/',views.exit_room, name='Exit-room'),
@@ -60,30 +63,14 @@ urlpatterns = [
     # file upload and deletion
     path('upload-file/<int:room_id>/<str:f_name>/',views.files_in_folder, name='Upload-file'),
     path('delete-file/<int:room_id>/<str:f_name>/<str:file_id>',views.delete_file, name='Delete-file'),
-    
-
-    # chat url
-    path('create-group-chat/<int:room_id>/',views.rooms, name='Create-group-chat'),
-
-    path('message/<int:room_id>/',views.rooms, name='Create-message'),
-    
-    path('delete-group/<str:room_name>/<str:g_name>/',views.delete_group,name='Delete-group'),
-
-    path('chat/<int:room_id>/<str:chat_name>/',views.chat, name='chat'),
-
-    path('group-chat/<int:room_id>/<str:group_name>/', views.rooms, name='group-chat'),
-
-
 
     # Oauth authentication url
     path("accounts/login/", views.google_login_redirect),  # Redirect login page to Google
-    path("accounts/signup/",
-         views.google_login_redirect),
+    path("accounts/signup/", views.google_login_redirect),
 
     #Code snippet upload url
     path('code-snippet/<int:room_id>/<str:folder_name>/', views.code_in_folder, name='code-snippet'),
  
-
     #Code folder url
     path('room/<int:room_id>/code-folder/<str:folder_name>/', views.code_in_folder, name='code-folder'),
 
@@ -98,6 +85,8 @@ urlpatterns = [
 
     #Code snippet upload url
     path('upload-code/<int:room_id>/<str:folder_name>/', views.upload_code, name='upload-code'),
+
+    
 
     
  

@@ -1,225 +1,149 @@
-{% extends 'base.html' %}{% load static %} {% block title %}
-<title>Chat</title>
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>Chat - {{ room.name }}</title>
 {% endblock %} {% block link %}
 <link rel="stylesheet" href="{% static 'css/chat.css' %}" />
 {% endblock %} {% block nav1 %}
-<a href="{% url 'chat' rooms.id request.user.username %}">/ chat</a>
+<a href="{% url 'Rooms' room.id %}" class="back-button">
+  <i class="fas fa-arrow-left"></i>
+</a>
 {% endblock %} {% block content %}
-<div id="Group" class="chat-container tabcontent open-sans">
-  <div class="create-chat-group">
-    <div class="top">
-      <p>Create Group</p>
-      <i class="fas fa-times" onclick="Removegroup()"></i>
+<div class="chat-container">
+  <div class="chat-header">
+    <div class="header-left">
+      <i class="fas fa-comments"></i>
+      <span class="room-name">{{ room.name }}</span>
     </div>
-    <form action="{% url 'Create-group-chat' rooms.id %}" method="post">
-      {% csrf_token %}
-      <div class="input-g-name">
-        <label for="Group-name">Group Name</label>
-        {{group_chat_form.group_name}}
+    <div class="header-right">
+      <a href="{% url 'Rooms' room.id %}" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="messages-container" id="messages-container">
+    {% for message in chat_messages %}
+    <div
+      class="message {% if message.message_by == request.user %}user-message{% else %}other-message{% endif %}"
+    >
+      <div class="message-content">{{ message.content }}</div>
+      <div class="message-info">
+        <span class="sender-name">{{ message.message_by.username }}</span>
+        <span class="timestamp">{{ message.created_at|date:"g:i A" }}</span>
       </div>
-      <button type="submit" name="group_chat_submit">create</button>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="input-area">
+    <form method="POST" id="message-form">
+      {% csrf_token %}
+      <input
+        type="text"
+        name="content"
+        class="message-input"
+        placeholder="Type your message..."
+        required
+        autocomplete="off"
+      />
+      <button type="submit" class="send-button">
+        <i class="fas fa-paper-plane"></i>
+      </button>
     </form>
   </div>
-  <div class="container-fluid h-100 container-chat">
-    <div class="row h-100">
-      <!-- User List Sidebar (4 Columns) -->
-      <div class="col-3 sidebar chats">
-        <div class="chat-top">
-          <a href="{% url 'Rooms' rooms.id %}" id="back-icon"
-            ><i class="fa-solid fa-arrow-left" title="Back"></i
-          ></a>
-          <p>Chats</p>
-        </div>
-        <div class="chat-members">
-          <div class="contacts">
-            {% for item in user_last_messages %}
-            <a
-              href="{% url 'chat' room_id=rooms.id chat_name=item.user.username %}"
-              class="list-group-item list-group-item-action {% if item.user.username == room_name %} active {% endif %}"
-              data-id="{{ room_name }}"
-            >
-              <div class="members-container">
-                <!-- Profile Icon -->
-                <img
-                  src="https://ui-avatars.com/api/?name={{ item.user.username|urlencode }}&size=64&background=random"
-                  alt="{{ item.user.username }}'s Profile Image"
-                  class="profile-icon rounded-circle mr-3"
-                  style="width: 2.5rem; height: 2.5rem; object-fit: cover"
-                />
+</div>
 
-                <!-- Message Content and Username -->
-                <div class="w-100">
-                  <div class="d-flex justify-content-between">
-                    <strong class="text-truncate">{{ item.user.username }}</strong>
-                    {% if item.last_message %}
-                    <small class="text-nowrap timestamp"> {{ item.last_message.timestamp|date:"H:i" }}</small>
-                    {% endif %}
-                  </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let chatSocket;
+    let reconnectAttempts = 0;
+    const maxReconnectAttempts = 5;
+    const reconnectDelay = 3000; // 3 seconds
 
-                  <!-- Last message preview -->
-                  <div class="d-flex flex-direction-row">
-                    {% if item.last_message %}
-                    <small
-                      class="d-flex text-truncate last-msg flex-directiion-row message-by"
-                      style="max-width: 90%; font-size: 14px"
-                      id="last-message"
-                    >
-                      {% if item.last_message.sender == request.user %} You: {% endif %}
-                      <div>{{ item.last_message.content|truncatewords:5 }}</div>
-                    </small>
-                    {% else %}
-                    <small class="">No messages yet</small>
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-            </a>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
+    function connect() {
+      const roomId = "{{ room.id }}";
+      const ws_scheme = window.location.protocol === "https:" ? "wss" : "ws";
+      const ws_path = ws_scheme + "://" + window.location.host + "/ws/chat/" + roomId + "/";
 
-      <div class="col-9 d-flex flex-column chat" data-id="{{ room_name }}">
-        <div class="d-flex align-items-center p-1 justify-content-between">
-          <div>
-            <img
-              src="https://ui-avatars.com/api/?name={{ room_name|urlencode }}&size=64&background=random"
-              style="border-radius: 50%; height: 45px; width: auto"
-            />
-            <p class="mb-0" style="padding-left: 10px">{{ room_name }}</p>
-          </div>
+      chatSocket = new WebSocket(ws_path);
 
-          <form method="GET" action="" class="p-3 ml-auto">
-            <div class="form-group mb-0">
-              <input
-                type="text"
-                name="search"
-                id="searchInput"
-                placeholder="Search messages..."
-                value="{{ search_query }}"
-              />
-            </div>
-          </form>
-        </div>
+      chatSocket.onopen = function (e) {
+        console.log("WebSocket connection established");
+        reconnectAttempts = 0;
+      };
 
-        <div id="chatbox" class="chatbox flex-fill p-3">
-          {% if chats %} {% for message in chats %}
-          <div
-            class="chat-message {% if message.sender == request.user %} sender {% else %} receiver {% endif %}"
-          >
-            <span>{{ message.content }}</span>
-          </div>
-          {% endfor %} {% else %}
-          <p class="no-messages">No Messages.</p>
-          {% endif %}
-        </div>
+      chatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        if (data.error) {
+          console.error("Error:", data.error);
+          return;
+        }
 
-        <div class="chat-input">
-          <div class="input-group">
-            <input type="text" id="my_input" placeholder="Type a message..." required />
-            <div class="input-group-append">
-              <button id="submit_button" class="btn btn-primary" type="button">
-                <i class="fa-solid fa-paper-plane"></i>
-              </button>
+        const messageHtml = `
+          <div class="message ${
+            data.sender === "{{ request.user.username }}" ? "user-message" : "other-message"
+          }">
+            <div class="message-content">${data.message}</div>
+            <div class="message-info">
+              <span class="sender-name">${data.sender}</span>
+              <span class="timestamp">${new Date().toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}</span>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        `;
+        messagesContainer.insertAdjacentHTML("beforeend", messageHtml);
+        scrollToBottom();
+      };
 
-  {{slug|json_script:"room_slug"}}
+      chatSocket.onclose = function (e) {
+        console.log("WebSocket connection closed");
+        if (reconnectAttempts < maxReconnectAttempts) {
+          reconnectAttempts++;
+          console.log(`Attempting to reconnect (${reconnectAttempts}/${maxReconnectAttempts})...`);
+          setTimeout(connect, reconnectDelay);
+        } else {
+          console.error("Max reconnection attempts reached");
+        }
+      };
 
-  <script>
-    const chatbox = document.querySelector("#chatbox");
-
-    function scrollToBottom() {
-      chatbox.scrollTop = chatbox.scrollHeight;
+      chatSocket.onerror = function (error) {
+        console.error("WebSocket error:", error);
+      };
     }
 
+    // Auto-scroll to bottom of messages
+    const messagesContainer = document.getElementById("messages-container");
+    function scrollToBottom() {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
     scrollToBottom();
 
-    const roomName = JSON.parse(document.getElementById("room_slug").textContent);
-    const chatSocket = new WebSocket("ws://" + window.location.host + "/ws/chat/{{ room_name }}/");
+    // Handle form submission
+    const messageForm = document.getElementById("message-form");
+    messageForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const messageInput = this.querySelector('input[name="content"]');
+      const message = messageInput.value.trim();
 
-    chatSocket.onopen = function (e) {
-      console.log("The connection was set up successfully!");
-    };
-    chatSocket.onclose = function (e) {
-      console.log("Something unexpected happened!");
-    };
-
-    document.querySelector("#my_input").focus();
-    document.querySelector("#my_input").onkeyup = function (e) {
-      if (e.keyCode == 13) {
-        e.preventDefault();
-        document.querySelector("#submit_button").click();
-      }
-    };
-
-    document.querySelector("#submit_button").onclick = function (e) {
-      var messageInput = document.querySelector("#my_input").value;
-
-      if (messageInput.length == 0) {
-        alert("Add some input first or press the Send button!");
-      } else {
-        chatSocket.send(
-          JSON.stringify({
-            message: messageInput,
-            username: "{{ request.user.username }}",
-            room_name: "{{ room_name }}",
-          })
-        );
-        document.querySelector("#my_input").value = "";
-      }
-    };
-
-    chatSocket.onmessage = function (e) {
-      const data = JSON.parse(e.data);
-
-      if (data.message && data.sender) {
-        const chatbox = document.querySelector("#chatbox");
-        const noMessages = document.querySelector(".no-messages");
-        if (noMessages) {
-          noMessages.style.display = "none";
-        }
-
-        const div = document.createElement("div");
-        div.className =
-          "chat-message " + (data.sender === "{{ request.user.username }}" ? "sender" : "receiver");
-        div.innerHTML = `<div><span>${data.message}</span></div>`;
-        chatbox.appendChild(div);
-        scrollToBottom();
-
-        const lastMessage = document.querySelector(".list-group-item.active #last-message");
-        if (lastMessage) {
-          lastMessage.innerHTML =
-            data.sender === "{{ request.user.username }}" ? "You: " + data.message : data.message;
-
-          const timestamp = document.querySelector(".list-group-item.active small");
-          const date = new Date().toUTCString();
-          timestamp.innerHTML = date.slice(17, 22);
-
-          const chats = document.querySelectorAll(".list-group-item");
-          const chatsArray = Array.from(chats);
-          const chatsSorted = chatsArray.sort((a, b) => {
-            const aTime = a.querySelector("small").innerHTML;
-            const bTime = b.querySelector("small").innerHTML;
-            return aTime < bTime ? 1 : -1;
-          });
-
-          const contacts = document.querySelector(".contacts");
-          contacts.innerHTML = "";
-          chatsSorted.forEach((chat) => {
-            contacts.appendChild(chat);
-          });
+      if (message) {
+        if (chatSocket && chatSocket.readyState === WebSocket.OPEN) {
+          chatSocket.send(
+            JSON.stringify({
+              message: message,
+            })
+          );
+          messageInput.value = "";
         } else {
-          console.error("No active chat selected");
+          console.error("WebSocket is not connected");
+          // Fallback to form submission if WebSocket is not available
+          this.submit();
         }
-      } else {
-        console.error("Message or sender data is missing:", data);
       }
-    };
-  </script>
-</div>
+    });
+
+    // Initial connection
+    connect();
+  });
+</script>
 {% endblock %}

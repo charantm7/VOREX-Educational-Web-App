@@ -164,17 +164,26 @@ nav {
       }
 
       .bar1,
-      .bar2,
       .bar3 {
         width: 25px;
         height: 3px;
         background-color: var(--llwhite);
         margin: 5.5px 0;
         transition: 0.4s;
+        border-radius: 2px;
+      }
+
+      .bar2 {
+        width: 20px;
+        height: 3px;
+        background-color: var(--llwhite);
+        margin: 5.5px 0;
+        transition: 0.4s;
+        border-radius: 2px;
       }
 
       .change .bar1 {
-        transform: translate(0, 8.5px) rotate(-45deg);
+        transform: translate(0, 8.3px) rotate(-45deg);
       }
 
       .change .bar2 {
@@ -182,7 +191,7 @@ nav {
       }
 
       .change .bar3 {
-        transform: translate(0, -8.5px) rotate(45deg);
+        transform: translate(0, -8.3px) rotate(45deg);
       }
 
       .nav-links {
@@ -213,7 +222,7 @@ nav {
 
       .search-container {
         border: 1px solid var(--nav-border);
-        padding: 0  0.55rem 0 0.4rem;
+        padding: 0 0.55rem 0 0.4rem;
         border-radius: 4px;
         transition: 0.4s ease;
         display: flex;
@@ -222,13 +231,13 @@ nav {
         cursor: pointer;
         justify-content: space-between;
 
-        input{
+        input {
           all: unset;
           height: 30px;
           width: 100%;
           font-size: 14px;
           color: var(--llwhite);
-          border:none;
+          border: none;
         }
 
         i {
@@ -236,7 +245,6 @@ nav {
           font-size: 0.9vw;
         }
       }
-      
 
       [class^="nav-container-right-"] {
         display: flex;
@@ -265,10 +273,9 @@ nav {
           border: 1px solid var(--nav-border);
           border-radius: 3px;
           transition: 0.4s ease;
-          padding: 0.2rem .5rem;
+          padding: 0.2rem 0.5rem;
           font-size: 14px;
           width: 80px;
-          
         }
         a button:hover {
           background-color: var(--llwhite);
@@ -366,7 +373,22 @@ aside {
   }
 
   .sidebar.active {
-    width: 170px;
+    width: 210px;
+    padding: 0 10px;
+
+    .nav_list-top {
+      li {
+        background-color: rgba(255, 255, 255, 0.015);
+        border-radius: 5px;
+      }
+    }
+
+    .nav-list-bottom {
+      li {
+        background-color: rgba(255, 255, 255, 0.015);
+        border-radius: 5px;
+      }
+    }
   }
 
   .logo_content {
@@ -399,11 +421,14 @@ aside {
   .nav_list-top {
     margin-top: 20px;
     list-style: none;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
   }
 
   .nav_list-top li {
     position: relative;
+    // border: 1px solid white;
   }
 
   .nav_list-top a {
@@ -432,8 +457,10 @@ aside {
   }
   .nav-list-bottom {
     list-style: none;
-    position: relative;
-    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 90px;
   }
 
   .nav-list-bottom li {
@@ -658,11 +685,10 @@ footer {
           i {
             font-size: 12px;
           }
-          input{
+          input {
             font-size: 12px;
             height: 10px;
             width: 80%;
-            
           }
         }
         .nav-container-right-notification-logo {
