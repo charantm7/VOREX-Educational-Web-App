@@ -122,6 +122,32 @@ body {
       grid-template-areas: "nav nav" "sidebar main " "sidebar footer ";
 }
 
+body .dropdown-results {
+  position: fixed;
+  background: var(--navdark);
+  width: 280px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 999;
+  top: 58.6px;
+  right: 120px;
+}
+
+body .dropdown-results a {
+  display: block;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+body .dropdown-results a:hover {
+  background-color: rgba(255, 255, 255, 0.144);
+}
+
 nav {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -260,7 +286,17 @@ nav .nav-container-right {
   gap: 20px;
 }
 
-nav .nav-container-right .search-container {
+nav .nav-container-right .search-vorex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+nav .nav-container-right .search-vorex .search-container {
   border: 1px solid var(--nav-border);
   padding: 0 0.55rem 0 0.4rem;
   border-radius: 4px;
@@ -279,16 +315,16 @@ nav .nav-container-right .search-container {
           justify-content: space-between;
 }
 
-nav .nav-container-right .search-container input {
+nav .nav-container-right .search-vorex .search-container input {
   all: unset;
   height: 30px;
-  width: 100%;
+  width: 250px;
   font-size: 14px;
   color: var(--llwhite);
   border: none;
 }
 
-nav .nav-container-right .search-container i {
+nav .nav-container-right .search-vorex .search-container i {
   color: var(--llwhite);
   font-size: 0.9vw;
 }
@@ -657,30 +693,37 @@ footer {
   -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: footer;
-  font-family: sans-serif;
   font-size: 0.95vw;
   background-color: var(--navdark);
   z-index: 100;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 30px;
-  gap: 0%;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 1rem 1rem 0 1rem;
+  gap: 1rem;
   border-top: 1px solid var(--border);
 }
 
-footer .foot-left {
-  width: 40%;
+footer .foot-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  padding: 2rem;
+}
+
+footer .foot-1 .foot-left {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -688,69 +731,48 @@ footer .foot-left {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 20px;
+  gap: 1.3rem;
+  width: 100%;
+  height: 100%;
 }
 
-footer .foot-left .logo {
+footer .foot-1 .foot-left .logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 8px;
-  margin-left: 100px;
+  gap: 0.5rem;
 }
 
-footer .foot-left .logo img {
-  height: 42px;
-  width: 40px;
+footer .foot-1 .foot-left .logo img {
+  width: 60px;
+  height: 60px;
 }
 
-footer .foot-left .logo p {
+footer .foot-1 .foot-left .logo .vorex-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+}
+
+footer .foot-1 .foot-left .logo .vorex-name p {
   font-size: 1.5vw;
 }
 
-footer .foot-left .copyrights {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  color: var(--footer-white);
-  margin-left: 100px;
+footer .foot-1 .foot-left .logo .vorex-name small {
+  font-size: 0.7vw;
 }
 
-footer .foot-left .copyrights p .vorex {
-  font-family: "Orbitron", serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
-
-footer .foot-left .copyrights p a {
-  text-decoration: none;
-  color: var(--footer-white);
-  font-size: 1vw;
-}
-
-footer .foot-left .copyrights p a:hover {
-  text-decoration: underline;
-}
-
-footer .foot-left .devcontact {
+footer .foot-1 .foot-left .devcontact {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -758,37 +780,63 @@ footer .foot-left .devcontact {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 10px;
-  color: var(--footer-white);
-  margin-left: 100px;
+  gap: 0.5rem;
+  margin-left: 4rem;
 }
 
-footer .foot-left .devcontact [class^="c-"] {
+footer .foot-1 .foot-left .devcontact .c-1 a {
+  text-decoration: none;
+  color: var(--llwhite);
+}
+
+footer .foot-1 .foot-left .devcontact .c-1 a:hover {
+  text-decoration: underline;
+}
+
+footer .foot-1 .foot-left .quote {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5rem;
+  margin-left: 4rem;
+}
+
+footer .foot-1 .foot-left .icon-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  margin-left: 4rem;
+}
+
+footer .foot-1 .foot-left .icon-links a {
+  text-decoration: none;
+  color: var(--llwhite);
+  background-color: #ffffff10;
+  padding: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 5px;
+  border-radius: 5px;
 }
 
-footer .foot-left .devcontact [class^="c-"] a {
-  text-decoration: none;
-  color: var(--footer-white);
-  font-size: 1vw;
+footer .foot-1 .foot-left .icon-links a i {
+  font-size: 1.3vw;
 }
 
-footer .foot-left .devcontact [class^="c-"] a:hover {
-  text-decoration: underline;
+footer .foot-1 .foot-left .icon-links a:hover {
+  background-color: #ffffff28;
+  color: white;
 }
 
-footer .foot-right {
-  width: 60%;
+footer .foot-1 .foot-right-1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -796,13 +844,13 @@ footer .foot-right {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: first baseline;
-      -ms-flex-pack: first baseline;
-          justify-content: first baseline;
-  gap: 15%;
+  width: 100%;
+  height: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-footer .foot-right [class^="r-"] {
+footer .foot-1 .foot-right-1 [class^="r-"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -810,23 +858,32 @@ footer .foot-right [class^="r-"] {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 15px;
+  gap: 0.8rem;
 }
 
-footer .foot-right [class^="r-"] p {
-  margin-bottom: 5px;
-  font-size: 1vw;
-  color: var(--footer-white);
-}
-
-footer .foot-right [class^="r-"] a {
+footer .foot-1 .foot-right-1 [class^="r-"] a {
   text-decoration: none;
-  color: var(--footer-lwhite);
-  font-size: 1vw;
+  color: var(--llwhite);
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
 }
 
-footer .foot-right [class^="r-"] a:hover {
-  text-decoration: underline;
+footer .foot-1 .foot-right-1 [class^="r-"] a:hover {
+  -webkit-transform: translateX(7px);
+          transform: translateX(7px);
+}
+
+footer .foot-2 {
+  border-top: 1px solid rgba(255, 255, 255, 0.147);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: baseline;
+      -ms-flex-pack: baseline;
+          justify-content: baseline;
+  padding: 1rem;
 }
 
 @media (max-width: 576px) {

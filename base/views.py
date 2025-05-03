@@ -352,24 +352,15 @@ def profile(request, user_tag):
     context = {'user': user, 'room': room, 'profile': profile,'is_follower':is_follower,'send_follow_request':send_follow_request}
     return render(request, 'base/profile.html', context)
 
-
 @login_required(login_url='User_login')
 def profile_update(request, user_tag):
     user = User.objects.get(username=user_tag)
     profile = UserProfile.objects.get(user=user)
+
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Profile updated successfully')
-            return redirect('Profile', user_tag=user_tag)
-        else:
-            messages.error(request, 'Invalid form')
 
-    else:   
-        form = ProfileForm(instance=profile)
-
-    if request.method == 'POST':
+        # ✅ Move this BEFORE form.save()
         cropped_data = request.POST.get('cropped_image_data')
         if cropped_data:
             format, imgstr = cropped_data.split(';base64,') 
@@ -377,8 +368,19 @@ def profile_update(request, user_tag):
             image_file = ContentFile(base64.b64decode(imgstr), name=f'profile_cropped.{ext}')
             form.instance.profile_pic = image_file
 
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully')
+            return redirect('Profile', user_tag=user_tag)
+        else:
+            messages.error(request, 'Invalid form')
+
+    else:
+        form = ProfileForm(instance=profile)
+
     context = {'form': form, 'profile': profile}
     return render(request, 'base/updateprofile.html', context)
+
 
 
 @login_required(login_url='User_login')
@@ -695,3 +697,27 @@ def service(request):
     return render(request, 'base/sidebar/service.html')
 
 
+from django.contrib.auth.decorators import login_required
+from .models import Room
+
+@login_required
+def search_rooms(request):
+    query = request.GET.get("q", "")
+    user = request.user
+
+    try:
+        rooms = Room.objects.filter(name__icontains=query)[:10]
+        results = []
+
+        for room in rooms:
+            joined = user in room.members_count.all()
+            results.append({
+                "name": room.name,
+                "id": room.id,
+                "joined": joined,
+            })
+
+        return JsonResponse({"results": results})
+    except Exception as e:
+        print("Search Error:", e)
+        return JsonResponse({"results": []}, status=500)

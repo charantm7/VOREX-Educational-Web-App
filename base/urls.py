@@ -8,6 +8,9 @@ urlpatterns = [
     
     # room pattern
     path('rooms/<int:room_id>/',views.rooms, name='Rooms'),
+
+    #search
+    path("search-rooms/", views.search_rooms, name="search_rooms"),
     
     # chat pattern
     path('chat/<int:room_id>/',views.chat, name='chat'),
@@ -41,7 +44,7 @@ urlpatterns = [
     path('<str:tag_name>/',views.tag, name='Tag'),
     
     # join and exit 
-    path('join_room/<int:room_id>/',views.join_room, name='Join-room'),
+    path('join-room/<int:room_id>/',views.join_room, name='Join-room'),
     path('exit_room/<int:room_id>/',views.exit_room, name='Exit-room'),
     path('room-members/<str:room_tag>/',views.room_member_count, name='Room-members'),
 
