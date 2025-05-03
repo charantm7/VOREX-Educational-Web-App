@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import dj_database_url
 
+import cloudinary_storage
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'base',
     'django.contrib.sites',
     'allauth',
@@ -55,6 +56,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'django.contrib.humanize',
     'django_select2',
+    'cloudinary',
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
 ]
 
 
@@ -208,8 +212,15 @@ CACHES = {
     }
 }
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dljndgwcl',
+    'API_KEY': '829619775481739',
+    'API_SECRET': 'yLunbkW41qpLT_BTLbxQfViAtEY',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

@@ -56,6 +56,7 @@
     {% endblock %} {% block link %} {% endblock %}
   </head>
   <body>
+    <div id="resultsBox" class="dropdown-results quicksand"></div>
     <nav>
       <div class="nav-container roboto-mono">
         <div class="nav-container-left">
@@ -81,9 +82,11 @@
             <a href="{% url 'User_signup' %}"><button>Sign Up</button></a>
           </div>
           {% endif %}
-          <div class="search-container" id="tooltip">
-            <input type="text" placeholder="Search..." />
-            <i class="fas fa-search"></i>
+          <div class="search-vorex">
+            <div class="search-container" id="tooltip">
+              <input type="text" id="searchInput" placeholder="Search rooms..." autocomplete="off" />
+              <i class="fas fa-search"></i>
+            </div>
           </div>
           <div class="nav-container-right-create-logo" id="tooltip">
             <a href="{% url 'Create-room' %}">
@@ -164,46 +167,85 @@
     </aside>
     <main>{% include 'base/popmessage.html' %}{% block content %}{% endblock %}</main>
     <footer>
-      <div class="foot-left">
-        <div class="logo">
-          <img src="{% static 'assets/main.png' %}" alt="logo" />
-          <p class="vorex">vorex</p>
-        </div>
-        <div class="icon-links">
-          <i></i>
-        </div>
-        <div class="copyrights">
-          <p>&copy; 2024 <a href="/" class="vorex">VOREX</a>. All rights reserved.</p>
-        </div>
-        <div class="devcontact">
-          <p>Developer contact:</p>
-          <div class="c-1">
-            <p>email:</p>
-            <a href="#">charantm8787@gmail.com</a>
+      <div class="foot-1 quicksand">
+        <div class="foot-left">
+          <div class="logo">
+            <img src="{% static 'assets/main.png' %}" alt="logo" />
+            <div class="vorex-name">
+              <p class="vorex">VOREX HUB</p>
+              <small>Collaborate & Explore!</small>
+            </div>
           </div>
-          <div class="c-2">
-            <p>GitHub:</p>
-            <a href="https://github.com/charantm7">charantm7</a>
+          <div class="quote">
+            <p>Powered by Open Source</p>
+
+            <p>Bringing Ideas to Life | Est. 2025</p>
+            <em>VOREX — more than tools, a vision in motion.</em>
+          </div>
+
+          <div class="devcontact">
+            <div class="c-1">
+              <p>Email:</p>
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=charantm8787@gmail.com"
+                target="_blank"
+                class="text-blue-400"
+                >charantm8787@gmail.com</a
+              >
+            </div>
+          </div>
+          <div class="icon-links">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vorexx07@gmail.com"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+            <a href="https://github.com/charantm7"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/charantm/"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://chat.whatsapp.com/DeDalHva5JkKbTNZRDAMYt"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+            <a href="https://discord.gg/HTAuhZXD"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+        <div class="foot-right-1">
+          <div class="r-1">
+            <p><b>Explore</b></p>
+            <a href="/">Home</a>
+            <a href="{% url 'About'%}">About Us</a>
+            <a href="#">Help Center</a>
+            <a href="{% url 'Service' %}">Services</a>
+
+            <a href="#">Privacy Policy</a>
+          </div>
+          <div class="r-2">
+            <p><b>Community</b></p>
+            <a href="#">Syndicate</a>
+            <a href="#">Contributor Guide</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Join Community</a>
+            <a href="#">Code of Conduct</a>
+          </div>
+        </div>
+        <div class="foot-right-1">
+          <div class="r-3">
+            <p><b>Open Source</b></p>
+            <a href="#">GitHub</a>
+            <a href="#">Developers</a>
+            <a href="#">Repository</a>
+            <a href="#">Guidence</a>
+          </div>
+          <div class="r-4">
+            <p><b>Languages</b></p>
+            <a href="#">Python</a>
+            <a href="#">C</a>
+            <a href="#">Java</a>
+            <a href="#">C++</a>
+            <a href="#">Javascript</a>
           </div>
         </div>
       </div>
-      <div class="foot-right">
-        <div class="r-1">
-          <p><b>Capabilities</b></p>
-          <a href="#">vorex Bs</a>
-          <a href="#">vorex Cmp</a>
-          <a href="#">vorex Dc</a>
-        </div>
-        <div class="r-2">
-          <p><b>Models</b></p>
-          <a href="#">Desktop</a>
-          <a href="#">Mobile</a>
-        </div>
-        <div class="r-3">
-          <p><b>Legal & Safety</b></p>
-          <a href="#">Privacy Policy </a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Report Vulnerabilities</a>
+      <div class="foot-2 quicksand">
+        <div class="copyrights">
+          <p>&copy; Developed by Charan T M & Syndicate Community — All Rights Reserved</p>
         </div>
       </div>
     </footer>
@@ -219,6 +261,60 @@
           .on("select2:unselect", function (e) {
             $(this).find("option").prop("disabled", false);
           });
+      });
+
+      const searchInput = document.getElementById("searchInput");
+      const resultsBox = document.getElementById("resultsBox");
+
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value;
+
+        if (query.trim() === "") {
+          resultsBox.innerHTML = "";
+          return;
+        }
+
+        fetch(`/search-rooms/?q=${query}`)
+          .then((response) => {
+            if (!response.ok) throw new Error("Network response was not OK");
+            return response.json();
+          })
+          .then((data) => {
+            resultsBox.innerHTML = ""; // clear previous results
+
+            if (data.results.length === 0) {
+              resultsBox.innerHTML = `<div style="padding: 10px; color: white;">No room found</div>`;
+            } else {
+              data.results.forEach((room) => {
+                const container = document.createElement("div");
+                container.classList.add("p-2", "border-b");
+
+                const link = document.createElement("a");
+                link.textContent = room.name;
+
+                if (room.joined) {
+                  link.href = `/rooms/${room.id}/`;
+                } else {
+                  link.href = `/join-room/${room.id}/`;
+                  link.textContent += " (Join)";
+                  link.classList.add("text-blue-600", "hover:underline");
+                }
+
+                container.appendChild(link);
+                resultsBox.appendChild(container);
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Search Error:", error);
+          });
+      });
+
+      document.addEventListener("click", function (event) {
+        const isClickInside = searchInput.contains(event.target) || resultsBox.contains(event.target);
+        if (!isClickInside) {
+          resultsBox.innerHTML = ""; // Clear the dropdown
+        }
       });
     </script>
   </body>
