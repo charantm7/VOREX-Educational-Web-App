@@ -21,6 +21,15 @@ import logging
 import base64
 from django.core.files.base import ContentFile
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from django.conf import settings
+import hashlib
+import hmac
+import time
+
+
 logger = logging.getLogger(__name__)
 
 def home(request):
@@ -491,22 +500,72 @@ def files_in_folder(request, room_id, f_name):
     room = get_object_or_404(Room, id=room_id)
     folder = get_object_or_404(Folder, name=f_name, room=room)
     study_materials = StudyMaterials.objects.filter(folder=folder)
+    
+    # Generate Cloudinary signature
+    timestamp = int(time.time())
+    
+    # Parameters must be in alphabetical order for signature
+    params_to_sign = {
+        'folder': 'study_material',
+        'source': 'uw',
+        'timestamp': timestamp,
+        'unique_filename': 'true',
+        'use_filename': 'true'
+    }
+    
+    # Create the signature
+    signature = cloudinary.utils.api_sign_request(
+        params_to_sign,
+        settings.CLOUDINARY_STORAGE['API_SECRET']
+    )
+    
     if request.method == 'POST':
         form = StudyMaterialForm(request.POST, request.FILES)
         if form.is_valid():
-            form= form.save(commit=False)
-            form.upload_by = request.user
-            form.folder = folder
-            form.room = folder.room
-            form.save()
-            return redirect('Folder', room_id=room_id, f_name=f_name)
+            try:
+                form = form.save(commit=False)
+                form.upload_by = request.user
+                form.folder = folder
+                form.room = folder.room
+                
+                # Handle Cloudinary file upload
+                if 'file' in request.FILES:
+                    file = request.FILES['file']
+                    # Upload to Cloudinary with folder and resource type
+                    result = cloudinary.uploader.upload(
+                        file,
+                        folder='study_material',
+                        resource_type='auto',
+                        use_filename=True,
+                        unique_filename=True,
+                        api_key=settings.CLOUDINARY_STORAGE['API_KEY'],
+                        api_secret=settings.CLOUDINARY_STORAGE['API_SECRET']
+                    )
+                    form.file = result['secure_url']  # Assign the secure URL to the file field
+                
+                form.save()
+                messages.success(request, 'File uploaded successfully!')
+                return redirect('Folder', room_id=room_id, f_name=f_name)
+            except Exception as e:
+                messages.error(request, f'Error uploading file: {str(e)}')
+                return redirect('Folder', room_id=room_id, f_name=f_name)
         else:   
-            messages.error(request, 'Invalid form')
+            messages.error(request, 'Invalid form data')
             return redirect('Folder', room_id=room_id, f_name=f_name)
-        
     else:
         form = StudyMaterialForm()
-    context = { 'form': form, 'study_materials': study_materials, 'folder': folder, 'room': room}
+    
+    # Add Cloudinary configuration to context
+    context = {
+        'form': form,
+        'study_materials': study_materials,
+        'folder': folder,
+        'room': room,
+        'cloudinary_cloud_name': settings.CLOUDINARY_STORAGE['CLOUD_NAME'],
+        'cloudinary_api_key': settings.CLOUDINARY_STORAGE['API_KEY'],
+        'cloudinary_signature': signature,
+        'cloudinary_timestamp': timestamp
+    }
     return render(request, 'base/files_in_folder.html', context)
 
 def delete_file(request, file_id, room_id, f_name):

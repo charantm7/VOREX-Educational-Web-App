@@ -14,6 +14,7 @@ from pathlib import Path
 import dj_database_url
 
 import cloudinary_storage
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -186,8 +187,6 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
 
 AUTHENTICATION_BACKENDS = (
@@ -213,14 +212,27 @@ CACHES = {
 }
 
 
+import os
 
+# Cloudinary configuration
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dljndgwcl',
-    'API_KEY': '829619775481739',
-    'API_SECRET': 'yLunbkW41qpLT_BTLbxQfViAtEY',
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'dljndgwcl'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '829619775481739'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', 'yLunbkW41qpLT_BTLbxQfViAtEY'),
+    'SECURE': True,
+    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
+    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr', 'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
+    'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv', '3gp', '3g2', 'wmv', 'mpeg', 'flv', 'mkv', 'avi'],
 }
 
+# Remove the direct cloudinary.config() call
+
+# Storage configuration
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Media URL configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT = ''
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
