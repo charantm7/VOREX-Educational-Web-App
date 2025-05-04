@@ -1,6 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
+from cloudinary.models import CloudinaryField
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
+
+
 class Tag(models.Model):
     name = models.CharField(max_length=500, unique=True)
 
@@ -38,13 +45,15 @@ class Folder(models.Model):
     def __str__(self):
         return self.name
 
+from cloudinary.api import resource
+
 class StudyMaterials(models.Model):
     upload_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="myuploads", null=True)  
-    folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='study_materials',null=True, blank=True)  
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="myuploads", null=True)
+    folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='study_materials', null=True, blank=True)
     title = models.CharField(max_length=255, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    file = models.FileField(upload_to="study_materials/")
+    file = CloudinaryField('file', folder='study_material', null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -52,17 +61,49 @@ class StudyMaterials(models.Model):
     def save(self, *args, **kwargs):
         if self.room != self.folder.room:
             raise ValueError("The study material's room must match the folder's room.")
+        
+        # Ensure file is treated as raw resource type if not an image
+        if self.file:
+            self.file.resource_type = 'raw'
+        
         super().save(*args, **kwargs)
 
+    @property
     def file_size_kb(self):
-        try:
-            return round(self.file.size / 1024, 2)  # in KB
-        except:
-            return 0
+        """Returns the file size in KB."""
+        if self.file:
+            try:
+                # Fetch file metadata from Cloudinary
+                metadata = resource(self.file.public_id, resource_type='raw')
+                return round(metadata['bytes'] / 1024, 2)  # Convert bytes to KB
+            except Exception as e:
+                print(f"Error fetching file metadata: {e}")
+                return None
+        return None
+    
+    @property
+    def file_url(self):
+        """Returns the URL for the file."""
+        if self.file:
+            try:
+                # Get a direct URL for the file using Cloudinary's helper function
+                url, options = cloudinary.utils.cloudinary_url(self.file.public_id, resource_type='raw')
+                return url
+            except Exception as e:
+                print(f"Error generating file URL: {e}")
+        return None
 
+    @property
     def file_type(self):
-        return self.file.name.split('.')[-1].upper()
- 
+        """Returns the file extension (type) of the uploaded file."""
+        if self.file:
+            try:
+                # Get the extension from the public_id (cloudinary file name)
+                return self.file.public_id.split('.')[-1].upper()
+            except IndexError:
+                return None  # Handle case when there is no extension
+        return None
+
 
 class ChatBox(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="messages", null=True)
@@ -86,7 +127,7 @@ class ChatBoxMembership(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-    profile_pic = models.ImageField(upload_to="profile_pics/", null=True, blank=True)
+    profile_pic = CloudinaryField('image', folder='profile_pic', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     rooms = models.ManyToManyField(Room, related_name="profile-rooms+")
