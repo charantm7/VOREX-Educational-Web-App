@@ -6,7 +6,7 @@ Vorex is a collaborative study platform designed to help students and learners c
 ## Features
 
 1) Rooms for Study Topics: Predefined admin rooms and user-created rooms for specific subjects.
-2) Study Materials Upload: Share PDFs, notes, and other resources.
+2) Study Materials Upload: Share PDFs, notes, and any other resources.
 3) Chat System: Global, group, and private chat options.
 4) Collaboration Tools: Invite friends to rooms and work together.
 5) Search & Filters: Easily find rooms and materials.
