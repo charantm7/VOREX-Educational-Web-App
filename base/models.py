@@ -40,7 +40,7 @@ class Folder(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(User,on_delete=models.SET_NULL, null=True)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="folders",null=True, blank=True)  # 📁 Folder belongs to Room
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="folders",null=True, blank=True) 
 
     def __str__(self):
         return self.name

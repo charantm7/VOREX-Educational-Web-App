@@ -27,7 +27,7 @@
       <label for="description">Description</label>
       {{ info_content_form.content }}
     </div>
-    <button type="submit" name="info_content_submit">Add Info Content</button>
+    <button type="submit" name="info_content_submit">Add Info Contents</button>
   </form>
 
   {% endif %} {% if show_info_url_form %}
@@ -78,7 +78,7 @@
         </div>
       </div>
       <div class="tabcontent-top-right">
-        <p>Created by:</p>
+        <p>C000reated by:</p>
         <div class="tabcontent-top-right-1">
           <img src="{{profile.profile_pic.url}}" alt="img" />
           <a href="{% url 'Profile' rooms.created_by.username %}">@{{rooms.created_by.username}}</a>
