@@ -73,6 +73,7 @@ class DefaultAccountAdapter(BaseAdapter):
         "invalid_login": _("Invalid login."),
         "invalid_password_reset": _("The password reset token was invalid."),
         "max_email_addresses": _("You cannot add more than %d email addresses."),
+        "phone_taken": _("A user is already registered with this phone number."),
         "too_many_login_attempts": _(
             "Too many failed login attempts. Try again later."
         ),
@@ -90,6 +91,7 @@ class DefaultAccountAdapter(BaseAdapter):
         ],
         "select_only_one": _("Please select only one."),
         "same_as_current": _("The new value must be different from the current one."),
+        "rate_limited": _("Be patient, you are sending too many requests."),
     }
 
     def stash_verified_email(self, request, email):
@@ -872,12 +874,15 @@ class DefaultAccountAdapter(BaseAdapter):
 
         return PhoneField(**kwargs)
 
-    def send_unknown_account_sms(self, phone: str, **kwargs):
+    def send_unknown_account_sms(self, phone: str, **kwargs) -> None:
         """
         In case enumeration prevention is enabled, and, a verification code
         is requested for an unlisted phone number, this method is invoked to
         send a text explaining that no account is on file.
         """
+        pass
+
+    def send_account_already_exists_sms(self, phone: str) -> None:
         pass
 
     def send_verification_code_sms(self, user, phone: str, code: str, **kwargs):
@@ -911,7 +916,7 @@ class DefaultAccountAdapter(BaseAdapter):
     def get_user_by_phone(self, phone: str):
         """
         Looks up a user given the specified phone number. Returns ``None`` if no user
-        was phone.
+        was found.
         """
         raise NotImplementedError
 

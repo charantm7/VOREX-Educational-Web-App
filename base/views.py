@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 #models
-from .models import Tag, Room, RoomMembership, ChatBox, StudyMaterials,UserProfile, Followrequest, Folder, ChatBoxMembership, Activity, InfoContent, InfoContentUrl, CodeSnippet, CodeFolder
+from base.models import Tag, Room, RoomMembership, ChatBox, StudyMaterials,UserProfile, Followrequest, Folder, ChatBoxMembership, Activity, InfoContent, InfoContentUrl, CodeSnippet, CodeFolder
 
 #auth
 from django.contrib.auth import login, logout, authenticate
@@ -24,6 +24,7 @@ from django.core.files.base import ContentFile
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from cloudinary.models import CloudinaryResource
 from django.conf import settings
 import hashlib
 import hmac
@@ -500,73 +501,32 @@ def files_in_folder(request, room_id, f_name):
     room = get_object_or_404(Room, id=room_id)
     folder = get_object_or_404(Folder, name=f_name, room=room)
     study_materials = StudyMaterials.objects.filter(folder=folder)
-    
-    # Generate Cloudinary signature
-    timestamp = int(time.time())
-    
-    # Parameters must be in alphabetical order for signature
-    params_to_sign = {
-        'folder': 'study_material',
-        'source': 'uw',
-        'timestamp': timestamp,
-        'unique_filename': 'true',
-        'use_filename': 'true'
-    }
-    
-    # Create the signature
-    signature = cloudinary.utils.api_sign_request(
-        params_to_sign,
-        settings.CLOUDINARY_STORAGE['API_SECRET']
-    )
-    
+
     if request.method == 'POST':
-        form = StudyMaterialForm(request.POST, request.FILES)
+        form = StudyMaterialForm(request.POST, request.FILES)  # include FILES for local upload
         if form.is_valid():
-            try:
-                form = form.save(commit=False)
-                form.upload_by = request.user
-                form.folder = folder
-                form.room = folder.room
-                
-                # Handle Cloudinary file upload
-                if 'file' in request.FILES:
-                    file = request.FILES['file']
-                    # Upload to Cloudinary with folder and resource type
-                    result = cloudinary.uploader.upload(
-                        file,
-                        folder='study_material',
-                        resource_type='auto',
-                        use_filename=True,
-                        unique_filename=True,
-                        api_key=settings.CLOUDINARY_STORAGE['API_KEY'],
-                        api_secret=settings.CLOUDINARY_STORAGE['API_SECRET']
-                    )
-                    form.file = result['secure_url']  # Assign the secure URL to the file field
-                
-                form.save()
+            study_material = form.save(commit=False)
+            study_material.upload_by = request.user
+            study_material.folder = folder
+            study_material.room = room
+
+            if 'file' in request.FILES:
+                study_material.save()  # This triggers model's save(), which uploads to Cloudinary
                 messages.success(request, 'File uploaded successfully!')
                 return redirect('Folder', room_id=room_id, f_name=f_name)
-            except Exception as e:
-                messages.error(request, f'Error uploading file: {str(e)}')
-                return redirect('Folder', room_id=room_id, f_name=f_name)
-        else:   
-            messages.error(request, 'Invalid form data')
-            return redirect('Folder', room_id=room_id, f_name=f_name)
+            else:
+                messages.error(request, 'No file selected for upload.')
+        else:
+            messages.error(request, 'Invalid form data.')
     else:
         form = StudyMaterialForm()
-    
-    # Add Cloudinary configuration to context
-    context = {
+
+    return render(request, 'base/files_in_folder.html', {
         'form': form,
         'study_materials': study_materials,
         'folder': folder,
         'room': room,
-        'cloudinary_cloud_name': settings.CLOUDINARY_STORAGE['CLOUD_NAME'],
-        'cloudinary_api_key': settings.CLOUDINARY_STORAGE['API_KEY'],
-        'cloudinary_signature': signature,
-        'cloudinary_timestamp': timestamp
-    }
-    return render(request, 'base/files_in_folder.html', context)
+    })
 
 def delete_file(request, file_id, room_id, f_name):
     room = get_object_or_404(Room, id=room_id)

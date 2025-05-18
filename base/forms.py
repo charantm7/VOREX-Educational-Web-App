@@ -74,16 +74,10 @@ class FolderForm(ModelForm):
         model = Folder
         fields = ['name']
 
-class StudyMaterialForm(ModelForm):
+class StudyMaterialForm(forms.ModelForm):
     class Meta:
         model = StudyMaterials
         fields = ['title', 'file']
-        widgets = {
-            'file': forms.ClearableFileInput(),  # Removed the 'accept' attribute
-        }
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['file'].initial = None
 
 
 class InfoContentForm(forms.ModelForm):
