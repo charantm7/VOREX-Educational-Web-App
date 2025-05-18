@@ -11,7 +11,7 @@
     <p>Upload File</p>
     <i class="fas fa-times" onclick="closeFile()"></i>
   </div>
-  <form action="{% url 'Upload-file' room.id folder.name %}" method="POST">
+  <form action="{% url 'Upload-file' room.id folder.name %}" enctype="multipart/form-data" method="POST">
     {% csrf_token %}
 
     <div class="title">
@@ -21,16 +21,10 @@
 
     <div class="file">
       <label for="file">Upload File</label>
-      <button type="button" class="cloudinary-fileupload">Choose File</button>
-
-      <!-- Hidden input to store Cloudinary file URL -->
-      <input type="hidden" name="file" id="file-url" />
-
-      <div id="file-info" style="margin-top: 8px; font-size: 14px; color: whitesmoke"></div>
-      <div id="upload-error" style="color: red; margin-top: 8px; display: none"></div>
+      {{ form.file }}
     </div>
 
-    <button type="submit" id="upload-button" disabled>Upload</button>
+    <button type="submit">Upload</button>
   </form>
 </div>
 
@@ -61,15 +55,15 @@
           </div>
           <div class="file-icon-name">
             <i class="fa-solid fa-file"></i>
-            <a href="{{ material.file_url}}" class="quicksand" target="_blank" title="{{material.title}}"
+            <a href="{{ material.file }}" class="quicksand" target="_blank" title="{{material.title}}"
               >{{ material.title }}</a
             >
           </div>
 
           <div class="file-data">
             <p class="quicksand">By: @{{ material.upload_by}}</p>
-            {% if material.file_url %}
-            <a href="{{ material.file_url }}" target="_blank">Download File</a>
+            {% if material.file %}
+            <a href="{{ material.file }}" target="_blank">Download File</a>
             {% else %}
             <p>No file URL available</p>
             {% endif %} {% if request.user == material.upload_by %}
@@ -91,39 +85,41 @@
   </div>
 </div>
 
-<!-- Add Cloudinary JS -->
-<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-<script>
-  const myWidget = cloudinary.createUploadWidget(
-    {
-      cloudName: "{{ cloudinary_cloud_name }}",
-      apiKey: "{{ cloudinary_api_key }}", // ✅ FIXED: include this
-      uploadSignature: "{{ cloudinary_signature }}",
-      uploadSignatureTimestamp: "{{ cloudinary_timestamp }}",
-      folder: "study_material",
-      resourceType: "raw", // or "auto" depending on your need
-      maxFileSize: 10485760,
-      multiple: false,
-      use_filename: true,
-      unique_filename: true,
-    },
-    (error, result) => {
-      if (!error && result && result.event === "success") {
-        document.getElementById("file-url").value = result.info.secure_url;
-        document.getElementById("file-info").innerHTML = `
-          <strong>Selected File:</strong> ${result.info.original_filename}<br>
-          <strong>Type:</strong> ${result.info.resource_type}<br>
-          <strong>Size:</strong> ${(result.info.bytes / 1024).toFixed(2)} KB
-        `;
-        document.getElementById("upload-button").disabled = false;
-      } else if (error) {
-        console.error("Upload error:", error);
-        document.getElementById("upload-error").style.display = "block";
-        document.getElementById("upload-error").textContent = error.message || "Upload failed";
-      }
-    }
-  );
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 
+<script>
+  const uploadButton = document.querySelector(".cloudinary-fileupload");
+  const fileUrlInput = document.getElementById("file-url");
+  const fileInfo = document.getElementById("file-info");
+  const uploadError = document.getElementById("upload-error");
+  const submitButton = document.getElementById("upload-button");
+
+  uploadButton.addEventListener("click", function () {
+    cloudinary.openUploadWidget(
+      {
+        cloudName: "{{ cloudinary_cloud_name }}",
+        uploadPreset: "{{ cloudinary_upload_preset }}", // You'll create this in Cloudinary settings
+        folder: "study_material",
+        resourceType: "auto",
+        multiple: false,
+      },
+      function (error, result) {
+        if (!error && result && result.event === "success") {
+          const url = result.info.secure_url;
+          fileUrlInput.value = url;
+          fileInfo.textContent = `Uploaded: ${result.info.original_filename}`;
+          uploadError.style.display = "none";
+          submitButton.disabled = false;
+        } else if (error) {
+          uploadError.textContent = "Upload failed. Try again.";
+          uploadError.style.display = "block";
+          submitButton.disabled = true;
+        }
+      }
+    );
+  });
+</script>
+<script>
   document.querySelector(".cloudinary-fileupload").addEventListener("click", function (e) {
     e.preventDefault();
     myWidget.open();

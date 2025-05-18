@@ -1,11 +1,13 @@
 import importlib
 import json
+import os
 import random
 import re
 import sys
 import time
 import uuid
 from contextlib import contextmanager
+from pathlib import Path
 from unittest.mock import Mock, PropertyMock, patch
 
 from django.contrib.auth import get_user_model
@@ -354,7 +356,7 @@ def get_last_email_verification_code():
 
     def f(client, mailoutbox):
         code = re.search(
-            "\n[0-9a-z]{6}\n", mailoutbox[0].body, re.I | re.DOTALL | re.MULTILINE
+            "\n[0-9a-z]{6}\n", mailoutbox[-1].body, re.I | re.DOTALL | re.MULTILINE
         )[0].strip()
         if hasattr(client, "headless_session"):
             session = client.headless_session()
@@ -377,7 +379,7 @@ def get_last_password_reset_code():
 
     def f(client, mailoutbox):
         code = re.search(
-            "\n[0-9a-z]{8}\n", mailoutbox[0].body, re.I | re.DOTALL | re.MULTILINE
+            "\n[0-9a-z]{8}\n", mailoutbox[-1].body, re.I | re.DOTALL | re.MULTILINE
         )[0].strip()
         if hasattr(client, "headless_session"):
             session = client.headless_session()
@@ -467,3 +469,40 @@ def user_with_phone(user, phone):
 
     get_adapter().set_phone(user, phone, True)
     return user
+
+
+def pytest_ignore_collect(path, config):
+    from tests.common.settings import INSTALLED_SOCIALACCOUNT_APPS
+
+    if "allauth.socialaccount.providers.saml" not in INSTALLED_SOCIALACCOUNT_APPS:
+        if (
+            Path(__file__).parent / "socialaccount" / "providers" / "saml"
+            in Path(path).parents
+        ):
+            return True
+
+    tests_to_skip = {
+        "tests.account_only.settings": (
+            "headless",
+            "mfa",
+            "usersessions",
+            "socialaccount",
+        ),
+    }
+    dsm = os.getenv("DJANGO_SETTINGS_MODULE")
+    skipped_paths = tests_to_skip.get(dsm)
+    if not skipped_paths:
+        return False
+    for skipped_path in skipped_paths:
+        abs_skipped_path = Path(__file__).parent / skipped_path
+        if abs_skipped_path == Path(path) or abs_skipped_path in Path(path).parents:
+            return True
+    return False
+
+
+@pytest.fixture()
+def messagesoutbox():
+    from tests.common import adapters
+
+    adapters.messagesoutbox = []
+    yield adapters.messagesoutbox

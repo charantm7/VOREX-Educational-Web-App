@@ -16,6 +16,9 @@ gunicorn
 dj-database-url
 django-select2
 whitenoise
+django-storages 
+google-cloud-storage
+
 
 
 

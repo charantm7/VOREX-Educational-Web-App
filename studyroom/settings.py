@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import dj_database_url
-
-import cloudinary_storage
-import cloudinary
+from google.oauth2 import service_account
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -59,6 +57,7 @@ INSTALLED_APPS = [
     'django_select2',
     'cloudinary',
     'cloudinary_storage',
+    'storages',
     'django.contrib.staticfiles',
 ]
 
@@ -212,23 +211,16 @@ CACHES = {
 }
 
 
-import os
 
-# Cloudinary configuration
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'dljndgwcl'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '829619775481739'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', 'yLunbkW41qpLT_BTLbxQfViAtEY'),
-    'SECURE': True,
-    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
-    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr', 'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
-    'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv', '3gp', '3g2', 'wmv', 'mpeg', 'flv', 'mkv', 'avi'],
-}
 
-# Remove the direct cloudinary.config() call
 
 # Storage configuration
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'your-bucket-name'
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    BASE_DIR / 'path/to/your-service-account.json'
+)
+
 
 # Media URL configuration
 MEDIA_URL = '/media/'

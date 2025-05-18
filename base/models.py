@@ -4,6 +4,7 @@ from cloudinary.models import CloudinaryField
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from cloudinary.uploader import upload as cloudinary_upload
 
 
 
@@ -45,65 +46,63 @@ class Folder(models.Model):
     def __str__(self):
         return self.name
 
-from cloudinary.api import resource
+
+
+
 
 class StudyMaterials(models.Model):
     upload_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="myuploads", null=True)
-    folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='study_materials', null=True, blank=True)
-    title = models.CharField(max_length=255, null=False)
+    room = models.ForeignKey('Room', on_delete=models.CASCADE, related_name="myuploads", null=True)
+    folder = models.ForeignKey('Folder', on_delete=models.CASCADE, related_name='study_materials', null=True, blank=True)
+    title = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
-    file = CloudinaryField('file', folder='study_material', null=True, blank=True)
+    
+    # Store file locally
+    file = models.FileField(upload_to='study_material/', null=True, blank=True)
+    
+    # Cloudinary metadata (optional)
+    cloudinary_url = models.URLField(null=True, blank=True)
+    cloudinary_public_id = models.CharField(max_length=512, null=True, blank=True)
 
     def __str__(self):
         return self.title
-
-    def save(self, *args, **kwargs):
-        if self.room != self.folder.room:
-            raise ValueError("The study material's room must match the folder's room.")
-        
-        # Ensure file is treated as raw resource type if not an image
-        if self.file:
-            self.file.resource_type = 'raw'
-        
-        super().save(*args, **kwargs)
-
-    @property
-    def file_size_kb(self):
-        """Returns the file size in KB."""
-        if self.file:
-            try:
-                # Fetch file metadata from Cloudinary
-                metadata = resource(self.file.public_id, resource_type='raw')
-                return round(metadata['bytes'] / 1024, 2)  # Convert bytes to KB
-            except Exception as e:
-                print(f"Error fetching file metadata: {e}")
-                return None
-        return None
     
     @property
     def file_url(self):
-        """Returns the URL for the file."""
-        if self.file:
+        if self.file and hasattr(self.file, 'url'):
             try:
-                # Get a direct URL for the file using Cloudinary's helper function
-                url, options = cloudinary.utils.cloudinary_url(self.file.public_id, resource_type='raw')
-                return url
+                return self.file.url
+            except ValueError:
+                # file not available in storage
+                return None
+        return None
+
+    def save(self, *args, **kwargs):
+        if self.folder and self.room != self.folder.room:
+            raise ValueError("The study material's room must match the folder's room.")
+
+        is_new_file = self.pk is None and self.file  # Only upload to Cloudinary if it's a new file
+
+        super().save(*args, **kwargs)
+
+        if is_new_file:
+            try:
+                # Get local file path
+                local_file_path = self.file.path
+                # Upload to Cloudinary
+                result = cloudinary_upload(
+                    local_file_path,
+                    folder='study_material',
+                    resource_type='auto',
+                    use_filename=True,
+                    unique_filename=True
+                )
+                # Save Cloudinary info
+                self.cloudinary_url = result['secure_url']
+                self.cloudinary_public_id = result['public_id']
+                super().save(update_fields=['cloudinary_url', 'cloudinary_public_id'])
             except Exception as e:
-                print(f"Error generating file URL: {e}")
-        return None
-
-    @property
-    def file_type(self):
-        """Returns the file extension (type) of the uploaded file."""
-        if self.file:
-            try:
-                # Get the extension from the public_id (cloudinary file name)
-                return self.file.public_id.split('.')[-1].upper()
-            except IndexError:
-                return None  # Handle case when there is no extension
-        return None
-
+                print(f"Cloudinary upload error: {e}")
 
 class ChatBox(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="messages", null=True)
