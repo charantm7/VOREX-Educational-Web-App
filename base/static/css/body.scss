@@ -132,7 +132,7 @@ p {
         justify-content: center;
         a {
           margin-left: 2%;
-          text-decoration: none;
+          text-decoration: underline;
           color: var(--llwhite);
           font-size: 1.2vw;
           // display: block;
@@ -167,25 +167,50 @@ p {
         }
       }
       &-right {
+        width: 20%;
         display: flex;
-        flex-direction: row;
-        align-items: start;
-        width: 12%;
+        flex-direction: column;
+        // border: 1px solid white;
+        align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 1rem;
 
-        a {
-          margin-left: 5px;
-          margin-top: 25px;
-          text-decoration: none;
-          color: var(--llwhite);
-          transition: 0.4s ease;
+        .access {
+          a {
+            color: var(--llwhite);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background-color: var(--room-bottom);
+            border-radius: 7px;
+            font-size: 0.8vw;
+          }
         }
-        &-gobal {
-          margin-top: 25px;
-          color: var(--llwhite);
-          i {
+
+        .options {
+          display: flex;
+          flex-direction: row;
+          align-items: start;
+
+          justify-content: center;
+          gap: 1rem;
+
+          a {
             margin-left: 5px;
+
+            text-decoration: none;
+            color: var(--llwhite);
+            transition: 0.4s ease;
+
+            i {
+              font-size: 1rem;
+            }
+          }
+          .gobal {
+            color: var(--llwhite);
+            i {
+              margin-left: 5px;
+              font-size: 1rem;
+            }
           }
         }
       }
@@ -443,6 +468,26 @@ p {
       height: 50%;
       &-right {
         margin-right: 10%;
+
+        .access {
+          a {
+            font-size: 2.3vw;
+            padding: 10px;
+          }
+        }
+        .options {
+          gap: 0.7rem;
+          a {
+            i {
+              font-size: 0.8rem;
+            }
+          }
+          .gobal {
+            i {
+              font-size: 0.8rem;
+            }
+          }
+        }
       }
       &-left {
         small {

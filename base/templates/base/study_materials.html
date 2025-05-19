@@ -1,10 +1,12 @@
 <div id="Materials" class="tabcontent">
   <div class="materials-top">
     <div class="materials-top-left">
+      {% if user.is_authenticated %}
       <div class="materials-top-left-folder" title="Create Folder" onclick="CreateFolder()">
         <i class="fa-solid fa-plus"></i>
         <p>New Folder</p>
       </div>
+      {% endif %}
     </div>
 
     <div class="materials-top-mid">
@@ -19,11 +21,11 @@
       <i class="fas fa-times" onclick="closeFolder()"></i>
     </div>
     <div class="create-folder-bottom">
-      <form action="{% url 'Create-folder' rooms.id %}" method="post">
+      <form action="{% url 'Create-folder' rooms.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="input-folder-name">
           <label for="folder-name">Name</label>
-          {{form.name}}
+          {{folder_form.name}}
         </div>
         <button type="submit" name="folder_submit">Create</button>
       </form>

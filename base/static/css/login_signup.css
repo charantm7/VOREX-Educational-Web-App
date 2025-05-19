@@ -25,176 +25,102 @@ footer {
   margin: 0;
   padding: 1rem 0;
   width: calc(100% - 58px);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  align-items: center;
+  justify-content: space-around;
 }
-
 .auth-body-login .login-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 2rem;
   width: 45%;
   padding: 2rem 2rem 0 2rem;
 }
-
 .auth-body-login .login-container .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .auth-body-login .login-container .top .login-title {
   font-size: 5rem;
   color: var(--white);
 }
-
 .auth-body-login .login-container .top .login-subtitle {
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 400;
   color: var(--white);
 }
-
 .auth-body-login .login-container .top .login-description {
   font-size: 1rem;
   font-weight: 400;
   color: var(--white);
   margin-top: 1rem;
 }
-
 .auth-body-login .login-user {
   width: 35%;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   padding: 2rem 2rem 0 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .auth-body-login .login-user .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 2.5rem;
 }
-
 .auth-body-login .login-user .top .top-1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
-
 .auth-body-login .login-user .top .top-1 p {
   font-size: 1.1vw;
 }
-
 .auth-body-login .login-user .top .top-1 i {
   color: var(--white);
   font-size: 1.3vw;
   cursor: pointer;
 }
-
 .auth-body-login .login-user .top .top-2 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   gap: 2rem;
 }
-
 .auth-body-login .login-user .top .top-2 .google-box {
   border: 1px solid var(--white);
   cursor: pointer;
   border-radius: 10px;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: .8rem;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.8rem;
   gap: 1rem;
-  -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
-
 .auth-body-login .login-user .top .top-2 .google-box i {
   font-size: 22px;
 }
-
 .auth-body-login .login-user .top .top-2 .google-box p {
   font-size: 18px;
 }
-
 .auth-body-login .login-user .top .top-2 .google-box:hover {
-  background-color: #d8d8d868;
-  border: 1px solid #d8d8d868;
+  background-color: rgba(216, 216, 216, 0.4078431373);
+  border: 1px solid rgba(216, 216, 216, 0.4078431373);
 }
-
 .auth-body-login .login-user .mid {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   padding: 1rem 0 0.5rem 0;
 }
-
 .auth-body-login .login-user .mid .input-box {
   position: relative;
   width: 100%;
   height: 50px;
   margin: 1% 0 5% 0;
 }
-
 .auth-body-login .login-user .mid .input-box input {
   width: 100%;
   height: 100%;
@@ -205,64 +131,48 @@ footer {
   border: none;
   outline: none;
   border-bottom: 2px solid var(--white);
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-
 .auth-body-login .login-user .mid .input-box input:focus,
 .auth-body-login .login-user .mid .input-box input:valid {
   border-bottom-color: var(--lightBulue);
 }
-
 .auth-body-login .login-user .mid .input-box label {
   position: absolute;
   top: 50%;
   left: 0;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   font-size: 16px;
   color: var(--white);
   pointer-events: none;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-
 .auth-body-login .login-user .mid .input-box input:focus ~ label,
 .auth-body-login .login-user .mid .input-box input:valid ~ label {
   top: -5px;
   color: var(--lightBulue);
 }
-
 .auth-body-login .login-user .mid .input-box i {
   position: absolute;
   top: 50%;
   right: 0;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   font-size: 18px;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-
 .auth-body-login .login-user .mid .input-box input:focus ~ i,
 .auth-body-login .login-user .mid .input-box input:valid ~ i {
   color: var(--lightBulue);
 }
-
 .auth-body-login .login-user .mid .body-btn {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin-top: 5%;
 }
-
 .auth-body-login .login-user .mid .body-btn button {
   width: 100%;
-  padding: .8rem;
+  padding: 0.8rem;
   background-color: var(--white);
   color: var(--black);
   border: none;
@@ -271,33 +181,22 @@ footer {
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   margin-top: 5px;
 }
-
 .auth-body-login .login-user .mid .body-btn button:hover {
   background-color: rgba(255, 255, 255, 0.793);
 }
-
 .auth-body-login .login-user .mid .mid-1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   padding: 2rem 0;
   color: var(--white);
   text-align: start;
   margin-top: 10px;
 }
-
 .auth-body-login .login-user .mid .mid-1 p,
 .auth-body-login .login-user .mid .mid-1 a {
   font-size: 0.9vw;
@@ -305,7 +204,6 @@ footer {
   text-decoration: none;
   font-weight: 600;
 }
-
 .auth-body-login .login-user .mid .mid-1 a:hover {
   text-decoration: underline;
 }
@@ -314,192 +212,109 @@ footer {
   position: absolute;
   margin: 0;
   width: calc(100% - 58px);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   padding: 3rem 0;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
 }
-
 .auth-body-signup .signup-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
+  flex-direction: column;
+  justify-content: start;
   gap: 2rem;
   width: 45%;
   padding: 2rem 2rem 0 2rem;
 }
-
 .auth-body-signup .signup-container .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .auth-body-signup .signup-container .top .signup-title {
   font-size: 5rem;
 }
-
 .auth-body-signup .signup-user {
   border-radius: 1rem;
   padding: 0 2rem;
   width: 35%;
 }
-
 .auth-body-signup .signup-user .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 1.1rem;
 }
-
 .auth-body-signup .signup-user .top .top-1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
-
 .auth-body-signup .signup-user .top .top-1 p {
   font-size: 1.1vw;
   color: white;
 }
-
 .auth-body-signup .signup-user .top .top-1 i {
   color: var(--white);
   font-size: 1.3vw;
   cursor: pointer;
 }
-
 .auth-body-signup .signup-user .top .top-2 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin-top: 5%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
-
 .auth-body-signup .signup-user .top .top-2 .or {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
-
 .auth-body-signup .signup-user .top .top-2 .or .or-line {
   width: 100%;
   height: 1px;
   background-color: var(--white);
   opacity: 0.2;
 }
-
 .auth-body-signup .signup-user .top .top-2 .google-box {
   border: 1px solid var(--white);
   cursor: pointer;
   border-radius: 10px;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
   padding: 0.7rem;
-  -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
-
 .auth-body-signup .signup-user .top .top-2 .google-box i {
   font-size: 20px;
   color: white;
 }
-
 .auth-body-signup .signup-user .top .top-2 .google-box p {
   font-size: 14px;
   color: white;
 }
-
 .auth-body-signup .signup-user .top .top-2 .google-box:hover {
   background-color: rgba(216, 216, 216, 0.408);
   border: 1px solid rgba(216, 216, 216, 0.408);
 }
-
 .auth-body-signup .signup-user .mid {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   padding: 1rem 0 0.5rem 0;
   gap: 1rem;
 }
-
 .auth-body-signup .signup-user .mid .input-box {
   position: relative;
   width: 100%;
   height: 50px;
   margin: 1% 0 5% 0;
 }
-
 .auth-body-signup .signup-user .mid .input-box input {
   width: 100%;
   height: 100%;
@@ -510,65 +325,49 @@ footer {
   border: none;
   outline: none;
   border-bottom: 2px solid var(--white);
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-
 .auth-body-signup .signup-user .mid .input-box input:focus,
 .auth-body-signup .signup-user .mid .input-box input:valid {
   border-bottom-color: var(--lightBulue);
 }
-
 .auth-body-signup .signup-user .mid .input-box label {
   position: absolute;
   top: 50%;
   left: 0;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   font-size: 16px;
   color: var(--white);
   pointer-events: none;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-
 .auth-body-signup .signup-user .mid .input-box input:focus ~ label,
 .auth-body-signup .signup-user .mid .input-box input:valid ~ label {
   top: -5px;
   color: var(--lightBulue);
 }
-
 .auth-body-signup .signup-user .mid .input-box i {
   position: absolute;
   top: 50%;
   right: 0;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   font-size: 18px;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
   color: white;
 }
-
 .auth-body-signup .signup-user .mid .input-box input:focus ~ i,
 .auth-body-signup .signup-user .mid .input-box input:valid ~ i {
   color: var(--lightBulue);
 }
-
 .auth-body-signup .signup-user .mid .body-btn {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin-top: 5%;
 }
-
 .auth-body-signup .signup-user .mid .body-btn button {
   width: 100%;
-  padding: .5rem;
+  padding: 0.5rem;
   background-color: var(--white);
   color: var(--black);
   border: none;
@@ -577,33 +376,22 @@ footer {
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   margin-top: 5px;
 }
-
 .auth-body-signup .signup-user .mid .body-btn button:hover {
   background-color: rgba(255, 255, 255, 0.793);
 }
-
 .auth-body-signup .signup-user .mid .mid-1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   padding: 0 0;
   color: var(--white);
   text-align: start;
   margin-top: 10px;
 }
-
 .auth-body-signup .signup-user .mid .mid-1 p,
 .auth-body-signup .signup-user .mid .mid-1 a {
   font-size: 0.9vw;
@@ -612,7 +400,6 @@ footer {
   text-decoration: none;
   font-weight: 600;
 }
-
 .auth-body-signup .signup-user .mid .mid-1 a:hover {
   text-decoration: underline;
 }
@@ -653,5 +440,4 @@ footer {
   .auth-body-signup .signup-user .mid .mid-1 p, .auth-body-signup .signup-user .mid .mid-1 a {
     font-size: 13px;
   }
-}
-/*# sourceMappingURL=login_signup.css.map */
+}/*# sourceMappingURL=login_signup.css.map */

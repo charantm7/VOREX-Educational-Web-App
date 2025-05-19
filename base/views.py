@@ -21,14 +21,6 @@ import logging
 import base64
 from django.core.files.base import ContentFile
 
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-from cloudinary.models import CloudinaryResource
-from django.conf import settings
-import hashlib
-import hmac
-import time
 
 
 logger = logging.getLogger(__name__)
@@ -51,7 +43,6 @@ def home(request):
     return render(request, 'base/home.html', context)
 
 
-@login_required(login_url='User_login')
 def rooms(request, room_id):
     room = get_object_or_404(Room, id=room_id)
     folder = Folder.objects.filter(room=room)
@@ -107,12 +98,42 @@ def rooms(request, room_id):
             else:
                 messages.error(request, "Invalid Member Form")
 
+        elif 'info_content_submit' in request.POST:
+            info_content_form = InfoContentForm(request.POST)
+            if info_content_form.is_valid():
+                info_content_instance = info_content_form.save(commit=False)
+                info_content_instance.room = room
+                info_content_instance.created_by = request.user
+                info_content_instance.save()
+                return redirect('Rooms', room_id=room_id)
+            messages.error(request, 'Invalid Info Content Form')
+
+        elif 'info_content_url_submit' in request.POST:
+            info_content_url_form = InfoContentUrlForm(request.POST)
+            if info_content_url_form.is_valid():
+                info_content_url_instance = info_content_url_form.save(commit=False)
+                info_content_url_instance.room = room
+                info_content_url_instance.created_by = request.user
+                info_content_url_instance.save()
+                return redirect('Rooms', room_id=room_id)
+            messages.error(request, 'Invalid Info Content URL Form')
+
+        elif 'code_folder_submit' in request.POST:
+            code_folder_form = CodeFolderForm(request.POST)
+            if code_folder_form.is_valid():
+                code_folder_instance = code_folder_form.save(commit=False)
+                code_folder_instance.room = room
+                code_folder_instance.created_by = request.user
+                code_folder_instance.save()
+                return redirect('Rooms', room_id=room_id)
+            messages.error(request, 'Invalid Code Folder Form')
+
     context = {
         'rooms': room,
         'members': members_joined.count(),
         'profile': profile,
         'folders': folder,
-        'form': folder_form,
+        'folder_form': folder_form,
         'group_chat': group_chat,
         'group_chat_member': group_chat_member,
         'group_chat_member_form': group_chat_member_form,
@@ -503,7 +524,7 @@ def files_in_folder(request, room_id, f_name):
     study_materials = StudyMaterials.objects.filter(folder=folder)
 
     if request.method == 'POST':
-        form = StudyMaterialForm(request.POST, request.FILES)  # include FILES for local upload
+        form = StudyMaterialForm(request.POST, request.FILES) 
         if form.is_valid():
             study_material = form.save(commit=False)
             study_material.upload_by = request.user

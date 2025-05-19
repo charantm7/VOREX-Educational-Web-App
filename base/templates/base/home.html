@@ -36,10 +36,15 @@
         <div class="card">
           <div class="card-top">
             <div class="card-top-left">
-              {% if room.created_by.profile.profile_pic %}
-              <img src="{{room.created_by.profile.profile_pic.url}}" alt="img" />
+              {% if not room.created_by.profile.profile_pic %}
+              <img
+                src="{% static 'assets/default-pic.png' %}"
+                alt="default"
+                style="border: 0.5px solid rgba(255, 255, 255, 0.236)"
+              />
+
               {% else %}
-              <img src="{% static 'assets/default.png' %}" alt="" />
+              <img src="{{room.created_by.profile.profile_pic.url}}" alt="user" />
               {% endif %}
               <a href="{% url 'Profile' room.created_by.username %}">@{{room.created_by.username}}</a>
             </div>
@@ -52,22 +57,35 @@
             </div>
 
             <div class="card-mid-right">
-              {% if room.created_by == user %}
-              <a href="{% url 'Edit-room' room.id %}"
-                ><i class="fa-solid fa-pen-to-square" title="Edit"></i
-              ></a>
-              <a onclick="DeleteRoom(event)" href="{% url 'Delete-room' room.id %}"
-                ><i class="fa-solid fa-trash" title="Delete"></i
-              ></a>
-              {% endif %} {% if room.is_private %}
-              <div class="card-mid-right-gobal">
-                <i class="fa-solid fa-lock" title="Private"></i>
+              <div class="options">
+                {% if room.created_by == user %}
+                <a href="{% url 'Edit-room' room.id %}"
+                  ><i class="fa-solid fa-pen-to-square" title="Edit"></i
+                ></a>
+                <a onclick="DeleteRoom(event)" href="{% url 'Delete-room' room.id %}"
+                  ><i class="fa-solid fa-trash" title="Delete"></i
+                ></a>
+                {% else %}
+                <a title="Get Access">
+                  <i class="fa-solid fa-hand-point-down"></i>
+                </a>
+                <a title="Bookmark">
+                  <i class="fa-solid fa-book"></i>
+                </a>
+
+                {% endif %} {% if room.is_private %}
+                <div class="card-mid-right-gobal">
+                  <i class="fa-solid fa-lock" title="Private"></i>
+                </div>
+                {% else %}
+                <div class="gobal">
+                  <i class="fa-solid fa-globe" title="Public"></i>
+                </div>
+                {% endif %}
               </div>
-              {% else %}
-              <div class="card-mid-right-gobal">
-                <i class="fa-solid fa-globe" title="Public"></i>
+              <div class="access">
+                <a href="{% url 'Rooms' room.id  %}">Get Access</a>
               </div>
-              {% endif %}
             </div>
           </div>
           <div class="card-bottom">
@@ -118,7 +136,11 @@
             {% if activity.created_by.profile and activity.created_by.profile.profile_pic %}
             <img src="{{ activity.created_by.profile.profile_pic.url }}" alt="Profile Picture" />
             {% else %}
-            <img src="{% static 'assets/default.png' %}" alt="Default Picture" />
+            <img
+              src="{% static 'assets/default-pic.png' %}"
+              alt="Default Picture"
+              style="border: 0.5px solid rgba(255, 255, 255, 0.236)"
+            />
             {% endif %}
             <a href="{% url 'Profile' activity.created_by.username %}">@{{activity.created_by.username}}</a>
           </div>

@@ -4,45 +4,29 @@ footer {
 }
 
 .main-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: space-evenly;
   font-size: 1vw;
   overflow: auto;
   padding: 40px 0;
 }
-
 .main-body form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 2rem;
   border-radius: 7px;
   gap: 20px;
-  background-color: #ffffff09;
+  background-color: rgba(255, 255, 255, 0.0352941176);
   width: 40%;
 }
-
 .main-body form h3 {
   margin-bottom: 20px;
   text-align: center;
 }
-
 .main-body form label {
   font-size: 1vw;
 }
-
 .main-body form input {
   width: 100%;
   background-color: transparent;
@@ -53,13 +37,11 @@ footer {
   border: none;
   border: 1px solid rgba(130, 129, 129, 0.256);
 }
-
 .main-body form input:focus {
   background-color: var(--bodydark);
   color: white;
   outline: none;
 }
-
 .main-body form textarea {
   width: 100%;
   height: 100px;
@@ -71,138 +53,84 @@ footer {
   color: white;
   border: 1px solid rgba(130, 129, 129, 0.275);
 }
-
 .main-body form textarea:focus {
   background-color: var(--bodydark);
   color: white;
   outline: none;
 }
-
 .main-body form .room-title {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
   gap: 10px;
 }
-
 .main-body form .room-description {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
   gap: 10px;
 }
-
 .main-body form .room-tag {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
   gap: 10px;
   width: 100%;
 }
-
 .main-body form .room-tag .select2-container {
   width: 100% !important;
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple {
   background-color: transparent;
   border: 1px solid rgba(130, 129, 129, 0.275);
   border-radius: 5px;
   min-height: 42px;
   padding: 6px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 6px;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-selection__clear {
   position: absolute;
   right: 10px;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   margin: 0;
   padding: 0;
   width: 20px;
   height: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   color: rgba(255, 255, 255, 0.7);
   font-size: 18px;
   cursor: pointer;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
-  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   z-index: 2;
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-selection__clear:hover {
   color: #ff4444;
   background: rgba(255, 255, 255, 0.2);
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-selection__clear::before {
   content: "";
   line-height: 1;
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-selection__rendered {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 6px;
   padding: 0;
   margin: 0;
   width: calc(100% - 30px);
   min-height: 30px;
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-search__field {
   color: white;
   margin: 0;
@@ -210,23 +138,12 @@ footer {
   min-width: 120px;
   height: 30px;
 }
-
-.main-body form .room-tag .select2-container .select2-selection--multiple .select2-search__field::-webkit-input-placeholder {
+.main-body form .room-tag .select2-container .select2-selection--multiple .select2-search__field::-moz-placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
-
-.main-body form .room-tag .select2-container .select2-selection--multiple .select2-search__field:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.main-body form .room-tag .select2-container .select2-selection--multiple .select2-search__field::-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-search__field::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-selection__choice {
   background-color: #205067;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -235,29 +152,19 @@ footer {
   padding: 4px 8px 4px 12px;
   margin: 0;
   height: 30px;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 6px;
   font-size: 0.9em;
-  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 200px;
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-selection__choice:hover {
   background-color: #2a6382;
-  -webkit-transform: translateY(-1px);
-          transform: translateY(-1px);
-  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
   position: relative;
   color: rgba(255, 255, 255, 0.9);
@@ -267,40 +174,27 @@ footer {
   padding: 0;
   margin-left: 4px;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
+  order: 2;
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove::before {
   content: "×";
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   line-height: 1;
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove:hover {
   color: #ff4444;
   background-color: rgba(255, 255, 255, 0.1);
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-selection__choice span {
   max-width: calc(100% - 30px);
   overflow: hidden;
@@ -308,93 +202,59 @@ footer {
   white-space: nowrap;
   line-height: 1.2;
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple li {
   margin: 0;
   padding: 0;
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 .main-body form .room-tag .select2-container .select2-selection--multiple .select2-container--default {
   position: relative;
 }
-
 .main-body form .room-private {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
   gap: 10px;
 }
-
 .main-body form .room-private input {
   width: 3%;
   height: 20px;
   margin: 0;
 }
-
 .main-body form button {
   height: 40px;
   font-size: 1vw;
   border-radius: 5px;
   border: none;
-  -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
   width: 50%;
   font-weight: 600;
-  background-color: #ffffffa4;
+  background-color: rgba(255, 255, 255, 0.6431372549);
   color: black;
 }
-
 .main-body form button:hover {
   background-color: rgba(255, 255, 255, 0.794);
   border: none;
 }
-
 .main-body .create-room-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
   width: 40%;
 }
-
 .main-body .create-room-container .create-room-container-left {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 10px;
 }
-
 .main-body .create-room-container video {
   width: 100%;
   height: 80%;
@@ -423,21 +283,17 @@ footer {
     font-size: 17px;
   }
 }
-
 .select2-dropdown {
   background-color: var(--bodydark);
   border: 1px solid rgba(130, 129, 129, 0.275);
   border-radius: 5px;
   margin-top: 4px;
-  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
 }
-
 .select2-dropdown .select2-search {
   padding: 8px;
 }
-
 .select2-dropdown .select2-search .select2-search__field {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.05);
@@ -446,27 +302,21 @@ footer {
   color: white;
   padding: 8px 12px;
 }
-
 .select2-dropdown .select2-search .select2-search__field:focus {
   outline: none;
   border-color: #205067;
 }
-
 .select2-dropdown .select2-results__options {
   padding: 4px;
 }
-
 .select2-dropdown .select2-results__options .select2-results__option {
   padding: 8px 12px;
   border-radius: 4px;
-  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-
-.select2-dropdown .select2-results__options .select2-results__option[aria-selected="true"] {
+.select2-dropdown .select2-results__options .select2-results__option[aria-selected=true] {
   background-color: rgba(32, 80, 103, 0.3);
 }
-
 .select2-dropdown .select2-results__options .select2-results__option--highlighted[aria-selected] {
   background-color: #205067;
 }
@@ -483,7 +333,6 @@ footer {
   background: rgba(130, 129, 129, 0.5);
   border-radius: 4px;
 }
-
 .select2-results__options::-webkit-scrollbar-thumb:hover {
   background: rgba(130, 129, 129, 0.7);
 }
@@ -491,5 +340,4 @@ footer {
 .select2-container--open .select2-selection--multiple {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
-/*# sourceMappingURL=createroom.css.map */
+}/*# sourceMappingURL=createroom.css.map */

@@ -11,9 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 import dj_database_url
-from google.oauth2 import service_account
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -55,9 +54,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'django.contrib.humanize',
     'django_select2',
-    'cloudinary',
-    'cloudinary_storage',
-    'storages',
     'django.contrib.staticfiles',
 ]
 
@@ -122,9 +118,6 @@ CHANNEL_LAYERS = {
 }
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -160,9 +153,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -172,9 +162,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
@@ -182,9 +169,6 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
@@ -201,32 +185,15 @@ SOCIALACCOUNT_USERNAME_GENERATOR = lambda user: user.email.split('@')[0]
 ACCOUNT_SIGNUP_FIELDS = ['email', 'password1', 'password2']  
 
 
-
-
-
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
 
-
-
-
-
-# Storage configuration
-DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-GS_BUCKET_NAME = 'your-bucket-name'
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-    BASE_DIR / 'path/to/your-service-account.json'
-)
-
-
 # Media URL configuration
 MEDIA_URL = '/media/'
-MEDIA_ROOT = ''
-
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -238,7 +205,6 @@ EMAIL_HOST_PASSWORD = 'ufhtzvedowwsvaew'
 DEFAULT_FROM_EMAIL = 'Vorex Support <vorexx07@gmail.com>'
 
 
-# Add this at the bottom of settings.py
 SELECT2_CACHE_BACKEND = 'default'
 
 
