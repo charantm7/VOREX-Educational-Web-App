@@ -251,6 +251,8 @@ nav {
       .search-vorex {
         display: flex;
         flex-direction: column;
+        width: 100%;
+        align-items: end;
 
         .search-container {
           border: 1px solid var(--nav-border);
@@ -596,6 +598,7 @@ footer {
 
   .foot-1 {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
     width: 100%;
@@ -633,11 +636,13 @@ footer {
         flex-direction: column;
         gap: 0.5rem;
         margin-left: 4rem;
+        font-size: 1vw;
 
         .c-1 {
           a {
             text-decoration: none;
             color: var(--llwhite);
+            font-size: 1vw;
           }
           a:hover {
             text-decoration: underline;
@@ -649,6 +654,10 @@ footer {
         flex-direction: column;
         gap: 0.5rem;
         margin-left: 4rem;
+
+        p em {
+          font-size: 1vw;
+        }
       }
       .icon-links {
         display: flex;
@@ -688,6 +697,8 @@ footer {
         display: flex;
         flex-direction: column;
         gap: 0.8rem;
+        font-size: 0.9vw;
+        padding: 0 0 0 0;
 
         a {
           text-decoration: none;
@@ -705,6 +716,7 @@ footer {
     display: flex;
     justify-content: baseline;
     padding: 1rem;
+    font-size: 0.9vw;
   }
 }
 @media (max-width: 576px) {
@@ -730,6 +742,22 @@ footer {
       }
       .nav-container-right {
         gap: 10px;
+        .search-vorex {
+          width: 90%;
+
+          .search-container {
+            width: 90%;
+            padding: 0.5rem 0.5rem;
+            i {
+              font-size: 12px;
+            }
+            input {
+              font-size: 12px;
+              height: 10px;
+              width: 80%;
+            }
+          }
+        }
         .search-container {
           width: 50%;
           padding: 0.5rem 0.5rem;
@@ -789,52 +817,52 @@ footer {
     transform: translateX(0);
   }
   footer {
-    flex-direction: column;
-
-    .foot-left {
-      width: 100%;
-      gap: 15px;
-      .logo {
-        margin-left: 8%;
-        p {
-          font-size: 23px;
-        }
-      }
-      .devcontact {
-        gap: 20px;
-      }
-
-      .copyrights,
-      .devcontact {
-        margin-left: 8%;
-        p {
-          font-size: 3vw;
-
-          a {
-            font-size: 3vw;
+    .foot-1 {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .foot-left {
+        .logo {
+          .vorex-name {
+            p {
+              font-size: 3.5vw;
+            }
+            small {
+              font-size: 2vw;
+            }
           }
         }
-        [class^="c-"] {
-          font-size: 3vw;
+        .devcontact {
+          .c-1 {
+            font-size: 2.5vw;
+            a {
+              font-size: 2.5vw;
+            }
+          }
+        }
+        .quote {
+          font-size: 2.5vw;
+        }
+        .icon-links {
           a {
-            font-size: 3vw;
+            i {
+              font-size: 3.5vw;
+            }
+          }
+        }
+      }
+      .foot-right-1 {
+        [class^="r-"] {
+          font-size: 3vw;
+          padding: 3rem 0 0 0;
+          a {
+            font-size: 2.5vw;
           }
         }
       }
     }
-    .foot-right {
-      width: 100%;
-      justify-content: center;
-      gap: 10%;
-      margin-top: 10%;
-      [class^="r-"] {
-        p {
-          font-size: 3vw;
-        }
-        a {
-          font-size: 3vw;
-        }
-      }
+    .foot-2 {
+      font-size: 2vw;
     }
   }
 

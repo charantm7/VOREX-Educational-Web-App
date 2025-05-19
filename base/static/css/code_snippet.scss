@@ -6,6 +6,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  width: 100%;
   height: 100%;
   padding: 2rem;
 
@@ -137,10 +138,17 @@ footer {
         padding: 0.7rem;
         border-radius: 5px;
         cursor: pointer;
-
         transition: all 0.3s ease;
         &:hover {
           background-color: rgb(9, 9, 23);
+        }
+
+        i {
+          font-size: 1rem;
+          display: block;
+        }
+        span {
+          font-size: 1rem;
         }
       }
     }
@@ -204,12 +212,17 @@ footer {
       .code-container {
         position: relative;
         border-radius: 5px;
+        // border: 1px solid white;
+        width: 100%;
+        overflow: hidden;
 
         pre {
           border-radius: 5px;
           padding: 1rem;
           background-color: rgba(40, 69, 99, 0.142);
           color: var(--llwhite);
+          // border: 1px solid white;
+          overflow: auto;
         }
       }
 
@@ -229,6 +242,77 @@ footer {
 
       .copy-btn:hover {
         background-color: #666;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  main {
+    width: 100%;
+  }
+  .main {
+    width: 100%;
+    .top {
+      .top-left {
+        button {
+          padding: 0.4rem;
+          i {
+            display: none;
+          }
+          span {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+    padding: 0.8rem;
+    .code-bottom {
+      .code-box {
+        .code-box-top {
+          .code-box-top-right {
+            .code-box-top-right-left {
+              display: none;
+            }
+          }
+        }
+        .code-container {
+          width: 330px;
+        }
+      }
+    }
+  }
+
+  .main-upload {
+    padding: 0.8rem;
+    .left {
+      display: none;
+    }
+  }
+
+  .code-snippet-form {
+    width: 90%;
+
+    form {
+      .top {
+        button {
+          padding: 0.4rem;
+        }
+      }
+      .title {
+        input {
+          padding: 0.4rem;
+        }
+      }
+      .language {
+        select {
+          padding: 0.4rem;
+        }
+      }
+      .code {
+        textarea {
+          padding: 0.4rem;
+        }
       }
     }
   }

@@ -1,152 +1,88 @@
 .about-section .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   padding: 2rem 4rem;
   gap: 2rem;
 }
-
 .about-section .top img {
   height: 12vw;
   width: 12vw;
 }
-
 .about-section .top .about-head {
   font-size: 6vw;
 }
-
 .about-section .mid {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 2rem 4rem 2rem 4rem;
   gap: 3rem;
   height: 600px;
 }
-
 .about-section .mid .features {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 2rem;
 }
-
 .about-section .mid .features .feature-item {
   background-color: rgba(255, 255, 255, 0.06);
   padding: 1.5rem;
   border-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 1rem;
   width: 100%;
-  -webkit-transition: -webkit-transform 0.2s ease-in-out;
-  transition: -webkit-transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
   cursor: pointer;
 }
-
 .about-section .mid .features .feature-item i {
   font-size: 3vw;
 }
-
 .about-section .mid .features .feature-item p {
   line-height: 1.7;
   text-align: left;
   font-size: 15px;
 }
-
 .about-section .mid .features .feature-item:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .vorex-services .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   padding: 2rem 4rem;
 }
-
 .vorex-services .top p {
   font-size: 5vw;
 }
-
 .vorex-services .service {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   gap: 4rem;
   padding: 3rem 3rem 8rem 3rem;
 }
-
 .vorex-services .service .service-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 70%;
   height: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 3rem;
   gap: 3rem;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
   background-color: rgba(255, 255, 255, 0.064);
   border-radius: 10px;
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: -webkit-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
-
 .vorex-services .service .service-item .left ul {
   list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 0.7rem;
   margin-top: 1rem;
 }
-
 .vorex-services .service .service-item i {
   font-size: 8vw;
 }
-
 .vorex-services .service .service-item:hover {
-  -webkit-transform: translateX(30px);
-          transform: translateX(30px);
-}
-/*# sourceMappingURL=sidebaritem.css.map */
+  transform: translateX(30px);
+}/*# sourceMappingURL=sidebaritem.css.map */

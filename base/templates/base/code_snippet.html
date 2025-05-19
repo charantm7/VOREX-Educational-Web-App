@@ -12,10 +12,12 @@
         <i class="fa-solid fa-arrow-left"></i>
         <span>Back</span>
       </button>
+      {% if user.is_authenticated %}
       <button onclick="openCodeSnippetForm()">
         <i class="fa-solid fa-code"></i>
         <span>Add Code Snippet</span>
       </button>
+      {% endif %}
     </div>
     <div class="top-right">
       <h3>Code Snippets</h3>

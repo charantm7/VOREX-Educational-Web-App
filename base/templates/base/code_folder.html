@@ -1,7 +1,9 @@
 <div class="code-top">
+  {% if user.is_authenticated %}
   <div class="code-top-left" title="Create Code Folder">
     <a href="?form=code-folder#code-folder-form">📁 Add Code Folder</a>
   </div>
+  {% endif %}
 
   <div class="code-top-mid">
     <input type="text" placeholder="Search code" />

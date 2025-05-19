@@ -34,10 +34,12 @@
       <a href="{% url 'Rooms' folder.room.id %}" id="back-icon"
         ><i class="fa-solid fa-arrow-left" title="Back"></i
       ></a>
+      {% if user.is_authenticated %}
       <div class="upload-file-icon" title="Upload file" onclick="Uploadfile()">
         <p>Files</p>
         <i class="fa-solid fa-plus"> </i>
       </div>
+      {% endif %}
     </div>
     <div class="top-2">
       <input type="text" placeholder="Search" />
@@ -55,7 +57,7 @@
           </div>
           <div class="file-icon-name">
             <i class="fa-solid fa-file"></i>
-            <a href="{{ material.file }}" class="quicksand" target="_blank" title="{{material.title}}"
+            <a href="{{ material.file_url }}" class="quicksand" target="_blank" title="{{material.title}}"
               >{{ material.title }}</a
             >
           </div>
@@ -63,7 +65,20 @@
           <div class="file-data">
             <p class="quicksand">By: @{{ material.upload_by}}</p>
             {% if material.file %}
-            <a href="{{ material.file }}" target="_blank">Download File</a>
+            <a
+              href="{{ material.file_url }}"
+              style="
+                padding: 2px 8px;
+                background-color: #151b23;
+                text-decoration: none;
+                color: rgba(230, 230, 230, 0.895);
+                border-radius: 5px;
+              "
+              >view</a
+            >
+            <a href="{{ material.file_url }}" target="_blank" download>
+              <i class="fa-solid fa-download"></i>
+            </a>
             {% else %}
             <p>No file URL available</p>
             {% endif %} {% if request.user == material.upload_by %}

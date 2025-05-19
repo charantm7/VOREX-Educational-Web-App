@@ -14,25 +14,18 @@ p {
 }
 
 .rooms {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 .rooms {
   font-family: sans-serif;
 }
-
 .rooms .tab {
   grid-area: tabs;
   overflow: hidden;
   background-color: var(--roombg);
 }
-
 .rooms #info-content-form {
   position: absolute;
   z-index: 99999;
@@ -45,38 +38,19 @@ p {
   background-color: rgba(82, 82, 82, 0.68);
   border-radius: 10px;
   padding: 1rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 1rem;
 }
-
 .rooms #info-content-form .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .rooms #info-content-form .info-title {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .rooms #info-content-form .info-title input {
   height: 35px;
   outline: invert;
@@ -86,17 +60,10 @@ p {
   padding: 0 10px;
   color: white;
 }
-
 .rooms #info-content-form .description {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .rooms #info-content-form .description textarea {
   height: auto;
   outline: invert;
@@ -106,23 +73,16 @@ p {
   padding: 1rem;
   color: white;
 }
-
 .rooms #info-content-form button {
   padding: 8px;
   border-radius: 10px;
 }
-
 .rooms #info-url-form {
   position: absolute;
   top: 35%;
   left: 40%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 1rem;
   border: 1px solid white;
   padding: 1rem;
@@ -132,26 +92,14 @@ p {
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
 }
-
 .rooms #info-url-form .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
-
 .rooms #info-url-form .title {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .rooms #info-url-form .title input {
   height: 40px;
   padding: 0 10px;
@@ -161,21 +109,13 @@ p {
   border-radius: 5px;
   color: white;
 }
-
 .rooms #info-url-form .title ::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.557);
 }
-
 .rooms #info-url-form .url {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .rooms #info-url-form .url input {
   height: 40px;
   padding: 0 10px;
@@ -185,16 +125,13 @@ p {
   border-radius: 5px;
   color: white;
 }
-
 .rooms #info-url-form .url ::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.557);
 }
-
 .rooms #info-url-form button {
   padding: 8px;
   border-radius: 10px;
 }
-
 .rooms .tab button {
   background-color: inherit;
   float: left;
@@ -202,147 +139,92 @@ p {
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   color: var(--lwhite);
   font-size: 0.9vw;
 }
-
 .rooms .tab button:hover {
   background-color: var(--hover);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-
 .rooms .tab button.active {
   background-color: var(--hover);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-
 .rooms .tablinks i {
   padding-right: 10px;
 }
-
 .rooms #Info {
   min-height: 100vh;
   padding: 20px 30px;
   border-top: none;
   background-color: var(--hover);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 20px;
 }
-
 .rooms #Info .tabcontent-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #fff;
   gap: 70px;
   padding: 40px 40px;
   width: 100%;
   height: 100%;
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-left {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   height: 100%;
   gap: 50px;
   width: 70%;
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-left i {
   font-size: 15vw;
   color: var(--lwhite);
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-left .tabcontent-top-left-1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
   gap: 20px;
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-left .tabcontent-top-left-1 p {
   font-family: "VT323", monospace;
   font-size: 4vw;
   color: var(--lwhite);
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-left .tabcontent-top-left-1 small {
   font-size: 1vw;
   color: var(--lwhite);
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-right {
   margin-right: 80px;
   font-size: 1.2vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 10px;
   margin-top: 0;
   height: 100%;
   width: 20%;
   margin-top: 7%;
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-right p {
   color: var(--lwhite);
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   gap: 10px;
   font-size: 1vw;
   margin-left: 15%;
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 img {
   height: 35px;
   width: 35px;
@@ -350,44 +232,28 @@ p {
   -o-object-fit: cover;
      object-fit: cover;
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 a {
   text-decoration: none;
   color: var(--lwhite);
   font-size: 1vw;
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-right .tabcontent-top-right-1 a:hover {
   text-decoration: underline;
 }
-
 .rooms #Info .tabcontent-top .tabcontent-top-right .status {
   margin-left: 15%;
 }
-
 .rooms #Info .bottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   height: 100%;
   padding: 1rem 0.5rem;
 }
-
 .rooms #Info .bottom .urls {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   gap: 1rem;
 }
-
 .rooms #Info .bottom .urls a {
   text-decoration: none;
   color: var(--lwhite);
@@ -396,116 +262,62 @@ p {
   border-radius: 5px;
   background-color: var(--hover);
   margin-bottom: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 10px;
   border: 1px solid var(--border);
 }
-
 .rooms #Info .bottom .info-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   color: var(--lwhite);
 }
-
 .rooms #Info .bottom .info-content .info-content-box {
   padding: 1rem 0 1rem 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 1rem;
   width: 70%;
 }
-
 .rooms #Info .bottom .info-content .info-content-box .content-card {
   padding: 1rem;
   border-radius: 5px;
   background-color: rgba(40, 69, 99, 0.142);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 10px;
 }
-
 .rooms #Info .bottom .info-content .info-content-box .content-card .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
 }
-
 .rooms #Info .bottom .info-content .info-content-box .content-card p {
   font-size: 14px;
   color: var(--lwhite);
 }
-
 .rooms #Info .bottom .info-content .info-url-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: auto;
   height: auto;
   gap: 10px;
   width: 30%;
   padding: 1rem 0 1rem 1rem;
 }
-
 .rooms #Info .bottom .info-content .info-url-box .url-card {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   background-color: rgba(57, 96, 134, 0.154);
   padding: 10px 15px;
   border-radius: 5px;
 }
-
 .rooms #Info .bottom .info-content .info-url-box .url-card .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
-
 .rooms #Info .bottom .info-content .info-url-box .url-card a {
   font-size: 14px;
 }
@@ -561,7 +373,6 @@ p {
     padding: 0.5rem;
   }
 }
-
 @media (max-width: 576px) {
   .rooms #Info {
     padding: 1rem 1rem;
@@ -612,10 +423,7 @@ p {
     font-size: 12px;
   }
   .rooms #Info .bottom .info-content {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   .rooms #Info .bottom .info-content .info-content-box {
     width: 100%;
@@ -641,13 +449,9 @@ p {
     padding: 0.5rem;
   }
 }
-
 @media screen and (max-width: 768px) {
   .chat-container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
     height: 85.5vh;
   }
   /* Make Sidebar Full Width on Mobile */
@@ -658,30 +462,19 @@ p {
   }
   .chat-area {
     display: none;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
     width: 100%;
     height: 90vh;
     background: var(--hover);
     z-index: 1000;
   }
   .chat-header {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: space-between;
+    align-items: center;
   }
   .chat-messages {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    flex: 1;
   }
   .back-btn {
     display: block;
@@ -692,20 +485,13 @@ p {
     color: white;
   }
 }
-
 #Materials {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
   padding: 20px 20px;
   gap: 10px;
 }
-
 #Materials .create-folder {
   display: none;
   position: absolute;
@@ -718,51 +504,27 @@ p {
   border-radius: 10px;
   overflow-y: hidden;
 }
-
 #Materials .create-folder-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   padding: 20px 20px 10px 20px;
 }
-
 #Materials .create-folder-top i {
   cursor: pointer;
 }
-
 #Materials .create-folder-bottom form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 20px 20px;
   gap: 30px;
 }
-
 #Materials .create-folder-bottom form .input-folder-name {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 5px;
 }
-
 #Materials .create-folder-bottom form .input-folder-name input {
   height: 40px;
   outline: none;
@@ -772,7 +534,6 @@ p {
   padding: 0 10px;
   border-radius: 5px;
 }
-
 #Materials .create-folder-bottom form button {
   width: 35%;
   padding: 2px 5px;
@@ -781,10 +542,7 @@ p {
 
 .delete {
   display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   position: absolute;
   top: 40%;
   left: 40%;
@@ -793,25 +551,14 @@ p {
   border-radius: 10px;
   background-color: rgba(57, 57, 57, 0.878);
   gap: 20px;
-  -webkit-transition: -webkit-transform 0.3s ease-in;
-  transition: -webkit-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  transform: scale(1.1);
 }
-
 .delete .bottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   gap: 15px;
 }
-
 .delete .bottom .cancel-btn {
   padding: 1px 8px;
   border-radius: 5px;
@@ -820,49 +567,30 @@ p {
   font-size: 15px;
   background-color: transparent;
 }
-
 .delete .bottom .delete-btn {
   padding: 3px 10px;
   border-radius: 5px;
-  border: 0.5px solid #161616;
+  border: 0.5px solid rgb(22, 22, 22);
   font-size: 15px;
-  background-color: #161616;
+  background-color: rgb(22, 22, 22);
   outline: none;
   color: white;
 }
 
 .materials-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: 10px 0;
 }
-
 .materials-top-left {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   gap: 20px;
 }
-
 .materials-top-left-folder {
   padding: 0.7rem 0.9rem;
   background-color: var(--roombg);
@@ -872,27 +600,16 @@ p {
   font-size: 1vw;
   border: 1px solid var(--border);
 }
-
 .materials-top-mid {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   border: 1px solid var(--border);
   background-color: var(--roombg);
   border-radius: 5px;
   width: 20%;
 }
-
 .materials-top-mid input {
   width: 100%;
   height: 45px;
@@ -905,7 +622,6 @@ p {
   font-size: 16px;
   background-color: transparent;
 }
-
 .materials-top-mid i {
   padding: 10px 15px;
   cursor: pointer;
@@ -914,72 +630,42 @@ p {
 
 .materials-bottom {
   border: 1px solid var(--border);
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   min-height: 100vh;
   padding: 1rem;
   border-radius: 5px;
 }
-
 .materials-bottom .card {
   background-color: var(--roombg);
   color: var(--lwhite);
   padding: 1rem;
   border-radius: 8px;
-  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 95%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 5px;
 }
-
 .materials-bottom .card .card-type {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
   gap: 20px;
 }
-
 .materials-bottom .card .card-type p {
   font-size: 10px;
 }
-
 .materials-bottom .card .card-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  align-items: center;
+  flex-direction: row;
   gap: 0.8rem;
 }
-
 .materials-bottom .card .card-top i {
   font-size: 1.3rem;
   color: var(--lwhite);
 }
-
 .materials-bottom .card .card-top a {
   text-decoration: none;
   color: var(--lwhite);
@@ -987,45 +673,29 @@ p {
   display: block;
   max-width: 100%;
   min-width: 0;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 .materials-bottom .card .card-top a:hover {
   text-decoration: underline;
 }
-
 .materials-bottom .card .card-bottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
 }
-
 .materials-bottom .card .card-bottom p {
   margin-top: 0.5rem;
   font-size: 0.8rem;
   color: var(--lwhite);
 }
-
 .materials-bottom .card .card-bottom a {
   margin-top: 0.5rem;
   text-decoration: none;
 }
-
 .materials-bottom .card .card-bottom a i {
   font-size: 0.9rem;
   cursor: pointer;
@@ -1037,77 +707,42 @@ footer {
 }
 
 #Code {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 20px 20px;
   gap: 10px;
 }
-
 #Code .code-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
-
 #Code .code-top .code-top-left {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   padding: 10px 0;
 }
-
 #Code .code-top .code-top-left a {
   text-decoration: none;
   color: var(--lwhite);
-  font-size: 1vw;
+  font-size: 0.7rem;
   padding: 0.7rem 0.9rem;
   border-radius: 5px;
   background-color: var(--roombg);
   border: 1px solid var(--border);
 }
-
 #Code .code-top .code-top-mid {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   border: 1px solid var(--border);
   background-color: var(--roombg);
   border-radius: 5px;
   width: 20%;
 }
-
 #Code .code-top .code-top-mid input {
   width: 100%;
   height: 45px;
@@ -1120,77 +755,48 @@ footer {
   font-size: 16px;
   background-color: transparent;
 }
-
 #Code .code-top .code-top-mid i {
   padding: 10px 15px;
   cursor: pointer;
   color: var(--lwhite);
 }
-
 #Code .code-bottom {
   border: 1px solid var(--border);
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   min-height: 100vh;
   padding: 1rem;
   border-radius: 5px;
 }
-
 #Code .code-bottom .card {
   background-color: var(--roombg);
   color: var(--lwhite);
   padding: 1rem;
   border-radius: 8px;
-  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 95%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 5px;
 }
-
 #Code .code-bottom .card .card-type {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
   gap: 20px;
 }
-
 #Code .code-bottom .card .card-type p {
   font-size: 10px;
 }
-
 #Code .code-bottom .card .card-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 0.8rem;
 }
-
 #Code .code-bottom .card .card-top i {
   font-size: 1.2rem;
   color: var(--lwhite);
 }
-
 #Code .code-bottom .card .card-top a {
   text-decoration: none;
   color: var(--lwhite);
@@ -1198,62 +804,40 @@ footer {
   display: block;
   max-width: 100%;
   min-width: 0;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 #Code .code-bottom .card .card-top a:hover {
   text-decoration: underline;
 }
-
 #Code .code-bottom .card .card-bottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
 }
-
 #Code .code-bottom .card .card-bottom p {
   margin-top: 0.5rem;
   font-size: 0.8rem;
   color: var(--lwhite);
 }
-
 #Code .code-bottom .card .card-bottom a {
   margin-top: 0.5rem;
   text-decoration: none;
 }
-
 #Code .code-bottom .card .card-bottom a i {
   font-size: 0.9rem;
   cursor: pointer;
   color: var(--lwhite);
 }
-
 #Code #code-folder-form {
   position: absolute;
   top: 35%;
   left: 40%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 1rem;
   border: 1px solid var(--border);
   padding: 1rem;
@@ -1264,16 +848,10 @@ footer {
           backdrop-filter: blur(3px);
   z-index: 99999;
 }
-
 #Code #code-folder-form .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
-
 #Code #code-folder-form .top .close-btn {
   padding: 8px;
   border-radius: 5px;
@@ -1281,17 +859,10 @@ footer {
   border: 1px solid var(--border);
   width: 20%;
 }
-
 #Code #code-folder-form .title {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 #Code #code-folder-form .title input {
   height: 35px;
   outline: invert;
@@ -1300,7 +871,6 @@ footer {
   padding: 0 10px;
   color: white;
 }
-
 #Code #code-folder-form button {
   padding: 8px;
   border-radius: 5px;
@@ -1319,7 +889,6 @@ footer {
     width: 45%;
   }
 }
-
 @media (max-width: 576px) {
   #Materials .create-folder {
     width: 75%;
@@ -1350,63 +919,47 @@ footer {
     padding: 0 0 0 10px;
   }
   .materials-bottom .custom-col {
-    -webkit-box-flex: 0 !important;
-        -ms-flex: 0 0 100% !important;
-            flex: 0 0 100% !important;
+    flex: 0 0 100% !important;
     max-width: 100% !important;
   }
   .materials-bottom .card {
     width: 100%;
   }
   .code-bottom .custom-col {
-    -webkit-box-flex: 0 !important;
-        -ms-flex: 0 0 100% !important;
-            flex: 0 0 100% !important;
+    flex: 0 0 100% !important;
     max-width: 100% !important;
   }
   .code-bottom .card {
     width: 100%;
   }
+  #Code #code-folder-form {
+    width: 80%;
+    left: 10%;
+    top: 25%;
+  }
 }
-
 .editor-body {
   background: #1e1e2f;
   padding: 0;
   height: 85vh;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto auto;
-      grid-template-columns: auto auto;
-  -ms-grid-rows: auto 1fr;
-      grid-template-rows: auto 1fr;
-      grid-template-areas: "header editor" "terminal editor";
+  grid-template-columns: auto auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "header editor" "terminal editor";
   font-family: "Fira Code", monospace;
 }
 
 .editor-header {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
   grid-area: header;
   width: 477px;
   padding: 10px 10px;
 }
-
 .editor-header .editor-controls {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .editor-header .editor-controls select {
   padding: 10px 10px;
   border-radius: 5px;
@@ -1415,13 +968,11 @@ footer {
   color: var(--lwhite);
   font-size: 12px;
 }
-
 .editor-header .editor-controls select option {
   font-size: 12px;
   background-color: var(--roombg);
   color: var(--lwhite);
 }
-
 .editor-header .editor-controls button {
   padding: 10px 10px;
   border-radius: 5px;
@@ -1432,9 +983,6 @@ footer {
 }
 
 .code-editor {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 2;
   grid-area: editor;
   border: 1px solid rgba(255, 255, 255, 0.204);
   overflow-y: auto;
@@ -1442,11 +990,8 @@ footer {
 }
 
 .terminal {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
   grid-area: terminal;
   width: 477px;
   padding: 10px 10px;
   overflow-y: auto;
-}
-/*# sourceMappingURL=room.css.map */
+}/*# sourceMappingURL=room.css.map */

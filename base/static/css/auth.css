@@ -9,16 +9,10 @@
 }
 
 .main-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 100vh;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .wrapper {
@@ -27,8 +21,7 @@
   height: 500px;
   background: var(--bodydark);
   border-radius: 10px;
-  -webkit-box-shadow: 0 0 20px var(--black);
-          box-shadow: 0 0 20px var(--black);
+  box-shadow: 0 0 20px var(--black);
   overflow: hidden;
   font-family: "Poppins", sans-serif;
 }
@@ -38,16 +31,9 @@
   top: 0;
   width: 50%;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .wrapper .form-box.login {
@@ -68,8 +54,7 @@
   position: absolute;
   bottom: -15px;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   width: 70px;
   height: 4px;
   background: var(--white);
@@ -92,7 +77,6 @@
   border: none;
   outline: none;
   border-bottom: 2px solid var(--white);
-  -webkit-transition: 0.5s;
   transition: 0.5s;
   padding-right: 23px;
 }
@@ -106,12 +90,10 @@
   position: absolute;
   top: 50%;
   left: 0;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   font-size: 16px;
   color: var(--white);
   pointer-events: none;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
@@ -125,10 +107,8 @@
   position: absolute;
   top: 50%;
   right: 0;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   font-size: 18px;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
@@ -148,14 +128,12 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   margin-top: 5px;
 }
 
 .body-btn button:hover {
-  -webkit-box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-          box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 form .linkTxt {
@@ -215,25 +193,18 @@ form .forget-pass {
 }
 
 .wrapper .form-box.login .animation {
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
-  -webkit-transition: 0.7s ease;
+  transform: translateX(0);
   transition: 0.7s ease;
   opacity: 1;
-  -webkit-filter: blur(0);
-          filter: blur(0);
-  -webkit-transition-delay: calc(0.1s * var(--j));
-          transition-delay: calc(0.1s * var(--j));
+  filter: blur(0);
+  transition-delay: calc(0.1s * var(--j));
 }
 
 .wrapper.active .form-box.login .animation {
-  -webkit-transform: translateX(-120%);
-          transform: translateX(-120%);
+  transform: translateX(-120%);
   opacity: 0;
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
-  -webkit-transition-delay: calc(0.1s * var(--i));
-          transition-delay: calc(0.1s * var(--i));
+  filter: blur(10px);
+  transition-delay: calc(0.1s * var(--i));
 }
 
 .wrapper .info-text {
@@ -241,16 +212,9 @@ form .forget-pass {
   top: 100px;
   width: 50%;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .wrapper.active .form-box.login {
@@ -281,51 +245,35 @@ form .forget-pass {
 }
 
 .wrapper .info-text.login .animation {
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
+  transform: translateX(0);
   opacity: 1;
-  -webkit-filter: blur(0);
-          filter: blur(0);
-  -webkit-transition: 0.7s ease;
+  filter: blur(0);
   transition: 0.7s ease;
-  -webkit-transition-delay: calc(0.1s * var(--j));
-          transition-delay: calc(0.1s * var(--j));
+  transition-delay: calc(0.1s * var(--j));
 }
 
 .wrapper.active .info-text.login .animation {
-  -webkit-transform: translateX(120px);
-          transform: translateX(120px);
+  transform: translateX(120px);
   opacity: 0;
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
-  -webkit-transition: 0.7s ease;
+  filter: blur(10px);
   transition: 0.7s ease;
-  -webkit-transition-delay: calc(0.1s * var(--i));
-          transition-delay: calc(0.1s * var(--i));
+  transition-delay: calc(0.1s * var(--i));
 }
 
 .wrapper .third-party-auth.login .animation {
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
+  transform: translateX(0);
   opacity: 1;
-  -webkit-filter: blur(0);
-          filter: blur(0);
-  -webkit-transition: 0.7s ease;
+  filter: blur(0);
   transition: 0.7s ease;
-  -webkit-transition-delay: calc(0.1s * var(--j));
-          transition-delay: calc(0.1s * var(--j));
+  transition-delay: calc(0.1s * var(--j));
 }
 
 .wrapper.active .third-party-auth.login .animation {
-  -webkit-transform: translateX(120px);
-          transform: translateX(120px);
+  transform: translateX(120px);
   opacity: 0;
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
-  -webkit-transition: 0.7s ease;
+  filter: blur(10px);
   transition: 0.7s ease;
-  -webkit-transition-delay: calc(0.1s * var(--i));
-          transition-delay: calc(0.1s * var(--i));
+  transition-delay: calc(0.1s * var(--i));
 }
 
 .wrapper .rotate-bg {
@@ -335,21 +283,15 @@ form .forget-pass {
   width: 850px;
   height: 600px;
   background: var(--navdark);
-  -webkit-transform: rotate(10deg) skewY(40deg);
-          transform: rotate(10deg) skewY(40deg);
-  -webkit-transform-origin: bottom right;
-          transform-origin: bottom right;
-  -webkit-transition: 1.5s ease;
+  transform: rotate(10deg) skewY(40deg);
+  transform-origin: bottom right;
   transition: 1.5s ease;
-  -webkit-transition-delay: 1.6s;
-          transition-delay: 1.6s;
+  transition-delay: 1.6s;
 }
 
 .wrapper.active .rotate-bg {
-  -webkit-transform: rotate(0) skewY(0);
-          transform: rotate(0) skewY(0);
-  -webkit-transition-delay: 0.5s;
-          transition-delay: 0.5s;
+  transform: rotate(0) skewY(0);
+  transition-delay: 0.5s;
 }
 
 .wrapper .form-box.register {
@@ -362,25 +304,18 @@ form .forget-pass {
 }
 
 .wrapper .form-box.register .animation {
-  -webkit-transform: translateX(120%);
-          transform: translateX(120%);
+  transform: translateX(120%);
   opacity: 0;
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
-  -webkit-transition: 0.7s ease;
+  filter: blur(10px);
   transition: 0.7s ease;
-  -webkit-transition-delay: calc(0.1s * var(--j));
-          transition-delay: calc(0.1s * var(--j));
+  transition-delay: calc(0.1s * var(--j));
 }
 
 .wrapper.active .form-box.register .animation {
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
+  transform: translateX(0);
   opacity: 1;
-  -webkit-filter: blur(0);
-          filter: blur(0);
-  -webkit-transition-delay: calc(0.1s * var(--i));
-          transition-delay: calc(0.1s * var(--i));
+  filter: blur(0);
+  transition-delay: calc(0.1s * var(--i));
 }
 
 .wrapper .info-text.register {
@@ -395,47 +330,33 @@ form .forget-pass {
 }
 
 .wrapper .info-text.register .animation {
-  -webkit-transform: translateX(-120%);
-          transform: translateX(-120%);
+  transform: translateX(-120%);
   opacity: 0;
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
-  -webkit-transition: 0.7s ease;
+  filter: blur(10px);
   transition: 0.7s ease;
-  -webkit-transition-delay: calc(0.1s * var(--j));
-          transition-delay: calc(0.1s * var(--j));
+  transition-delay: calc(0.1s * var(--j));
 }
 
 .wrapper.active .info-text.register .animation {
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
+  transform: translateX(0);
   opacity: 1;
-  -webkit-filter: blur(0);
-          filter: blur(0);
-  -webkit-transition-delay: calc(0.1s * var(--i));
-          transition-delay: calc(0.1s * var(--i));
+  filter: blur(0);
+  transition-delay: calc(0.1s * var(--i));
 }
 
 .wrapper .third-party-auth.register .animation {
-  -webkit-transform: translateX(-120%);
-          transform: translateX(-120%);
+  transform: translateX(-120%);
   opacity: 0;
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
-  -webkit-transition: 0.7s ease;
+  filter: blur(10px);
   transition: 0.7s ease;
-  -webkit-transition-delay: calc(0.1s * var(--j));
-          transition-delay: calc(0.1s * var(--j));
+  transition-delay: calc(0.1s * var(--j));
 }
 
 .wrapper.active .third-party-auth.register .animation {
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
+  transform: translateX(0);
   opacity: 1;
-  -webkit-filter: blur(0);
-          filter: blur(0);
-  -webkit-transition-delay: calc(0.1s * var(--i));
-          transition-delay: calc(0.1s * var(--i));
+  filter: blur(0);
+  transition-delay: calc(0.1s * var(--i));
 }
 
 .wrapper .rotate-bg2 {
@@ -445,26 +366,19 @@ form .forget-pass {
   width: 850px;
   height: 700px;
   background: var(--bodydark);
-  -webkit-transform: rotate(0) skewY(0);
-          transform: rotate(0) skewY(0);
-  -webkit-transform-origin: bottom left;
-          transform-origin: bottom left;
-  -webkit-transition: 1.5s ease;
+  transform: rotate(0) skewY(0);
+  transform-origin: bottom left;
   transition: 1.5s ease;
-  -webkit-transition-delay: 0.5s;
-          transition-delay: 0.5s;
+  transition-delay: 0.5s;
 }
 
 .wrapper.active .rotate-bg2 {
-  -webkit-transform: rotate(-11deg) skewY(-40deg);
-          transform: rotate(-11deg) skewY(-40deg);
-  -webkit-transition-delay: 1.2s;
-          transition-delay: 1.2s;
+  transform: rotate(-11deg) skewY(-40deg);
+  transition-delay: 1.2s;
 }
 
 @media (max-width: 767px) {
   .wrapper {
     width: 50%;
   }
-}
-/*# sourceMappingURL=auth.css.map */
+}/*# sourceMappingURL=auth.css.map */

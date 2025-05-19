@@ -62,9 +62,6 @@
     <button class="tablinks" id="tab-Code" onclick="openTab(event, 'Code')">
       <i class="fa-solid fa-code"></i><span class="btn-txt">Code</span>
     </button>
-    <button class="tablinks" id="tab-editor" onclick="openTab(event, 'editor')">
-      <i class="fa-solid fa-terminal"></i><span class="btn-txt">Code Editor</span>
-    </button>
   </div>
 
   <div id="Info" class="tabcontent">
@@ -80,7 +77,12 @@
       <div class="tabcontent-top-right">
         <p>C000reated by:</p>
         <div class="tabcontent-top-right-1">
+          {% if profile.profile_pic %}
           <img src="{{profile.profile_pic.url}}" alt="img" />
+          {% else %}
+          <img src="{% static 'assets/default-pic.png' %}" alt="default" />
+          {% endif %}
+
           <a href="{% url 'Profile' rooms.created_by.username %}">@{{rooms.created_by.username}}</a>
         </div>
         <p class="status">Stats: {{members}} Joined</p>
@@ -129,7 +131,6 @@
   <div id="Code" class="tabcontent">
     {% block code %} {% include 'base/code_folder.html' %} {% endblock %}
   </div>
-  <div id="editor" class="tabcontent">{% block editor %} {% include 'editor.html' %} {% endblock %}</div>
   <script src="{% static 'js/room.js'%}"></script>
   <script>
     function openChat() {

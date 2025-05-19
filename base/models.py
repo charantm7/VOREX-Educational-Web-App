@@ -1,12 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-from cloudinary.uploader import upload as cloudinary_upload
-
-
 
 
 class Tag(models.Model):
@@ -56,13 +49,8 @@ class StudyMaterials(models.Model):
     folder = models.ForeignKey('Folder', on_delete=models.CASCADE, related_name='study_materials', null=True, blank=True)
     title = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
-    
-    # Store file locally
     file = models.FileField(upload_to='study_material/', null=True, blank=True)
     
-    # Cloudinary metadata (optional)
-    cloudinary_url = models.URLField(null=True, blank=True)
-    cloudinary_public_id = models.CharField(max_length=512, null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -85,24 +73,7 @@ class StudyMaterials(models.Model):
 
         super().save(*args, **kwargs)
 
-        if is_new_file:
-            try:
-                # Get local file path
-                local_file_path = self.file.path
-                # Upload to Cloudinary
-                result = cloudinary_upload(
-                    local_file_path,
-                    folder='study_material',
-                    resource_type='auto',
-                    use_filename=True,
-                    unique_filename=True
-                )
-                # Save Cloudinary info
-                self.cloudinary_url = result['secure_url']
-                self.cloudinary_public_id = result['public_id']
-                super().save(update_fields=['cloudinary_url', 'cloudinary_public_id'])
-            except Exception as e:
-                print(f"Cloudinary upload error: {e}")
+        
 
 class ChatBox(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="messages", null=True)
@@ -126,7 +97,7 @@ class ChatBoxMembership(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-    profile_pic = CloudinaryField('image', folder='profile_pic', null=True, blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pic/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     rooms = models.ManyToManyField(Room, related_name="profile-rooms+")
