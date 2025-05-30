@@ -350,10 +350,18 @@ p {
         }
       }
       .card-mid {
+        display: flex; /* 👈 This is the key */
+        align-items: center;
         p {
           font-size: 0.9rem;
           color: var(--llwhite);
           margin-left: 40px;
+          // max-width: 60%;
+          // min-width: 0;
+          // flex-grow: 1;
+          // overflow: hidden;
+          // text-overflow: ellipsis;
+          // white-space: nowrap;
         }
       }
       .card-bottom {
@@ -493,7 +501,7 @@ p {
         small {
           position: absolute;
           margin-top: 11%;
-          max-width: 70%;
+          max-width: 60%;
           margin-left: 4%;
           font-size: 11px;
         }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 :root {
   --roomborder: #ececec;
@@ -326,6 +327,10 @@ p {
   color: var(--white);
   text-decoration: underline;
 }
+.activity .activity-body .activity-card .card-mid {
+  display: flex; /* 👈 This is the key */
+  align-items: center;
+}
 .activity .activity-body .activity-card .card-mid p {
   font-size: 0.9rem;
   color: var(--llwhite);
@@ -449,7 +454,7 @@ p {
   .content .card-mid-left small {
     position: absolute;
     margin-top: 11%;
-    max-width: 70%;
+    max-width: 60%;
     margin-left: 4%;
     font-size: 11px;
   }

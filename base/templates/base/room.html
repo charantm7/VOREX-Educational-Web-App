@@ -75,7 +75,7 @@
         </div>
       </div>
       <div class="tabcontent-top-right">
-        <p>C000reated by:</p>
+        <p>Created by:</p>
         <div class="tabcontent-top-right-1">
           {% if profile.profile_pic %}
           <img src="{{profile.profile_pic.url}}" alt="img" />
@@ -89,10 +89,12 @@
       </div>
     </div>
     <div class="bottom">
+      {% if request.user == rooms.created_by %}
       <div class="urls">
         <a href="?form=info#info-content-form">📝 Add Info</a>
         <a href="?form=info-url#info-url-form">🔗 Add URL</a>
       </div>
+      {% endif %}
       <div class="info-content">
         <div class="info-content-box">
           {% for info in info_content %}
