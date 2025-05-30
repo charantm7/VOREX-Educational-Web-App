@@ -35,7 +35,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 # Application definition
-SITE_ID = 2
+SITE_ID = 3
 
 INSTALLED_APPS = [
     
