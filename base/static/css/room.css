@@ -392,7 +392,13 @@ p {
     gap: 0;
   }
   .rooms #Info .tabcontent-top .tabcontent-top-left .tabcontent-top-left-1 p {
-    font-size: 3em;
+    font-size: 2em;
+    max-width: 70%;
+    min-width: 0;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .rooms #Info .tabcontent-top .tabcontent-top-left .tabcontent-top-left-1 small {
     font-size: 0.6em;
@@ -553,6 +559,7 @@ p {
   gap: 20px;
   transition: transform 0.3s ease-in;
   transform: scale(1.1);
+  z-index: 9999;
 }
 .delete .bottom {
   display: flex;
@@ -605,10 +612,10 @@ p {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid var(--border);
   background-color: var(--roombg);
   border-radius: 5px;
   width: 20%;
+  border: 1px solid var(--border);
 }
 .materials-top-mid input {
   width: 100%;
@@ -727,7 +734,7 @@ footer {
 #Code .code-top .code-top-left a {
   text-decoration: none;
   color: var(--lwhite);
-  font-size: 0.7rem;
+  font-size: 1vw;
   padding: 0.7rem 0.9rem;
   border-radius: 5px;
   background-color: var(--roombg);
@@ -909,7 +916,6 @@ footer {
   .materials-top .materials-top-mid {
     width: auto;
     color: var(--lwhite);
-    border: none;
     width: 40%;
   }
   .materials-top .materials-top-mid input {
@@ -936,6 +942,18 @@ footer {
     width: 80%;
     left: 10%;
     top: 25%;
+  }
+  #Code .code-top .code-top-left a {
+    font-size: 10px;
+  }
+  #Code .code-top .code-top-mid {
+    width: 40%;
+  }
+  #Code .code-top .code-top-mid input {
+    height: 35px;
+    font-size: 12px;
+    width: 90%;
+    padding: 0 0 0 10px;
   }
 }
 .editor-body {

@@ -646,6 +646,15 @@ footer .foot-2 {
     width: 20px;
     height: 2px;
   }
+  nav .nav-container .nav-container-left .change .bar1 {
+    transform: translate(0, 7.8px) rotate(-45deg);
+  }
+  nav .nav-container .nav-container-left .change .bar2 {
+    opacity: 0;
+  }
+  nav .nav-container .nav-container-left .change .bar3 {
+    transform: translate(0, -7.8px) rotate(45deg);
+  }
   nav .nav-container .nav-container-left .nav-links a {
     font-size: 16px;
   }
@@ -708,6 +717,10 @@ footer .foot-2 {
     transform: translateX(-100%);
     transition: transform 1s ease-in-out;
   }
+  aside .sidebar .nav-list-bottom {
+    margin-bottom: 0;
+    margin-top: 12px;
+  }
   .sidebar.visible {
     display: block;
     transform: translateX(0);
@@ -718,32 +731,39 @@ footer .foot-2 {
     justify-content: center;
   }
   footer .foot-1 .foot-left .logo .vorex-name p {
-    font-size: 3.5vw;
+    font-size: 4vw;
   }
   footer .foot-1 .foot-left .logo .vorex-name small {
     font-size: 2vw;
   }
+  footer .foot-1 .foot-left .devcontact {
+    margin-left: 2rem;
+  }
   footer .foot-1 .foot-left .devcontact .c-1 {
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
   footer .foot-1 .foot-left .devcontact .c-1 a {
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
   footer .foot-1 .foot-left .quote {
-    font-size: 2.5vw;
+    font-size: 3vw;
+    margin-left: 2rem;
+  }
+  footer .foot-1 .foot-left .icon-links {
+    margin-left: 2rem;
   }
   footer .foot-1 .foot-left .icon-links a i {
     font-size: 3.5vw;
   }
   footer .foot-1 .foot-right-1 [class^=r-] {
-    font-size: 3vw;
+    font-size: 3.5vw;
     padding: 3rem 0 0 0;
   }
   footer .foot-1 .foot-right-1 [class^=r-] a {
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
   footer .foot-2 {
-    font-size: 2vw;
+    font-size: 2.5vw;
   }
   .nav1 {
     display: none;

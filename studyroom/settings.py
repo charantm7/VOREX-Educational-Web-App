@@ -35,7 +35,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 # Application definition
-SITE_ID = 3
+SITE_ID = 2
 
 INSTALLED_APPS = [
     
@@ -129,7 +129,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.parse("postgresql://vorex:rlZsgwy9gSURb4Sj6hk6vemPgxuwTpXB@dpg-d089vongi27c738bf6u0-a.oregon-postgres.render.com/vorexdb")
+DATABASES['default'] = dj_database_url.parse("postgresql://vorexhub_user:kcpmQ5tkaRZ7t0ptfzqI1wPrheqaR2DG@dpg-d0stumali9vc73dd0dj0-a.oregon-postgres.render.com/vorexhub")
 
 
 #postgresql://vorex:rlZsgwy9gSURb4Sj6hk6vemPgxuwTpXB@dpg-d089vongi27c738bf6u0-a.oregon-postgres.render.com/vorexdb
