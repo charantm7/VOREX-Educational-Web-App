@@ -26,12 +26,12 @@ SECRET_KEY = 'django-insecure-cox_a!8#h^j(w*4g-n^3#9^-55vbv+il0--mfr*7=v675wlxbm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vorexhub.onrender.com', 'localhost', '127.0.0.1', 'vorexhub.xyz']
+ALLOWED_HOSTS = ['vorexhub.onrender.com', 'localhost', '127.0.0.1', 'www.vorexhub.xyz']
 
 
 CSRF_TRUSTED_ORIGINS = [
     'https://vorexhub.onrender.com',
-    'https://vorexhub.xyz',
+    'https://www.vorexhub.xyz',
 ]
 
 # Application definition
