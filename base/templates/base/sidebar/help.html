@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>Help Center</title>
+{% endblock %} {% block nav1 %}
+<a href="{% url 'HelpCenter' %}">/ Help Center</a>
+{% endblock %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/terms.css' %}" />
+{% endblock %} {% block content %}
+<div class="help-container">
+  <h1><i class="fas fa-question-circle"></i> Help Center</h1>
+  <p>Need help with something? Send us your query and our team will get back to you soon.</p>
+
+  <form method="POST" action="{% url 'HelpCenter' %}" class="help-form">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="name"><i class="fas fa-user"></i> Your Name</label>
+      <input type="text" id="name" name="name" required placeholder="Enter your name" />
+    </div>
+
+    <div class="form-group">
+      <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email" />
+    </div>
+
+    <div class="form-group">
+      <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+      <input type="text" id="subject" name="subject" required placeholder="Query subject" />
+    </div>
+
+    <div class="form-group">
+      <label for="message"><i class="fas fa-comment-dots"></i> Message</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="5"
+        required
+        placeholder="Describe your issue or query..."
+      ></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Query</button>
+  </form>
+</div>
+{% endblock %} {% block script %}
+<script>
+  // Add any form validation or UI enhancement here
+</script>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>Terms and Conditions</title>
+{% endblock %} {% block nav1 %}
+<a href="{% url 'Terms' %}">/ Terms and Conditions</a>
+{% endblock %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/terms.css' %}" />
+{% endblock %} {% block content %}
+<div class="terms-container">
+  <h1>Terms and Conditions</h1>
+  <p>Welcome to Vorex!</p>
+  <p>
+    These terms and conditions outline the rules and regulations for the use of Vorex's Website, located at
+    www.vorex.com.
+  </p>
+
+  <h2>Acceptance of Terms</h2>
+  <p>
+    By accessing this website, we assume you accept these terms and conditions. Do not continue to use Vorex
+    if you do not agree to take all of the terms and conditions stated on this page.
+  </p>
+
+  <h2>Cookies</h2>
+  <p>
+    We employ the use of cookies. By accessing Vorex, you agreed to use cookies in agreement with the Vorex's
+    Privacy Policy.
+  </p>
+
+  <h2>License</h2>
+  <p>
+    Unless otherwise stated, Vorex and/or its licensors own the intellectual property rights for all material
+    on Vorex. All intellectual property rights are reserved. You may access this from Vorex for your own
+    personal use subjected to restrictions set in these terms and conditions.
+  </p>
+
+  <h2>User Accounts</h2>
+  <p>
+    You must be at least 18 years old to create an account on our website. By creating an account, you agree
+    to provide accurate information and keep it updated.
+  </p>
+
+  <h2>Termination</h2>
+  <p>
+    We may terminate or suspend your account immediately, without prior notice or liability, for any reason
+    whatsoever, including without limitation if you breach the Terms.
+  </p>
+
+  <h2>Changes to Terms</h2>
+  <p>
+    We reserve the right to modify these terms at any time. We will notify you of any changes by posting the
+    new terms on this page.
+  </p>
+
+  <h2>Contact Us</h2>
+  <p>
+    If you have any questions about these Terms, please contact us at
+    <a href="mailto:charanntm.dev@gmail.com">charanntm.dev@gmail.com</a>.
+  </p>
+</div>
+{% endblock %} {% block script %}
+<script>
+  // You can add any JavaScript here if needed
+</script>
+{% endblock %}
+<!--         <label for="password">Password</label> -->
+<!--       </div> -->

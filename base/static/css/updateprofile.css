@@ -8,6 +8,7 @@ footer {
   align-items: center;
   justify-content: space-around;
   height: 100%;
+  padding: 2rem 0;
 }
 .update-profile-container .update-right {
   display: flex;
@@ -22,6 +23,21 @@ footer {
   height: 68%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+@media (max-width: 768px) {
+  .update-profile-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+  }
+  .update-profile-container .update-right {
+    display: none;
+  }
+  .update-profile-container form .top {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
 }
 .update-profile-container form {
   min-width: 50%;
@@ -104,6 +120,18 @@ footer {
   align-items: center;
   justify-content: space-around;
   height: 100%;
+}
+@media (max-width: 768px) {
+  .update-user-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+  }
+  .update-user-container form {
+    width: 100%;
+    min-width: 90%;
+    padding: 2rem 2rem;
+  }
 }
 .update-user-container form {
   display: flex;

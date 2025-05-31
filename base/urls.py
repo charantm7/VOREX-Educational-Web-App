@@ -25,6 +25,12 @@ urlpatterns = [
     #sidebar
     path('about/', views.about, name='About'),
     path('service/', views.service, name='Service'),
+    #terms and conditions
+    path('terms-and-conditions/', views.terms, name='Terms'),
+    # privacy policy
+    path('privacy-policy/', views.privacy, name='Privacy'),
+    # contact us
+    path('help/', views.help_center, name='HelpCenter'),
     
     # authentication
     path('authentication/',views.auth_page, name='auth_page'),
@@ -88,6 +94,8 @@ urlpatterns = [
 
     #Code snippet upload url
     path('upload-code/<int:room_id>/<str:folder_name>/', views.upload_code, name='upload-code'),
+
+    
 
     
 

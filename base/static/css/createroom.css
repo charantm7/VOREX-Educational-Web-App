@@ -263,6 +263,9 @@ footer {
 }
 
 @media (max-width: 576px) {
+  .main-body .create-room-container {
+    display: none;
+  }
   .main-body form {
     width: 90%;
     height: 85%;
