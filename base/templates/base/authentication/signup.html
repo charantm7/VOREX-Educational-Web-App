@@ -80,7 +80,21 @@
 
         <label for="">Confirm Password</label>
       </div>
-      <div class="body-btn">
+      <div class="pass-rule">
+        <p style="font-size: 13px; color: rgba(240, 248, 255, 0.667)" class="open-sans">
+          * Pick a password that's 8–20 characters long with at least one capital letter, one number, and one
+          special character. Your username should be at least 3 characters.
+        </p>
+      </div>
+      <div class="body-btn" style="display: flex; flex-direction: column; gap: 10px">
+        <div
+          class="terms"
+          style="display: flex; flex-direction: row; align-items: center; gap: 10px; font-size: 14px"
+        >
+          <input type="checkbox" name="terms" required />
+          I agree to the <a href="{% url 'Terms' %}" target="_blank">Terms and Conditions</a>and
+          <a href="{% url 'Privacy' %}" target="_blank">Privacy Policy</a>
+        </div>
         <button type="submit">SignUp</button>
       </div>
       <div class="mid-1">

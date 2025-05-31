@@ -7,6 +7,8 @@ from base.models import Tag, Room, RoomMembership, ChatBox, StudyMaterials,UserP
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.mail import send_mail
+
 
 #forms
 from .forms import RoomForm, ProfileForm, UserForm, ChatBoxForm, FolderForm, StudyMaterialForm, ChatBoxMemberForm, InfoContentForm, InfoContentUrlForm, CodeSnippetForm, CodeFolderForm
@@ -375,6 +377,11 @@ def profile(request, user_tag):
         profile = UserProfile.objects.get(user=user)
     else:
         profile = UserProfile.objects.get(user=user)
+
+    if not UserProfile.objects.filter(user=request.user).exists():
+        UserProfile.objects.create(user=request.user)
+    else:
+        request.user.profile = UserProfile.objects.get(user=request.user)
 
     if request.user.is_authenticated:
         is_follower = user.profile in request.user.profile.followers.all()
@@ -761,3 +768,29 @@ def search_rooms(request):
     except Exception as e:
         print("Search Error:", e)
         return JsonResponse({"results": []}, status=500)
+
+
+def terms(request):
+    return render(request, 'base/terms.html')
+
+def privacy(request):
+    return render(request, 'base/sidebar/privacy.html')
+
+def help_center(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        message = request.POST['message']
+
+        full_message = f"From: {name} <{email}>\n\n{message}"
+
+        # Option 1: Send to admin via email
+        send_mail(subject, full_message, email, ['charanntm.dev@gmail.com'])
+
+        # Option 2: You can also save it to the database (let me know if you want a model for that)
+
+        messages.success(request, 'Your query has been sent. We’ll get back to you shortly.')
+        return redirect('HelpCenter')
+    
+    return render(request, 'base/sidebar/help.html')

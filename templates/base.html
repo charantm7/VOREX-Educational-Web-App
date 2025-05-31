@@ -121,15 +121,21 @@
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="fas fa-chart-line"></i>
-              <span class="link_name">Analytics</span>
+            <a href="{% url 'Terms' %}">
+              <i class="fas fa-file-contract"></i>
+              <span class="link_name">T&C</span>
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="fas fa-lightbulb"></i>
-              <span class="link_name">Ideas</span>
+            <a href="{% url 'Privacy' %}">
+              <i class="fas fa-user-shield"></i>
+              <span class="link_name">Privacy</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'HelpCenter' %}">
+              <i class="fas fa-question-circle"></i>
+              <span class="link_name">Help</span>
             </a>
           </li>
         </ul>
@@ -211,35 +217,37 @@
             <p><b>Explore</b></p>
             <a href="/">Home</a>
             <a href="{% url 'About'%}">About Us</a>
-            <a href="#">Help Center</a>
+            <a href="{% url 'HelpCenter' %}">Help Center</a>
             <a href="{% url 'Service' %}">Services</a>
-
-            <a href="#">Privacy Policy</a>
+            <a href="{% url 'Privacy' %}">Privacy Policy</a>
           </div>
           <div class="r-2">
             <p><b>Community</b></p>
-            <a href="#">Syndicate</a>
+            <a href="https://chat.whatsapp.com/DeDalHva5JkKbTNZRDAMYt">Syndicate</a>
             <a href="#">Contributor Guide</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Join Community</a>
+            <a href="{% url 'HelpCenter' %}">Contact Us</a>
+            <a href="https://chat.whatsapp.com/DeDalHva5JkKbTNZRDAMYt">Join Community</a>
             <a href="#">Code of Conduct</a>
           </div>
         </div>
         <div class="foot-right-1">
           <div class="r-3">
             <p><b>Open Source</b></p>
-            <a href="#">GitHub</a>
-            <a href="#">Developers</a>
-            <a href="#">Repository</a>
-            <a href="#">Guidence</a>
+            <a href="https://github.com">GitHub</a>
+            <a href="https://github.com/charantm7">Developers</a>
+            <a href="https://github.com/charantm7/VOREX-Educational-Web-App">Repository</a>
+            <a
+              href="https://github.com/charantm7/VOREX-Educational-Web-App?tab=readme-ov-file#vorex---project"
+              >Guidence</a
+            >
           </div>
           <div class="r-4">
             <p><b>Languages</b></p>
-            <a href="#">Python</a>
-            <a href="#">C</a>
-            <a href="#">Java</a>
-            <a href="#">C++</a>
-            <a href="#">Javascript</a>
+            <a href="https://www.python.org/">Python</a>
+            <a href="https://devdocs.io/c/">C</a>
+            <a href="https://www.java.com/en/">Java</a>
+            <a href="https://devdocs.io/cpp/">C++</a>
+            <a href="https://devdocs.io/javascript/">Javascript</a>
           </div>
         </div>
       </div>

@@ -1,15 +1,13 @@
-{% extends 'base.html' %}{% load static %} {% block link %}
+{% extends 'base.html' %} {% load static %} {% block link %}
 <link rel="stylesheet" href="{% static 'css/sidebaritem.css' %}" />
-{% endblock %} {% block nav1 %} / <a href="{% url 'Service' %}">Service</a>
-{% endblock %} {% block content %}
+{% endblock %} {% block nav1 %} / <a href="{% url 'Service' %}">Service</a>{% endblock %} {% block content %}
+<div class="services-container">
+  <h1 class="services-title">Our Services</h1>
 
-<div class="vorex-services quicksand">
-  <div class="top">
-    <p>Our Services</p>
-  </div>
-  <div class="service">
+  <div class="services-list">
     <div class="service-item">
-      <div class="left">
+      <div class="icon"><i class="fas fa-users"></i></div>
+      <div class="content">
         <h2>Collaborative Study Rooms</h2>
         <ul>
           <li>Real-time group chats</li>
@@ -17,45 +15,42 @@
           <li>Private and Global Rooms</li>
         </ul>
       </div>
-      <i class="fas fa-users"></i>
     </div>
 
     <div class="service-item">
-      <i class="fas fa-code"></i>
-      <div class="left">
+      <div class="icon"><i class="fas fa-code"></i></div>
+      <div class="content">
         <h2>Code Upload & Sharing Dashboard</h2>
-        <ul style="justify-content: start">
-          <li>Users can upload, view code snippets</li>
-          <li>Syntax highlighting and language detection</li>
-          <li>User are free to use the Code</li>
+        <ul>
+          <li>Upload and view code snippets</li>
+          <li>Syntax highlighting & language detection</li>
+          <li>Free to use code library</li>
         </ul>
       </div>
     </div>
 
     <div class="service-item">
-      <div class="left">
+      <div class="icon"><i class="fas fa-book"></i></div>
+      <div class="content">
         <h2>Study Materials Repository</h2>
         <ul>
-          <li>Upload & categorize PDFs, docs, and slides by topic.</li>
+          <li>Upload & categorize PDFs, docs, and slides</li>
           <li>Filter by subject and tags</li>
           <li>Admin-curated and user-submitted content</li>
         </ul>
       </div>
-      <i class="fas fa-book"></i>
     </div>
 
     <div class="service-item">
-      <i class="fas fa-user-circle"></i>
-
-      <div class="left">
+      <div class="icon"><i class="fas fa-user-circle"></i></div>
+      <div class="content">
         <h2>User Profiles & Badges</h2>
         <ul>
-          <li>Track contribution (uploads, room activity, code posts)</li>
-          <li>Earn badges for achievements (top contributor, verified helper)</li>
+          <li>Track contributions & room activity</li>
+          <li>Earn badges for achievements</li>
         </ul>
       </div>
     </div>
   </div>
 </div>
-
 {% endblock %}
