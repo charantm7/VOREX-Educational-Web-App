@@ -231,6 +231,16 @@ footer {
   background-color: #666;
 }
 
+@media (max-width: 768px) {
+  .main .code-bottom .code-box .code-container {
+    width: 450px;
+  }
+}
+@media (max-width: 425px) {
+  .main .code-bottom .code-box .code-container {
+    width: 420px;
+  }
+}
 @media (max-width: 576px) {
   main {
     width: 100%;
@@ -274,10 +284,5 @@ footer {
   }
   .code-snippet-form form .code textarea {
     padding: 0.4rem;
-  }
-}
-@media (max-width: 768px) {
-  .main .code-bottom .code-box .code-container {
-    width: 450px;
   }
 }/*# sourceMappingURL=code_snippet.css.map */
