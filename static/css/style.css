@@ -768,4 +768,9 @@ footer .foot-2 {
   .nav1 {
     display: none;
   }
+}
+@media (max-width: 900px) {
+  body nav .nav-container .nav-container-left .nav-links .nav1 {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */

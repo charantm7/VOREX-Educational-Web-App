@@ -888,3 +888,19 @@ footer {
     display: none;
   }
 }
+
+@media (max-width: 900px) {
+  body {
+    nav {
+      .nav-container {
+        .nav-container-left {
+          .nav-links {
+            .nav1 {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

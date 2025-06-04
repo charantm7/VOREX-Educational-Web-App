@@ -478,4 +478,9 @@ p {
   .activity {
     display: none;
   }
+}
+@media (max-width: 900px) {
+  .main-body .activity {
+    display: none;
+  }
 }/*# sourceMappingURL=body.css.map */

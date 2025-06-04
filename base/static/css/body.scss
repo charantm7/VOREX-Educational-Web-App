@@ -529,3 +529,11 @@ p {
     display: none;
   }
 }
+
+@media (max-width: 900px) {
+  .main-body {
+    .activity {
+      display: none;
+    }
+  }
+}
