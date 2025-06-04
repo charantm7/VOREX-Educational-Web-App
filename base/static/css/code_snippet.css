@@ -280,9 +280,4 @@ footer {
   .main .code-bottom .code-box .code-container {
     width: 450px;
   }
-}
-@media (max-width: 992px) {
-  .main .code-bottom .code-box .code-container {
-    width: 600px;
-  }
 }/*# sourceMappingURL=code_snippet.css.map */
